@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -148,10 +153,16 @@ class ModulesModelPositions extends JModelList
 
 					if (isset($xml->positions[0]))
 					{
+<<<<<<< HEAD
 						$lang->load('tpl_' . $template->element . '.sys', $client->path, null, false, true)
 						|| $lang->load('tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, null, false, true);
 
 						foreach ($xml->positions[0] as $position)
+=======
+						$lang->load('tpl_'.$template->element.'.sys', $client->path, null, false, true)
+					||	$lang->load('tpl_'.$template->element.'.sys', $client->path.'/templates/'.$template->element, null, false, true);
+					foreach ($xml->positions[0] as $position)
+>>>>>>> FETCH_HEAD
 						{
 							$value = (string) $position['value'];
 							$label = (string) $position;

@@ -6,4 +6,7 @@
 
 # Ignore the folder the build script creates for packages
 /tmp
+<<<<<<< HEAD
 /com_joomlaupdate-pkg
+=======
+>>>>>>> FETCH_HEAD

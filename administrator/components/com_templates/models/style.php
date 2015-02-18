@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_templates
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_templates
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -414,8 +421,13 @@ class TemplatesModelStyle extends JModelAdmin
 		$formFile = JPath::clean($client->path . '/templates/' . $template . '/templateDetails.xml');
 
 		// Load the core and/or local language file(s).
+<<<<<<< HEAD
 			$lang->load('tpl_' . $template, $client->path, null, false, true)
 		||	$lang->load('tpl_' . $template, $client->path . '/templates/' . $template, null, false, true);
+=======
+			$lang->load('tpl_'.$template, $client->path, null, false, true)
+		||	$lang->load('tpl_'.$template, $client->path.'/templates/'.$template, null, false, true);
+>>>>>>> FETCH_HEAD
 
 		if (file_exists($formFile))
 		{

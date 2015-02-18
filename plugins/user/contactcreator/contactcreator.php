@@ -120,7 +120,24 @@ class PlgUserContactCreator extends JPlugin
 			}
 		}
 
+<<<<<<< HEAD
 		JError::raiseWarning('', JText::_('PLG_CONTACTCREATOR_ERR_FAILED_CREATING_CONTACT'));
+=======
+		$contact->name = $user['name'];
+		$contact->user_id = $user_id;
+		$contact->email_to = $user['email'];
+		$contact->catid = $category;
+		$contact->language = '*';
+
+		// check for already existing alias
+		$table = JTable::getInstance('contact', 'ContactTable');
+		$contact->alias = JApplication::stringURLSafe($contact->name);
+
+		while ($table->load(array('alias' => $contact->alias, 'catid' => $contact->catid)))
+		{
+			$contact->alias = JString::increment($contact->alias, 'dash');
+		}
+>>>>>>> FETCH_HEAD
 
 		return false;
 	}

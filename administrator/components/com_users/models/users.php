@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -74,10 +78,17 @@ class UsersModelUsers extends JModelList
 		$search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
+<<<<<<< HEAD
 		$active = $this->getUserStateFromRequest($this->context . '.filter.active', 'filter_active');
 		$this->setState('filter.active', $active);
 
 		$state = $this->getUserStateFromRequest($this->context . '.filter.state', 'filter_state');
+=======
+		$active = $this->getUserStateFromRequest($this->context.'.filter.active', 'filter_active', '*');
+		$this->setState('filter.active', $active);
+
+		$state = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state', '*');
+>>>>>>> FETCH_HEAD
 		$this->setState('filter.state', $state);
 
 		$groupId = $this->getUserStateFromRequest($this->context . '.filter.group', 'filter_group_id', null, 'int');

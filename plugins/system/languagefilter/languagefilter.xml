@@ -3,7 +3,11 @@
 	<name>plg_system_languagefilter</name>
 	<author>Joomla! Project</author>
 	<creationDate>July 2010</creationDate>
+<<<<<<< HEAD
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
@@ -62,6 +66,15 @@
 				>
 					<option value="1">PLG_SYSTEM_LANGUAGEFILTER_OPTION_YEAR</option>
 					<option value="0">PLG_SYSTEM_LANGUAGEFILTER_OPTION_SESSION</option>
+				</field>
+				<field name="lang_cookie" type="radio"
+					description="PLG_SYSTEM_LANGUAGEFILTER_FIELD_COOKIE_DESC"
+					label="PLG_SYSTEM_LANGUAGEFILTER_FIELD_COOKIE_LABEL"
+					default="1"
+					class="btn-group"
+				>
+					<option value="0">PLG_SYSTEM_LANGUAGEFILTER_OPTION_SESSION</option>
+					<option value="1">PLG_SYSTEM_LANGUAGEFILTER_OPTION_YEAR</option>
 				</field>
 				<field name="alternate_meta" type="radio"
 					description="PLG_SYSTEM_LANGUAGEFILTER_FIELD_ALTERNATE_META_DESC"

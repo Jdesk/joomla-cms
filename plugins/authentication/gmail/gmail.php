@@ -3,7 +3,11 @@
  * @package     Joomla.Plugin
  * @subpackage  Authentication.gmail
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,7 +16,13 @@ defined('_JEXEC') or die;
 /**
  * GMail Authentication Plugin
  *
+<<<<<<< HEAD
  * @since  1.5
+=======
+ * @package     Joomla.Plugin
+ * @subpackage  Authentication.gmail
+ * @since       1.5
+>>>>>>> FETCH_HEAD
  */
 class PlgAuthenticationGMail extends JPlugin
 {
@@ -51,9 +61,15 @@ class PlgAuthenticationGMail extends JPlugin
 				// Check if the username isn't blacklisted
 				if (!in_array($credentials['username'], $blacklist))
 				{
+<<<<<<< HEAD
 					$suffix      = $this->params->get('suffix', '');
 					$applysuffix = $this->params->get('applysuffix', 0);
 					$offset      = strpos($credentials['username'], '@');
+=======
+					$suffix = $this->params->get('suffix', '');
+					$applysuffix = $this->params->get('applysuffix', 0);
+					$offset = strpos($credentials['username'], '@');
+>>>>>>> FETCH_HEAD
 
 					// Check if we want to do suffix stuff, typically for Google Apps for Your Domain
 					if ($suffix && $applysuffix)
@@ -86,16 +102,28 @@ class PlgAuthenticationGMail extends JPlugin
 
 					switch ($code)
 					{
+<<<<<<< HEAD
 						case 200 :
+=======
+						case 200:
+>>>>>>> FETCH_HEAD
 							$message = JText::_('JGLOBAL_AUTH_ACCESS_GRANTED');
 							$success = 1;
 							break;
 
+<<<<<<< HEAD
 						case 401 :
 							$message = JText::_('JGLOBAL_AUTH_ACCESS_DENIED');
 							break;
 
 						default :
+=======
+						case 401:
+							$message = JText::_('JGLOBAL_AUTH_ACCESS_DENIED');
+							break;
+
+						default:
+>>>>>>> FETCH_HEAD
 							$message = JText::_('JGLOBAL_AUTH_UNKNOWN_ACCESS_DENIED');
 							break;
 					}
@@ -126,6 +154,7 @@ class PlgAuthenticationGMail extends JPlugin
 				{
 					// If there is a suffix then we want to apply it
 					$email = $credentials['username'] . '@' . $suffix;
+<<<<<<< HEAD
 				}
 				else
 				{
@@ -141,6 +170,24 @@ class PlgAuthenticationGMail extends JPlugin
 
 			// Extra security checks with existing local accounts
 			$db                  = JFactory::getDbo();
+=======
+				}
+				else
+				{
+					// If there isn't a suffix just use the default gmail one
+					$email = $credentials['username'] . '@gmail.com';
+				}
+			}
+			else
+			{
+				// The username looks like an email address (probably is) so use that
+				$email = $credentials['username'];
+			}
+
+			// Extra security checks with existing local accounts
+			$db = JFactory::getDbo();
+
+>>>>>>> FETCH_HEAD
 			$localUsernameChecks = array(strstr($email, '@', true), $email);
 
 			$query = $db->getQuery(true)

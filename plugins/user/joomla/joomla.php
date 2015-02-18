@@ -84,8 +84,13 @@ class PlgUserJoomla extends JPlugin
 		if ($isnew)
 		{
 			// TODO: Suck in the frontend registration emails here as well. Job for a rainy day.
+<<<<<<< HEAD
 			if ($this->app->isAdmin())
 			{
+=======
+
+			if ($app->isAdmin()) {
+>>>>>>> FETCH_HEAD
 				if ($mail_to_user)
 				{
 					$lang = JFactory::getLanguage();
@@ -96,7 +101,11 @@ class PlgUserJoomla extends JPlugin
 					 * 	1. User frontend language
 					 * 	2. User backend language
 					 */
+<<<<<<< HEAD
 					$userParams = new Registry($user['params']);
+=======
+					$userParams = new JRegistry($user['params']);
+>>>>>>> FETCH_HEAD
 					$userLocale = $userParams->get('language', $userParams->get('admin_language', $defaultLocale));
 
 					if ($userLocale != $defaultLocale)
@@ -141,9 +150,15 @@ class PlgUserJoomla extends JPlugin
 						$lang->setLanguage($defaultLocale);
 					}
 
+<<<<<<< HEAD
 					if (!$mail->Send())
 					{
 						$this->app->enqueueMessage(JText::_('JERROR_SENDING_EMAIL'), 'warning');
+=======
+					if (!$mail->Send()) {
+						// TODO: Probably should raise a plugin error but this event is not error checked.
+						JError::raiseWarning(500, JText::_('ERROR_SENDING_EMAIL'));
+>>>>>>> FETCH_HEAD
 					}
 				}
 			}

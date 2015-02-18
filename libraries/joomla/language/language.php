@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Language
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -211,7 +215,10 @@ class JLanguage
 		// Look for a language specific localise class
 		$class = str_replace('-', '_', $lang . 'Localise');
 		$paths = array();
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if (defined('JPATH_SITE'))
 		{
 			// Note: Manual indexing to enforce load order.
@@ -235,7 +242,10 @@ class JLanguage
 			{
 				require_once $path;
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 			$path = next($paths);
 		}
 
@@ -722,7 +732,11 @@ class JLanguage
 	{
 		// Load the default language first if we're not debugging and a non-default language is requested to be loaded
 		// with $default set to true
+<<<<<<< HEAD
 		if (!$this->debug && ($lang != $this->default) && $default)
+=======
+		if (!JFactory::getConfig()->get('debug_lang') && ($lang != $this->default) && $default)
+>>>>>>> FETCH_HEAD
 		{
 			$this->load($extension, $basePath, $this->default, false, true);
 		}

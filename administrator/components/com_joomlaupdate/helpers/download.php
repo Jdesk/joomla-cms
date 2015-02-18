@@ -2,8 +2,12 @@
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_joomlaupdate
+<<<<<<< HEAD
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -13,15 +17,27 @@ defined('_JEXEC') or die;
  * Smart download helper. Automatically uses cURL or URL fopen() wrappers to
  * fetch the package.
  *
+<<<<<<< HEAD
  * @since  2.5.4
+=======
+ * @package  Joomla.Administrator
+ * @since    2.5.4
+>>>>>>> FETCH_HEAD
  */
 class AdmintoolsHelperDownload
 {
 	/**
+<<<<<<< HEAD
 	 * Downloads from a URL and saves the result as a local file.
 	 *
 	 * @param   string  $url     The URL to download from.
 	 * @param   string  $target  The file path to download to.
+=======
+	 * Downloads from a URL and saves the result as a local file
+	 *
+	 * @param   string  $url     The URL to download from
+	 * @param   string  $target  The file path to download to
+>>>>>>> FETCH_HEAD
 	 *
 	 * @return  bool	True on success
 	 *
@@ -115,11 +131,19 @@ class AdmintoolsHelperDownload
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Downloads from a URL and returns the result as a string.
 	 *
 	 * @param   string  $url  The URL to download from.
 	 *
 	 * @return  mixed Result string on success, false on failure.
+=======
+	 * Downloads from a URL and returns the result as a string
+	 *
+	 * @param   string  $url  The URL to download from
+	 *
+	 * @return  mixed Result string on success, false on failure
+>>>>>>> FETCH_HEAD
 	 *
 	 * @since   2.5.4
 	 */
@@ -159,6 +183,7 @@ class AdmintoolsHelperDownload
 
 	/**
 	 * Downloads the contents of a URL and writes them to disk (if $fp is not null)
+<<<<<<< HEAD
 	 * or returns them as a string (if $fp is null).
 	 *
 	 * @param   string    $url       The URL to download from.
@@ -166,6 +191,15 @@ class AdmintoolsHelperDownload
 	 * @param   boolean   $nofollow  Should we follow 301/302/307 redirection HTTP headers?
 	 *
 	 * @return   bool|string False on failure, true on success ($fp not null) or the URL contents (if $fp is null).
+=======
+	 * or returns them as a string (if $fp is null)
+	 *
+	 * @param   string    $url       The URL to download from
+	 * @param   resource  $fp        The file pointer to download to. Omit to return the contents.
+	 * @param   boolean   $nofollow  Should we follow 301/302/307 redirection HTTP headers?
+	 *
+	 * @return   bool|string False on failure, true on success ($fp not null) or the URL contents (if $fp is null)
+>>>>>>> FETCH_HEAD
 	 *
 	 * @since   2.5.4
 	 */
@@ -244,7 +278,11 @@ class AdmintoolsHelperDownload
 	/**
 	 * Does the server support URL fopen() wrappers?
 	 *
+<<<<<<< HEAD
 	 * @return  bool
+=======
+	 * @return bool
+>>>>>>> FETCH_HEAD
 	 *
 	 * @since   2.5.4
 	 */
@@ -270,12 +308,21 @@ class AdmintoolsHelperDownload
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Download from a URL using URL fopen() wrappers.
 	 *
 	 * @param   string    $url  The URL to download from.
 	 * @param   resource  $fp   The file pointer to download to; leave null to return the d/l file as a string.
 	 *
 	 * @return  bool|string False on failure, true on success ($fp not null) or the URL contents (if $fp is null).
+=======
+	 * Download from a URL using URL fopen() wrappers
+	 *
+	 * @param   string    $url  The URL to download from
+	 * @param   resource  $fp   The file pointer to download to; leave null to return the d/l file as a string
+	 *
+	 * @return  bool|string False on failure, true on success ($fp not null) or the URL contents (if $fp is null)
+>>>>>>> FETCH_HEAD
 	 *
 	 * @since   2.5.4
 	 */
@@ -358,7 +405,11 @@ class AdmintoolsHelperDownload
 
 	/**
 	 * Detect and return available download "adapters" (not really adapters, as
+<<<<<<< HEAD
 	 * we don't follow the Adapter pattern, yet)..
+=======
+	 * we don't follow the Adapter pattern, yet)
+>>>>>>> FETCH_HEAD
 	 *
 	 * @return  array
 	 *
@@ -383,12 +434,21 @@ class AdmintoolsHelperDownload
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Change the permissions of a file, optionally using FTP.
 	 *
 	 * @param   string  $path  Absolute path to file.
 	 * @param   int     $mode  Permissions, e.g. 0755.
 	 *
 	 * @return  boolean True on success.
+=======
+	 * Change the permissions of a file, optionally using FTP
+	 *
+	 * @param   string  $path  Absolute path to file
+	 * @param   int     $mode  Permissions, e.g. 0755
+	 *
+	 * @return  boolean True on success
+>>>>>>> FETCH_HEAD
 	 *
 	 * @since   2.5.4
 	 */
@@ -412,7 +472,12 @@ class AdmintoolsHelperDownload
 		if ($ftpOptions['enabled'] == 1)
 		{
 			// Connect the FTP client
+<<<<<<< HEAD
 			$ftp = JClientFtp::getInstance(
+=======
+			jimport('joomla.client.ftp');
+			$ftp = &JFTP::getInstance(
+>>>>>>> FETCH_HEAD
 				$ftpOptions['host'], $ftpOptions['port'], array(),
 				$ftpOptions['user'], $ftpOptions['pass']
 			);

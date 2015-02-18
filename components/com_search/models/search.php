@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_search
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_search
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -77,10 +84,32 @@ class SearchModelSearch extends JModelLegacy
 			$searchphrase = 'all';
 		}
 
+		// Get parameters.
+		$params = $app->getParams();
+
+		if ($params->get('searchphrase') == 1)
+		{
+			$searchphrase = 'any';
+		}
+		elseif ($params->get('searchphrase') == 2)
+		{
+			$searchphrase = 'exact';
+		}
+		else
+		{
+			$searchphrase = 'all';
+		}
+
 		// Set the search parameters
+<<<<<<< HEAD
 		$keyword  = urldecode($app->input->getString('searchword'));
 		$match    = $app->input->get('searchphrase', $searchphrase, 'word');
 		$ordering = $app->input->get('ordering', $params->get('ordering', 'newest'), 'word');
+=======
+		$keyword		= urldecode(JRequest::getString('searchword'));
+		$match			= JRequest::getWord('searchphrase', $searchphrase);
+		$ordering		= JRequest::getWord('ordering', $params->get('ordering', 'newest'));
+>>>>>>> FETCH_HEAD
 		$this->setSearch($keyword, $match, $ordering);
 
 		// Set the search areas

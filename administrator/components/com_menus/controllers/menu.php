@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -63,11 +68,19 @@ class MenusControllerMenu extends JControllerForm
 			return false;
 		}
 
+<<<<<<< HEAD
 		// Prevent using 'menu' or 'main' as menutype as this is reserved for back-end menus
 		if (strtolower($data['menutype']) == 'menu' || strtolower($data['menutype']) == 'main')
 		{
 			$msg = JText::_('COM_MENUS_ERROR_MENUTYPE');
 			JFactory::getApplication()->enqueueMessage($msg, 'error');
+=======
+		// Make sure we are not trying to modify an administrator menu.
+		if ((isset($data['client_id']) && $data['client_id'] == 1) || strtolower($data['menutype']) == 'menu'
+			|| strtolower($data['menutype']) == 'main')
+		{
+			JError::raiseNotice(0, JText::_('COM_MENUS_MENU_TYPE_NOT_ALLOWED'));
+>>>>>>> FETCH_HEAD
 
 			// Redirect back to the edit screen.
 			$this->setRedirect(JRoute::_('index.php?option=com_menus&view=menu&layout=edit', false));

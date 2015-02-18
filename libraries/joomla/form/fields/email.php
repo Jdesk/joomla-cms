@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Form
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -54,6 +58,9 @@ class JFormFieldEMail extends JFormFieldText
 		$autofocus    = $this->autofocus ? ' autofocus' : '';
 		$multiple     = $this->multiple ? ' multiple' : '';
 		$spellcheck   = $this->spellcheck ? '' : ' spellcheck="false"';
+
+		// " and \ are always forbidden in email unless escaped.
+		$this->value = str_replace(array('"','\\'), '', $this->value);
 
 		// Initialize JavaScript field attributes.
 		$onchange = $this->onchange ? ' onchange="' . $this->onchange . '"' : '';

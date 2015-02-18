@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Cache
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -12,32 +16,50 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Memcached cache storage handler
  *
+<<<<<<< HEAD
  * @see    http://php.net/manual/en/book.memcached.php
  * @since  12.1
+=======
+ * @package     Joomla.Platform
+ * @subpackage  Cache
+ * @see         http://php.net/manual/en/book.memcached.php
+ * @since       12.1
+>>>>>>> FETCH_HEAD
  */
 class JCacheStorageMemcached extends JCacheStorage
 {
 	/**
+<<<<<<< HEAD
 	 * Memcached connection object
 	 *
+=======
+>>>>>>> FETCH_HEAD
 	 * @var    Memcached
 	 * @since  12.1
 	 */
 	protected static $_db = null;
 
 	/**
+<<<<<<< HEAD
 	 * Persistent session flag
 	 *
+=======
+>>>>>>> FETCH_HEAD
 	 * @var    boolean
 	 * @since  12.1
 	 */
 	protected $_persistent = false;
 
 	/**
+<<<<<<< HEAD
 	 * Payload compression level
 	 *
 	 * @var    integer
 	 * @since  12.1
+=======
+	 * @var
+	 * @since   12.1
+>>>>>>> FETCH_HEAD
 	 */
 	protected $_compress = 0;
 
@@ -51,7 +73,10 @@ class JCacheStorageMemcached extends JCacheStorage
 	public function __construct($options = array())
 	{
 		parent::__construct($options);
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if (self::$_db === null)
 		{
 			$this->getConnection();
@@ -64,7 +89,10 @@ class JCacheStorageMemcached extends JCacheStorage
 	 * @return  object   memcached connection object
 	 *
 	 * @since   12.1
+<<<<<<< HEAD
 	 * @throws  RuntimeException
+=======
+>>>>>>> FETCH_HEAD
 	 */
 	protected function getConnection()
 	{
@@ -74,8 +102,13 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$config = JFactory::getConfig();
+<<<<<<< HEAD
 		$this->_persistent = $config->get('memcached_persist', true);
 		$this->_compress = $config->get('memcached_compress', false) == false ? 0 : Memcached::OPT_COMPRESSION;
+=======
+		$this->_persistent = $config->get('memcache_persist', true);
+		$this->_compress = $config->get('memcache_compress', false) == false ? 0 : Memcached::OPT_COMPRESSION;
+>>>>>>> FETCH_HEAD
 
 		/*
 		 * This will be an array of loveliness
@@ -83,8 +116,13 @@ class JCacheStorageMemcached extends JCacheStorage
 		 * $servers	= (isset($params['servers'])) ? $params['servers'] : array();
 		 */
 		$server = array();
+<<<<<<< HEAD
 		$server['host'] = $config->get('memcached_server_host', 'localhost');
 		$server['port'] = $config->get('memcached_server_port', 11211);
+=======
+		$server['host'] = $config->get('memcache_server_host', 'localhost');
+		$server['port'] = $config->get('memcache_server_port', 11211);
+>>>>>>> FETCH_HEAD
 
 		// Create the memcache connection
 		if ($this->_persistent)
@@ -96,12 +134,19 @@ class JCacheStorageMemcached extends JCacheStorage
 		{
 			self::$_db = new Memcached;
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		$memcachedtest = self::$_db->addServer($server['host'], $server['port']);
 
 		if ($memcachedtest == false)
 		{
+<<<<<<< HEAD
 			throw new RuntimeException('Could not connect to memcached server', 404);
+=======
+			return JError::raiseError(404, "Could not connect to memcached server");
+>>>>>>> FETCH_HEAD
 		}
 
 		self::$_db->setOption(Memcached::OPT_COMPRESSION, $this->_compress);
@@ -131,7 +176,10 @@ class JCacheStorageMemcached extends JCacheStorage
 	{
 		$cache_id = $this->_getCacheId($id, $group);
 		$back = self::$_db->get($cache_id);
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		return $back;
 	}
 
@@ -159,11 +207,18 @@ class JCacheStorageMemcached extends JCacheStorage
 				{
 					continue;
 				}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 				$namearr = explode('-', $key->name);
 
 				if ($namearr !== false && $namearr[0] == $secret && $namearr[1] == 'cache')
 				{
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 					$group = $namearr[2];
 
 					if (!isset($data[$group]))
@@ -206,7 +261,10 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$index = self::$_db->get($this->_hash . '-index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if ($index === false)
 		{
 			$index = array();
@@ -248,7 +306,10 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$index = self::$_db->get($this->_hash . '-index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if ($index === false)
 		{
 			$index = array();
@@ -260,10 +321,15 @@ class JCacheStorageMemcached extends JCacheStorage
 			{
 				unset($index[$key]);
 			}
+<<<<<<< HEAD
 
 			break;
 		}
 
+=======
+			break;
+		}
+>>>>>>> FETCH_HEAD
 		self::$_db->replace($this->_hash . '-index', $index, 0);
 		$this->unlockindex();
 
@@ -290,26 +356,40 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$index = self::$_db->get($this->_hash . '-index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if ($index === false)
 		{
 			$index = array();
 		}
 
 		$secret = $this->_hash;
+<<<<<<< HEAD
 
 		foreach ($index as $key => $value)
 		{
+=======
+		foreach ($index as $key => $value)
+		{
+
+>>>>>>> FETCH_HEAD
 			if (strpos($value->name, $secret . '-cache-' . $group . '-') === 0 xor $mode != 'group')
 			{
 				self::$_db->delete($value->name, 0);
 				unset($index[$key]);
 			}
 		}
+<<<<<<< HEAD
 
 		self::$_db->replace($this->_hash . '-index', $index, 0);
 		$this->unlockindex();
 
+=======
+		self::$_db->replace($this->_hash . '-index', $index, 0);
+		$this->unlockindex();
+>>>>>>> FETCH_HEAD
 		return true;
 	}
 
@@ -317,10 +397,15 @@ class JCacheStorageMemcached extends JCacheStorage
 	 * Test to see if the cache storage is available.
 	 *
 	 * @return  boolean  True on success, false otherwise.
+<<<<<<< HEAD
 	 *
 	 * @since   12.1
 	 */
 	public static function isSupported()
+=======
+	 */
+	public static function test()
+>>>>>>> FETCH_HEAD
 	{
 		if ((extension_loaded('memcached') && class_exists('Memcached')) != true)
 		{
@@ -328,8 +413,13 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$config = JFactory::getConfig();
+<<<<<<< HEAD
 		$host = $config->get('memcached_server_host', 'localhost');
 		$port = $config->get('memcached_server_port', 11211);
+=======
+		$host = $config->get('memcache_server_host', 'localhost');
+		$port = $config->get('memcache_server_port', 11211);
+>>>>>>> FETCH_HEAD
 
 		$memcached = new Memcached;
 		$memcachedtest = @$memcached->addServer($host, $port);
@@ -370,7 +460,10 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$index = self::$_db->get($this->_hash . '-index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if ($index === false)
 		{
 			$index = array();
@@ -389,12 +482,20 @@ class JCacheStorageMemcached extends JCacheStorage
 
 		if ($data_lock === false)
 		{
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 			$lock_counter = 0;
 
 			// Loop until you find that the lock has been released.
 			// That implies that data get from other thread has finished
 			while ($data_lock === false)
 			{
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 				if ($lock_counter > $looptime)
 				{
 					$returning->locked = false;
@@ -406,8 +507,13 @@ class JCacheStorageMemcached extends JCacheStorage
 				$data_lock = self::$_db->add($cache_id . '_lock', 1, $locktime);
 				$lock_counter++;
 			}
+<<<<<<< HEAD
 		}
 
+=======
+
+		}
+>>>>>>> FETCH_HEAD
 		$returning->locked = $data_lock;
 
 		return $returning;
@@ -433,7 +539,10 @@ class JCacheStorageMemcached extends JCacheStorage
 		}
 
 		$index = self::$_db->get($this->_hash . '-index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if ($index === false)
 		{
 			$index = array();
@@ -445,7 +554,10 @@ class JCacheStorageMemcached extends JCacheStorage
 			{
 				unset($index[$key]);
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 			break;
 		}
 
@@ -469,6 +581,10 @@ class JCacheStorageMemcached extends JCacheStorage
 
 		if ($data_lock === false)
 		{
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 			$lock_counter = 0;
 
 			// Loop until you find that the lock has been released.  that implies that data get from other thread has finished

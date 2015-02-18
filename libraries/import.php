@@ -5,7 +5,11 @@
  *
  * @package    Joomla.Platform
  *
+<<<<<<< HEAD
  * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -58,6 +62,15 @@ if (!interface_exists('JsonSerializable'))
 	JLoader::register('JsonSerializable', JPATH_PLATFORM . '/vendor/joomla/compat/src/JsonSerializable.php');
 }
 
+<<<<<<< HEAD
+=======
+// Import the base object library.
+JLoader::import('joomla.base.object');
+
+// Register PHPass
+JLoader::register('PasswordHash', JPATH_PLATFORM . '/phpass/PasswordHash.php');
+
+>>>>>>> FETCH_HEAD
 // Register classes that don't follow one file per class naming conventions.
 JLoader::register('JText', JPATH_PLATFORM . '/joomla/language/text.php');
 JLoader::register('JRoute', JPATH_PLATFORM . '/joomla/application/route.php');

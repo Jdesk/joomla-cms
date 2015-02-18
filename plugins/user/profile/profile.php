@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  User.profile
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('JPATH_BASE') or die;
@@ -236,6 +241,7 @@ class PlgUserProfile extends JPlugin
 			'tos',
 		);
 
+<<<<<<< HEAD
 		// Change fields description when displayed in front-end or back-end profile editing
 		$app = JFactory::getApplication();
 
@@ -255,6 +261,8 @@ class PlgUserProfile extends JPlugin
 			$form->setFieldAttribute('tos', 'description', 'PLG_USER_PROFILE_FIELD_TOS_DESC_SITE', 'profile');
 		}
 
+=======
+>>>>>>> FETCH_HEAD
 		$tosarticle = $this->params->get('register_tos_article');
 		$tosenabled = $this->params->get('register-require_tos', 0);
 

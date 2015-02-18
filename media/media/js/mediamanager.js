@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * @copyright	Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -22,6 +26,25 @@ var MediaManager = this.MediaManager = {
 
 		this.frame		= window.frames['folderframe'];
 		this.frameurl	= this.frame.location.href;
+<<<<<<< HEAD
+=======
+		//this.frameurl   = window.frames['folderframe'].location.href;
+
+		this.tree = new MooTreeControl({ div: 'media-tree_tree', mode: 'folders', grid: true, theme: '../media/system/images/mootree.gif', onClick:
+				function(node){
+					target = node.data.target != null ? node.data.target : '_self';
+
+					// Get the current URL.
+				   	uri = this._getUriObject(this.frameurl);
+				   	current	= uri.file+'?'+uri.query;
+
+					if (current != 'undefined?undefined' && current != encodeURI(node.data.url)) {
+						window.frames[target].location.href = node.data.url;
+					}
+				}.bind(this)
+			},{ text: '', open: true, data: { url: 'index.php?option=com_media&view=mediaList&tmpl=component', target: 'folderframe'}});
+		this.tree.adopt('media-tree');
+>>>>>>> FETCH_HEAD
 	},
 
 	submit: function(task)

@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_templates
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_templates
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -75,6 +82,7 @@ class TemplatesModelTemplate extends JModelForm
 			$lang   = JFactory::getLanguage();
 
 			// Load the core and/or local language file(s).
+<<<<<<< HEAD
 			$lang->load('tpl_' . $template->element, $client->path, null, false, true) ||
 			$lang->load('tpl_' . $template->element, $client->path . '/templates/' . $template->element, null, false, true);
 			$this->element = $path;
@@ -92,6 +100,34 @@ class TemplatesModelTemplate extends JModelForm
 			{
 				$app->enqueueMessage(JText::_('COM_TEMPLATES_ERROR_TEMPLATE_FOLDER_NOT_FOUND'), 'error');
 
+=======
+				$lang->load('tpl_' . $template->element, $client->path, null, false, true)
+			||	$lang->load('tpl_' . $template->element, $client->path . '/templates/' . $template->element, null, false, true);
+
+			// Check if the template path exists.
+
+			if (is_dir($path)) {
+				$result['main'] = array();
+				$result['css'] = array();
+				$result['clo'] = array();
+				$result['mlo'] = array();
+				$result['html'] = array();
+
+				// Handle the main PHP files.
+				$result['main']['index'] = $this->getFile($path, 'index.php');
+				$result['main']['error'] = $this->getFile($path, 'error.php');
+				$result['main']['print'] = $this->getFile($path, 'component.php');
+				$result['main']['offline'] = $this->getFile($path, 'offline.php');
+
+				// Handle the CSS files.
+				$files = JFolder::files($path.'/css', '\.css$', false, false);
+
+				foreach ($files as $file) {
+					$result['css'][] = $this->getFile($path.'/css/', 'css/'.$file);
+				}
+			} else {
+				$this->setError(JText::_('COM_TEMPLATES_ERROR_TEMPLATE_FOLDER_NOT_FOUND'));
+>>>>>>> FETCH_HEAD
 				return false;
 			}
 		}
@@ -334,6 +370,7 @@ class TemplatesModelTemplate extends JModelForm
 
 		jimport('joomla.filesystem.file');
 
+		jimport('joomla.filesystem.file');
 		foreach ($files as $file)
 		{
 			$newFile = str_replace($oldName, $newName, $file);
@@ -345,9 +382,15 @@ class TemplatesModelTemplate extends JModelForm
 
 		if (JFile::exists($xmlFile))
 		{
+<<<<<<< HEAD
 			$contents = file_get_contents($xmlFile);
 			$pattern[] = '#<name>\s*' . $manifest->name . '\s*</name>#i';
 			$replace[] = '<name>' . $newName . '</name>';
+=======
+			$contents = JFile::read($xmlFile);
+			$pattern[] = '#<name>\s*' . $oldName . '\s*</name>#i';
+			$replace[] = '<name>'. $newName . '</name>';
+>>>>>>> FETCH_HEAD
 			$pattern[] = '#<language(.*)' . $oldName . '(.*)</language>#';
 			$replace[] = '<language${1}' . $newName . '${2}</language>';
 			$contents = preg_replace($pattern, $replace, $contents);

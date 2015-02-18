@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_menus
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -209,6 +216,7 @@ $assoc		= JLanguageAssociations::isEnabled();
 							<?php endif;?>
 						</td>
 						<?php endif;?>
+<<<<<<< HEAD
 						<td class="small hidden-phone">
 							<?php if ($item->language == ''):?>
 								<?php echo JText::_('JDEFAULT'); ?>
@@ -231,6 +239,41 @@ $assoc		= JLanguageAssociations::isEnabled();
 		<?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
 			<?php echo $this->loadTemplate('batch'); ?>
 		<?php endif;?>
+=======
+					<?php endif; ?>
+				</td>
+				<?php
+				$assoc = isset($app->menu_associations) ? $app->menu_associations : 0;
+				if ($assoc):
+				?>
+				<td class="center">
+					<?php if ($item->association):?>
+						<?php echo JHtml::_('MenusHtml.Menus.association', $item->id);?>
+					<?php endif;?>
+				</td>
+				<?php endif;?>
+				<td class="center">
+					<?php if ($item->language==''):?>
+						<?php echo JText::_('JDEFAULT'); ?>
+					<?php elseif ($item->language=='*'):?>
+						<?php echo JText::alt('JALL', 'language'); ?>
+					<?php else:?>
+						<?php echo $item->language_title ? $this->escape($item->language_title) : JText::_('JUNDEFINED'); ?>
+					<?php endif;?>
+				</td>
+				<td class="center">
+					<span title="<?php echo sprintf('%d-%d', $item->lft, $item->rgt);?>">
+						<?php echo (int) $item->id; ?></span>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<?php //Load the batch processing form.is user is allowed ?>
+	<?php if($user->authorize('core.create', 'com_menus') && $user->authorize('core.edit', 'com_menus') && $user->authorize('core.edit.state', 'com_menus')) : ?>
+		<?php echo $this->loadTemplate('batch'); ?>
+	<?php endif;?>
+>>>>>>> FETCH_HEAD
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />

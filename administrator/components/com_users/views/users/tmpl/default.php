@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_users
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -13,8 +20,15 @@ JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 
+<<<<<<< HEAD
 $listOrder  = $this->escape($this->state->get('list.ordering'));
 $listDirn   = $this->escape($this->state->get('list.direction'));
+=======
+$canDo = UsersHelper::getActions();
+$user = JFactory::getUser();
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn = $this->escape($this->state->get('list.direction'));
+>>>>>>> FETCH_HEAD
 $loggeduser = JFactory::getUser();
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_users&view=users');?>" method="post" name="adminForm" id="adminForm">
@@ -163,8 +177,15 @@ $loggeduser = JFactory::getUser();
 			</table>
 		<?php endif; ?>
 
+<<<<<<< HEAD
 		<?php //Load the batch processing form. ?>
 		<?php echo $this->loadTemplate('batch'); ?>
+=======
+	<?php //Load the batch processing form. ?>
+	<?php if ($user->authorize('core.create', 'com_users') && $user->authorize('core.edit', 'com_users') && $user->authorize('core.edit.state', 'com_users')) : ?>
+		<?php echo $this->loadTemplate('batch'); ?>
+	<?php endif;?>
+>>>>>>> FETCH_HEAD
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />

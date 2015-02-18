@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  Authentication.joomla
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -34,18 +39,31 @@ class PlgAuthenticationJoomla extends JPlugin
 		// Joomla does not like blank passwords
 		if (empty($credentials['password']))
 		{
+<<<<<<< HEAD
 			$response->status        = JAuthentication::STATUS_FAILURE;
+=======
+			$response->status = JAuthentication::STATUS_FAILURE;
+>>>>>>> FETCH_HEAD
 			$response->error_message = JText::_('JGLOBAL_AUTH_EMPTY_PASS_NOT_ALLOWED');
 
 			return false;
 		}
 
 		// Get a database object
+<<<<<<< HEAD
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('id, password')
 			->from('#__users')
 			->where('username=' . $db->quote($credentials['username']));
+=======
+		$db		= JFactory::getDbo();
+		$query	= $db->getQuery(true);
+
+		$query->select('id, password');
+		$query->from('#__users');
+		$query->where('username=' . $db->quote($credentials['username']));
+>>>>>>> FETCH_HEAD
 
 		$db->setQuery($query);
 		$result = $db->loadObject();
@@ -56,9 +74,14 @@ class PlgAuthenticationJoomla extends JPlugin
 
 			if ($match === true)
 			{
+<<<<<<< HEAD
 				// Bring this in line with the rest of the system
 				$user               = JUser::getInstance($result->id);
 				$response->email    = $user->email;
+=======
+				$user = JUser::getInstance($result->id); // Bring this in line with the rest of the system
+				$response->email = $user->email;
+>>>>>>> FETCH_HEAD
 				$response->fullname = $user->name;
 
 				if (JFactory::getApplication()->isAdmin())
@@ -75,15 +98,23 @@ class PlgAuthenticationJoomla extends JPlugin
 			}
 			else
 			{
+<<<<<<< HEAD
 				// Invalid password
 				$response->status        = JAuthentication::STATUS_FAILURE;
+=======
+				$response->status = JAuthentication::STATUS_FAILURE;
+>>>>>>> FETCH_HEAD
 				$response->error_message = JText::_('JGLOBAL_AUTH_INVALID_PASS');
 			}
 		}
 		else
 		{
+<<<<<<< HEAD
 			// Invalid user
 			$response->status        = JAuthentication::STATUS_FAILURE;
+=======
+			$response->status = JAuthentication::STATUS_FAILURE;
+>>>>>>> FETCH_HEAD
 			$response->error_message = JText::_('JGLOBAL_AUTH_NO_USER');
 		}
 

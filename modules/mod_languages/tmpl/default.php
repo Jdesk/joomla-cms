@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  mod_languages
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	mod_languages
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -17,7 +24,11 @@ JHtml::_('stylesheet', 'mod_languages/template.css', array(), true);
 <?php endif; ?>
 
 <?php if ($params->get('dropdown', 1)) : ?>
+<<<<<<< HEAD
 	<form name="lang" method="post" action="<?php echo htmlspecialchars(JUri::current()); ?>">
+=======
+	<form name="lang" method="post" action="<?php echo htmlspecialchars(JURI::current()); ?>">
+>>>>>>> FETCH_HEAD
 	<select class="inputbox" onchange="document.location.replace(this.value);" >
 	<?php foreach ($list as $language) : ?>
 		<option dir=<?php echo JLanguage::getInstance($language->lang_code)->isRTL() ? '"rtl"' : '"ltr"'?> value="<?php echo $language->link;?>" <?php echo $language->active ? 'selected="selected"' : ''?>>

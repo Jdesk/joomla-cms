@@ -3,10 +3,17 @@
 	version="3.2" 
 	client="installation">
 	<name>Română (România)</name>
+<<<<<<< HEAD
 	<version>3.2.0</version>
 	<creationDate>2013-11-26</creationDate>
 	<author>Horia Negura - Quanta</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<version>2.5</version>
+	<creationDate>January 2011</creationDate>
+	<author>Joomla! România</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description></description>
 	<files>

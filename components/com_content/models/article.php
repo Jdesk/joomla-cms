@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -70,8 +77,16 @@ class ContentModelArticle extends JModelItem
 	 */
 	public function getItem($pk = null)
 	{
+<<<<<<< HEAD
 		$user	= JFactory::getUser();
 
+=======
+
+		// Get current user for authorisation checks
+		$user	= JFactory::getUser();
+		
+		// Initialise variables.
+>>>>>>> FETCH_HEAD
 		$pk = (!empty($pk)) ? $pk : (int) $this->getState('article.id');
 
 		if ($this->_item === null)
@@ -106,8 +121,28 @@ class ContentModelArticle extends JModelItem
 					->join('LEFT', '#__categories AS c on c.id = a.catid');
 
 				// Join on user table.
+<<<<<<< HEAD
 				$query->select('u.name AS author')
 					->join('LEFT', '#__users AS u on u.id = a.created_by');
+=======
+				$query->select('u.name AS author');
+				$query->join('LEFT', '#__users AS u on u.id = a.created_by');
+
+				// Get contact id
+				$subQuery = $db->getQuery(true);
+				$subQuery->select('MAX(contact.id) AS id');
+				$subQuery->from('#__contact_details AS contact');
+				$subQuery->where('contact.published = 1');
+				$subQuery->where('contact.user_id = a.created_by');
+
+				// Filter by language
+				if ($this->getState('filter.language'))
+				{
+					$subQuery->where('(contact.language in (' . $db->quote(JFactory::getLanguage()->getTag()) . ',' . $db->quote('*') . ') OR contact.language IS NULL)');
+				}
+
+				$query->select('(' . $subQuery . ') as contactid');
+>>>>>>> FETCH_HEAD
 
 				// Filter by language
 				if ($this->getState('filter.language'))
@@ -125,6 +160,7 @@ class ContentModelArticle extends JModelItem
 
 					->where('a.id = ' . (int) $pk);
 
+<<<<<<< HEAD
 				if ((!$user->authorise('core.edit.state', 'com_content')) && (!$user->authorise('core.edit', 'com_content')))
 				{
 					// Filter by start and end dates.
@@ -135,6 +171,17 @@ class ContentModelArticle extends JModelItem
 
 					$query->where('(a.publish_up = ' . $nullDate . ' OR a.publish_up <= ' . $nowDate . ')')
 						->where('(a.publish_down = ' . $nullDate . ' OR a.publish_down >= ' . $nowDate . ')');
+=======
+				if ((!$user->authorise('core.edit.state', 'com_content')) && (!$user->authorise('core.edit', 'com_content'))) {
+					// Filter by start and end dates.
+					$nullDate = $db->Quote($db->getNullDate());
+					$date = JFactory::getDate();
+
+					$nowDate = $db->Quote($date->toSql());
+
+					$query->where('(a.publish_up = ' . $nullDate . ' OR a.publish_up <= ' . $nowDate . ')');
+					$query->where('(a.publish_down = ' . $nullDate . ' OR a.publish_down >= ' . $nowDate . ')');
+>>>>>>> FETCH_HEAD
 				}
 
 				// Join to check for category published state in parent categories up the tree
@@ -269,6 +316,7 @@ class ContentModelArticle extends JModelItem
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Save user vote on article
 	 *
@@ -372,3 +420,54 @@ class ContentModelArticle extends JModelItem
 		return false;
 	}
 }
+=======
+    public function storeVote($pk = 0, $rate = 0)
+    {
+        if ( $rate >= 1 && $rate <= 5 && $pk > 0 )
+        {
+            $userIP = $_SERVER['REMOTE_ADDR'];
+            $db = $this->getDbo();
+
+            $db->setQuery(
+                    'SELECT *' .
+                    ' FROM #__content_rating' .
+                    ' WHERE content_id = '.(int) $pk
+            );
+
+            $rating = $db->loadObject();
+
+            if (!$rating)
+            {
+                // There are no ratings yet, so lets insert our rating
+                $db->setQuery(
+                        'INSERT INTO #__content_rating ( content_id, lastip, rating_sum, rating_count )' .
+                        ' VALUES ( '.(int) $pk.', '.$db->Quote($userIP).', '.(int) $rate.', 1 )'
+                );
+
+                if (!$db->query()) {
+                        $this->setError($db->getErrorMsg());
+                        return false;
+                }
+            } else {
+                if ($userIP != ($rating->lastip))
+                {
+                    $db->setQuery(
+                            'UPDATE #__content_rating' .
+                            ' SET rating_count = rating_count + 1, rating_sum = rating_sum + '.(int) $rate.', lastip = '.$db->Quote($userIP) .
+                            ' WHERE content_id = '.(int) $pk
+                    );
+                    if (!$db->query()) {
+                            $this->setError($db->getErrorMsg());
+                            return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        }
+        JError::raiseWarning( 'SOME_ERROR_CODE', JText::sprintf('COM_CONTENT_INVALID_RATING', $rate), "JModelArticle::storeVote($rate)");
+        return false;
+    }
+}
+>>>>>>> FETCH_HEAD

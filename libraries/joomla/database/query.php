@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Database
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -1504,6 +1508,7 @@ abstract class JDatabaseQuery
 		return $this;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Method to provide deep copy support to nested objects and
 	 * arrays when cloning.
@@ -1529,6 +1534,33 @@ abstract class JDatabaseQuery
 	}
 
 	/**
+=======
+   /**
+     * Method to provide deep copy support to nested objects and
+     * arrays when cloning.
+     *
+     * @return  void
+     *
+     * @since   11.3
+     */
+    public function __clone()
+    {
+        foreach ($this as $k => $v)
+        {
+            if ($k === 'db')
+            {
+                continue;
+            }
+
+            if (is_object($v) || is_array($v))
+            {
+                $this->$k = unserialize(serialize($v));
+            }
+        }
+    }
+
+    /**
+>>>>>>> FETCH_HEAD
 	 * Add a query to UNION with the current query.
 	 * Multiple unions each require separate statements and create an array of unions.
 	 *

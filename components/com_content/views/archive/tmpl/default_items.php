@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -48,6 +55,7 @@ $params = $this->params;
 					<?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?>
 				</dt>
 
+<<<<<<< HEAD
 				<?php if ($params->get('show_parent_category') && !empty($item->parent_slug)) : ?>
 					<dd>
 						<div class="parent-category-name">
@@ -74,6 +82,16 @@ $params = $this->params;
 						</div>
 					</dd>
 				<?php endif; ?>
+=======
+		<h2>
+		<?php if ($params->get('link_titles')): ?>
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language)); ?>">
+				<?php echo $this->escape($item->title); ?></a>
+		<?php else: ?>
+				<?php echo $this->escape($item->title); ?>
+		<?php endif; ?>
+		</h2>
+>>>>>>> FETCH_HEAD
 
 				<?php if ($params->get('show_publish_date')) : ?>
 					<dd>

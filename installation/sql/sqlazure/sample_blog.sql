@@ -6,6 +6,53 @@ TRUNCATE TABLE [#__modules];
 TRUNCATE TABLE [#__modules_menu];
 
 SET IDENTITY_INSERT [#__assets] ON;
+<<<<<<< HEAD
+=======
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (1, 0, 1, 83, 0, N'root.1', N'Root Asset', N'{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (2, 1, 1, 2, 1, N'com_admin', N'com_admin', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (3, 1, 3, 6, 1, N'com_banners', N'com_banners', N'{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (4, 1, 7, 8, 1, N'com_cache', N'com_cache', N'{"core.admin":{"7":1},"core.manage":{"7":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (5, 1, 9, 10, 1, N'com_checkin', N'com_checkin', N'{"core.admin":{"7":1},"core.manage":{"7":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (6, 1, 11, 12, 1, N'com_config', N'com_config', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (7, 1, 13, 16, 1, N'com_contact', N'com_contact', N'{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (8, 1, 17, 32, 1, N'com_content', N'com_content', N'{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (9, 1, 33, 34, 1, N'com_cpanel', N'com_cpanel', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (10, 1, 35, 36, 1, N'com_installer', N'com_installer', N'{"core.admin":[],"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (11, 1, 37, 38, 1, N'com_languages', N'com_languages', N'{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (12, 1, 39, 40, 1, N'com_login', N'com_login', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (13, 1, 41, 42, 1, N'com_mailto', N'com_mailto', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (14, 1, 43, 44, 1, N'com_massmail', N'com_massmail', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (15, 1, 45, 46, 1, N'com_media', N'com_media', N'{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (16, 1, 47, 48, 1, N'com_menus', N'com_menus', N'{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (17, 1, 49, 50, 1, N'com_messages', N'com_messages', N'{"core.admin":{"7":1},"core.manage":{"7":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (18, 1, 51, 52, 1, N'com_modules', N'com_modules', N'{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (19, 1, 53, 56, 1, N'com_newsfeeds', N'com_newsfeeds', N'{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (20, 1, 57, 58, 1, N'com_plugins', N'com_plugins', N'{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (21, 1, 59, 60, 1, N'com_redirect', N'com_redirect', N'{"core.admin":{"7":1},"core.manage":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (22, 1, 61, 62, 1, N'com_search', N'com_search', N'{"core.admin":{"7":1},"core.manage":{"6":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (23, 1, 63, 64, 1, N'com_templates', N'com_templates', N'{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (24, 1, 65, 68, 1, N'com_users', N'com_users', N'{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (25, 1, 69, 74, 1, N'com_weblinks', N'com_weblinks', N'{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (26, 1, 75, 76, 1, N'com_wrapper', N'com_wrapper', N'{}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (27, 8, 18, 23, 2, N'com_content.category.2', N'Uncategorised', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (28, 3, 4, 5, 2, N'com_banners.category.3', N'Uncategorised', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (29, 7, 14, 15, 2, N'com_contact.category.4', N'Uncategorised', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (30, 19, 54, 55, 2, N'com_newsfeeds.category.5', N'Uncategorised', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (31, 25, 70, 71, 2, N'com_weblinks.category.6', N'Uncategorised', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (32, 24, 66, 67, 1, N'com_users.category.7', N'Uncategorised', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (33, 1, 77, 78, 1, N'com_finder', N'com_finder', N'{"core.admin":{"7":1},"core.manage":{"6":1}}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (34, 25, 72, 73, 2, N'com_weblinks.category.8', N'Blog Roll', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (35, 8, 24, 31, 2, N'com_content.category.9', N'Blog', N'{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (36, 27, 19, 20, 3, N'com_content.article.1', N'About', N'{"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (37, 27, 21, 22, 3, N'com_content.article.2', N'Working on Your Site', N'{"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (38, 35, 25, 26, 3, N'com_content.article.3', N'Welcome to your blog', N'');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (39, 35, 27, 28, 3, N'com_content.article.4', N'About your home page', N'{"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (40, 35, 29, 30, 3, N'com_content.article.5', N'Your Modules', N'{"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (41, 1, 79, 80, 1, N'com_users.category.10', N'Uncategorised', N'');
+INSERT INTO[#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (42, 1, 81, 82, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{"core.admin":[],"core.manage":[],"core.delete":[],"core.edit.state":[]}');
+
+SET IDENTITY_INSERT [#__assets] OFF;
+>>>>>>> FETCH_HEAD
 
 INSERT [#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (1, 0, 0, 93, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}');
 INSERT [#__assets] ([id], [parent_id], [lft], [rgt], [level], [name], [title], [rules]) VALUES (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}');
@@ -185,6 +232,7 @@ INSERT [#__modules] ([id], [title], [note], [content], [ordering], [position], [
 
 SET IDENTITY_INSERT [#__modules] OFF;
 
+<<<<<<< HEAD
 INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (1, 0);
 INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (2, 0);
 INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (3, 0);
@@ -214,3 +262,51 @@ INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (89, 0);
 INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (90, 0);
 INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (91, 0);
 INSERT [#__modules_menu] ([moduleid], [menuid]) VALUES (92, 0);
+=======
+
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (1, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (2, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (3, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (4, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (6, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (7, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (8, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (9, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (10, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (12, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (13, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (14, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (15, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (16, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (17, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (79, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (80, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (81, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (82, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (83, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (84, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (85, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (86, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (87, 0);
+INSERT INTO[#__modules_menu] ([moduleid], [menuid]) VALUES (88, 0);
+
+
+
+
+SET IDENTITY_INSERT [#__redirect_links] ON;
+
+INSERT INTO [#__redirect_links] ([id], [old_url], [new_url], [referer], [comment], [published], [created_date], [modified_date]) VALUES
+(1, 'http://localhost/trunk123111/index.php/create-a-post/login', '', 'http://localhost/trunk123111/index.php/login', '', 0, '2012-01-04 15:48:49', '1900-01-01T00:00:00.000');
+INSERT INTO [#__redirect_links] ([id], [old_url], [new_url], [referer], [comment], [published], [created_date], [modified_date]) VALUES(2, 'http://localhost/trunk123111/index.php/create-an-article', '', 'http://localhost/trunk123111/index.php/creating-your-site', '', 0, '2012-01-05 02:01:07', '1900-01-01T00:00:00.000');
+INSERT INTO [#__redirect_links] ([id], [old_url], [new_url], [referer], [comment], [published], [created_date], [modified_date]) VALUES(3, 'http://localhost/joomla-cms/index.php/using-joomla', '', 'http://localhost/joomla-cms/', '', 0, '2012-01-17 06:21:35', '1900-01-01T00:00:00.000');
+SET IDENTITY_INSERT [#__redirect_links] OFF;
+
+
+SET IDENTITY_INSERT [#__weblinks] ON;
+
+INSERT INTO [#__weblinks] ( [id], [catid], [sid], [title], [alias], [url], [description], [date], [hits], [state], [checked_out], [checked_out_time], [ordering], [archived], [approved], [access], [params], [language], [created], [created_by], [created_by_alias], [modified], [modified_by], [metakey], [metadesc], [metadata], [featured], [xreference], [publish_up], [publish_down]) VALUES
+(1, 8, 0, 'Joomla! Community', 'joomla-community', 'http://community.joomla.org/blogs/community.html', '', '1900-01-01T00:00:00.000', 0, 1, 0, '1900-01-01T00:00:00.000', 1, 0, 1, 1, '{"target":"","width":"","height":"","count_clicks":""}', '*', '2012-01-04 15:04:03', 42, '', '2012-01-04 16:17:27', 42, '', '', '', 0, '', '1900-01-01T00:00:00.000', '1900-01-01T00:00:00.000');
+INSERT INTO [#__weblinks] ( [id], [catid], [sid], [title], [alias], [url], [description], [date], [hits], [state], [checked_out], [checked_out_time], [ordering], [archived], [approved], [access], [params], [language], [created], [created_by], [created_by_alias], [modified], [modified_by], [metakey], [metadesc], [metadata], [featured], [xreference], [publish_up], [publish_down]) VALUES(2, 8, 0, 'Joomla! Leadership Blog', 'joomla-leadership-blog', 'http://community.joomla.org/blogs/leadership.html', '', '1900-01-01T00:00:00.000', 0, 1, 0, '1900-01-01T00:00:00.000', 2, 0, 1, 1, '{"target":"","width":"","height":"","count_clicks":""}', '*', '2012-01-04 15:04:48', 42, '', '2012-01-04 16:17:27', 42, '', '', '', 0, '', '1900-01-01T00:00:00.000', '1900-01-01T00:00:00.000');
+
+SET IDENTITY_INSERT [#__weblinks] OFF;
+>>>>>>> FETCH_HEAD

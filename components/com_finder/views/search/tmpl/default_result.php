@@ -3,7 +3,11 @@
  * @package     Joomla.Site
  * @subpackage  com_finder
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -37,12 +41,19 @@ if ($show_description)
 $route = $this->result->route;
 
 // Get the route with highlighting information.
+<<<<<<< HEAD
 if (!empty($this->query->highlight)
 	&& empty($this->result->mime)
 	&& $this->params->get('highlight_terms', 1)
 	&& JPluginHelper::isEnabled('system', 'highlight'))
 {
 	$route .= '&highlight=' . base64_encode(json_encode($this->query->highlight));
+=======
+if (!empty($this->query->highlight) && empty($this->result->mime) && $this->params->get('highlight_terms', 1) && JPluginHelper::isEnabled('system', 'highlight')) {
+	$route = $this->result->route . '&highlight=' . base64_encode(json_encode($this->query->highlight));
+} else {
+	$route = $this->result->route;
+>>>>>>> FETCH_HEAD
 }
 
 ?>

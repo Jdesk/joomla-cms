@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_banners
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_banners
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -36,11 +43,19 @@ class BannersModelBanners extends JModelList
 	protected function getStoreId($id = '')
 	{
 		// Compile the store id.
+<<<<<<< HEAD
 		$id .= ':' . $this->getState('filter.search');
 		$id .= ':' . $this->getState('filter.tag_search');
 		$id .= ':' . $this->getState('filter.client_id');
 		$id .= ':' . serialize($this->getState('filter.category_id'));
 		$id .= ':' . serialize($this->getState('filter.keywords'));
+=======
+		$id	.= ':' . $this->getState('filter.search');
+		$id	.= ':' . $this->getState('filter.tag_search');
+		$id	.= ':' . $this->getState('filter.client_id');
+		$id	.= ':' . serialize($this->getState('filter.category_id'));
+		$id	.= ':' . serialize($this->getState('filter.keywords'));
+>>>>>>> FETCH_HEAD
 
 		return parent::getStoreId($id);
 	}

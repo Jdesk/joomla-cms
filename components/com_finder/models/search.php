@@ -3,7 +3,11 @@
  * @package     Joomla.Site
  * @subpackage  com_finder
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -15,6 +19,11 @@ JLoader::register('FinderIndexerHelper', FINDER_PATH_INDEXER . '/helper.php');
 JLoader::register('FinderIndexerQuery', FINDER_PATH_INDEXER . '/query.php');
 JLoader::register('FinderIndexerResult', FINDER_PATH_INDEXER . '/result.php');
 JLoader::register('FinderIndexerStemmer', FINDER_PATH_INDEXER . '/stemmer.php');
+<<<<<<< HEAD
+=======
+
+jimport('joomla.application.component.modellist');
+>>>>>>> FETCH_HEAD
 
 /**
  * Search model class for the Finder package.
@@ -1138,11 +1147,14 @@ class FinderModelSearch extends JModelList
 				$this->setState('list.ordering', 'm.weight');
 				break;
 
+<<<<<<< HEAD
 			// Custom field that is indexed and might be required for ordering
 			case 'title':
 				$this->setState('list.ordering', 'l.title');
 				break;
 
+=======
+>>>>>>> FETCH_HEAD
 			default:
 				$this->setState('list.ordering', 'l.link_id');
 				break;

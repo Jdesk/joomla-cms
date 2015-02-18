@@ -3,7 +3,11 @@
  * @package     Joomla.Plugin
  * @subpackage  Captcha
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -17,6 +21,7 @@ defined('_JEXEC') or die;
  */
 class PlgCaptchaRecaptcha extends JPlugin
 {
+<<<<<<< HEAD
 	/**
 	 * Load the language file on instantiation.
 	 *
@@ -24,6 +29,17 @@ class PlgCaptchaRecaptcha extends JPlugin
 	 * @since  3.1
 	 */
 	protected $autoloadLanguage = true;
+=======
+	const RECAPTCHA_API_SERVER = "http://www.google.com/recaptcha/api";
+	const RECAPTCHA_API_SECURE_SERVER = "https://www.google.com/recaptcha/api";
+	const RECAPTCHA_VERIFY_SERVER = "www.google.com";
+
+	public function __construct($subject, $config)
+	{
+		parent::__construct($subject, $config);
+		$this->loadLanguage();
+	}
+>>>>>>> FETCH_HEAD
 
 	/**
 	 * Initialise the captcha
@@ -155,8 +171,19 @@ class PlgCaptchaRecaptcha extends JPlugin
 			return false;
 		}
 
+<<<<<<< HEAD
 		return $this->getResponse($privatekey, $remoteip, $response, $challenge);
 	}
+=======
+		$response = $this->_recaptcha_http_post(self::RECAPTCHA_VERIFY_SERVER, "/recaptcha/api/verify",
+												array(
+													'privatekey'	=> $privatekey,
+													'remoteip'		=> $remoteip,
+													'challenge'		=> $challenge,
+													'response'		=> $response
+												)
+										  );
+>>>>>>> FETCH_HEAD
 
 	/**
 	 * Get the reCaptcha response.

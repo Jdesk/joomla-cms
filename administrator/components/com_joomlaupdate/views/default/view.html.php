@@ -2,8 +2,12 @@
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_joomlaupdate
+<<<<<<< HEAD
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -49,6 +53,14 @@ class JoomlaupdateViewDefault extends JViewLegacy
 			JToolbarHelper::preferences('com_joomlaupdate');
 		}
 
+<<<<<<< HEAD
+=======
+		// Add toolbar buttons
+		if (JFactory::getUser()->authorise('core.admin', 'com_joomlaupdate'))
+		{
+			JToolbarHelper::preferences('com_joomlaupdate');
+		}
+>>>>>>> FETCH_HEAD
 		JToolBarHelper::divider();
 		JToolBarHelper::help('JHELP_COMPONENTS_JOOMLA_UPDATE');
 

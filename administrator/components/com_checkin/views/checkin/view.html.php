@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_checkin
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_checkin
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -53,6 +60,7 @@ class CheckinViewCheckin extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
+<<<<<<< HEAD
 		JToolbarHelper::title(JText::_('COM_CHECKIN_GLOBAL_CHECK_IN'), 'checkin');
 
 		if (JFactory::getUser()->authorise('core.admin', 'com_checkin'))
@@ -61,6 +69,14 @@ class CheckinViewCheckin extends JViewLegacy
 			JToolbarHelper::divider();
 			JToolbarHelper::preferences('com_checkin');
 			JToolbarHelper::divider();
+=======
+		JToolBarHelper::title(JText::_('COM_CHECKIN_GLOBAL_CHECK_IN'), 'checkin.png');
+		JToolBarHelper::custom('checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
+		JToolBarHelper::divider();
+		if (JFactory::getUser()->authorise('core.admin', 'com_checkin')) {
+			JToolBarHelper::preferences('com_checkin');
+			JToolBarHelper::divider();
+>>>>>>> FETCH_HEAD
 		}
 
 		JToolbarHelper::help('JHELP_SITE_MAINTENANCE_GLOBAL_CHECK-IN');

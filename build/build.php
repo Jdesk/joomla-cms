@@ -16,15 +16,23 @@
  * 3. Run from CLI as: 'php build.php" from build directory.
  * 4. Check the archives in the tmp directory.
  *
+<<<<<<< HEAD
  * @package    Joomla.Build
  * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Build
+ *
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 // Set path to git binary (e.g., /usr/local/git/bin/git or /usr/bin/git)
 ob_start();
 passthru('which git', $systemGit);
 $systemGit = ob_get_clean();
+<<<<<<< HEAD
 $gitPath   = '/usr/bin/git';
 
 // Sanity check - Make sure $gitPath is the same path the system recognizes
@@ -56,6 +64,39 @@ $here = __DIR__;
 $tmp      = $here . '/tmp';
 $fullpath = $tmp . '/' . $fullVersion;
 
+=======
+$gitPath = '/usr/bin/git';
+
+// Sanity check - Make sure $gitPath is the same path the system recognizes
+if (substr($systemGit, 0, -1) != $gitPath)
+{
+	echo '$gitPath does not match path to local git executable, please set $gitPath to: ' . substr($systemGit, 0, -1) . "\n";
+	exit;
+}
+
+// Make sure file and folder permissions are set correctly
+umask(022);
+
+// Import JVersion to set the version information
+define('_JEXEC', 1);
+require_once dirname(__DIR__) . '/libraries/cms/version/version.php';
+$jversion = new JVersion;
+
+// Set version information for the build
+$version     = $jversion->RELEASE;
+$release     = $jversion->DEV_LEVEL;
+$stability   = $jversion->DEV_STATUS;
+$fullVersion = $version . '.' . $release;
+
+// Shortcut the paths to the repository root and build folder
+$repo = dirname(__DIR__);
+$here = __DIR__;
+
+// Set paths for the build packages
+$tmp      = $here . '/tmp';
+$fullpath = $tmp . '/' . $fullVersion;
+
+>>>>>>> FETCH_HEAD
 echo "Start build for version $fullVersion.\n";
 echo "Delete old release folder.\n";
 system('rm -rf ' . $tmp);
@@ -83,6 +124,7 @@ echo "Create list of changed files from git repository.\n";
  * Note: If we add new top-level directories or files, be sure to include them here.
  */
 $filesArray = array(
+<<<<<<< HEAD
 	"administrator/index.php\n" => true,
 	"bin/index.html\n" => true,
 	"cache/index.html\n" => true,
@@ -133,6 +175,29 @@ $doNotPackage = array(
 $doNotPatch = array(
 	'installation',
 	'images',
+=======
+		"administrator/index.php\n" => true,
+		"cache/index.html\n" => true,
+		"cli/index.html\n" => true,
+		"components/index.html\n" => true,
+		"images/index.html\n" => true,
+		"includes/index.html\n" => true,
+		"language/index.html\n" => true,
+		"libraries/index.html\n" => true,
+		"logs/index.html\n" => true,
+		"media/index.html\n" => true,
+		"modules/index.html\n" => true,
+		"plugins/index.html\n" => true,
+		"templates/index.html\n" => true,
+		"tmp/index.html\n" => true,
+		"htaccess.txt\n" => true,
+		"index.php\n" => true,
+		"LICENSE.txt\n" => true,
+		"README.txt\n" => true,
+		"robots.txt.dist\n" => true,
+		"web.config.txt\n" => true,
+		"joomla.xml\n" => true,
+>>>>>>> FETCH_HEAD
 );
 
 // For the packages, replace spaces in stability (RC) with underscores
@@ -153,6 +218,7 @@ for ($num = $release - 1; $num >= 0; $num--)
 	$deletedFiles = array();
 	$files        = file('diffdocs/' . $version . '.' . $num);
 
+<<<<<<< HEAD
 	// Loop through and add all files except: tests, installation, build, .git, .travis, travis, phpunit, .md, or images
 	foreach ($files as $file)
 	{
@@ -168,6 +234,14 @@ for ($num = $release - 1; $num >= 0; $num--)
 
 		if (!in_array($fileName, $doNotPackage) && !in_array($fileName, $doNotPatch)
 			&& !in_array($folderName, $doNotPackage) && !in_array($folderName, $doNotPatch))
+=======
+	// Loop through and add all files except: tests, installation, build, .git, .travis, travis, phpunit, .md, docs, or images
+	foreach ($files as $file)
+	{
+		if (substr($file, 2, 5) != 'tests' && substr($file, 2, 4) != 'docs' && substr($file, 2, 12) != 'installation' && substr($file, 2, 5) != 'build'
+			&& substr($file, 2, 4) != '.git' && substr($file, 2, 7) != '.travis' && substr($file, 2, 6) != 'travis' && substr($file, 2, 7) != 'phpunit'
+			&& substr($file, -3) != '.md' && substr($file, 2, 6) != 'images')
+>>>>>>> FETCH_HEAD
 		{
 			// Don't add deleted files to the list
 			if (substr($file, 0, 1) != 'D')
@@ -177,7 +251,11 @@ for ($num = $release - 1; $num >= 0; $num--)
 			else
 			{
 				// Add deleted files to the deleted files list
+<<<<<<< HEAD
 				$deletedFiles[] = $fileName;
+=======
+				$deletedFiles[] = substr($file, 2);
+>>>>>>> FETCH_HEAD
 			}
 		}
 	}
@@ -208,7 +286,11 @@ for ($num = $release - 1; $num >= 0; $num--)
 
 // Delete the files and folders we exclude from the packages (tests, docs, build, etc.).
 echo "Delete folders not included in packages.\n";
+<<<<<<< HEAD
 
+=======
+$doNotPackage = array('tests', 'docs', '.gitignore', '.travis.yml', 'build', 'build.xml');
+>>>>>>> FETCH_HEAD
 foreach ($doNotPackage as $removeFile)
 {
 	system('rm -rf ' . $fullVersion . '/' . $removeFile);
@@ -218,9 +300,12 @@ foreach ($doNotPackage as $removeFile)
 system('mkdir packages_full' . $fullVersion);
 echo "Build full package files.\n";
 chdir($fullVersion);
+<<<<<<< HEAD
 
 // The weblinks package manifest should not be present for new installs, temporarily move it
 system('mv administrator/manifests/packages/pkg_weblinks.xml ../pkg_weblinks.xml');
+=======
+>>>>>>> FETCH_HEAD
 
 // Create full archive packages.
 system('tar --create --bzip2 --file ../packages_full' . $fullVersion . '/Joomla_' . $fullVersion . '-' . $packageStability . '-Full_Package.tar.bz2 * > /dev/null');
@@ -233,16 +318,22 @@ system('zip -r ../packages_full' . $fullVersion . '/Joomla_' . $fullVersion . '-
 echo "Build full update package.\n";
 system('rm -r installation');
 system('rm -r images/banners');
+<<<<<<< HEAD
 system('rm -r images/headers');
+=======
+>>>>>>> FETCH_HEAD
 system('rm -r images/sampledata');
 system('rm images/joomla_black.gif');
 system('rm images/joomla_green.gif');
 system('rm images/joomla_logo_black.jpg');
 system('rm images/powered_by.png');
 
+<<<<<<< HEAD
 // Move the weblinks manifest back
 system('mv ../pkg_weblinks.xml administrator/manifests/packages/pkg_weblinks.xml');
 
+=======
+>>>>>>> FETCH_HEAD
 system('tar --create --bzip2 --file ../packages_full' . $fullVersion . '/Joomla_' . $fullVersion . '-' . $packageStability . '-Update_Package.tar.bz2 * > /dev/null');
 
 system('tar --create --gzip --file ../packages_full' . $fullVersion . '/Joomla_' . $fullVersion . '-' . $packageStability . '-Update_Package.tar.gz * > /dev/null');

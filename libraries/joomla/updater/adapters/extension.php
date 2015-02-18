@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Updater
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -52,6 +56,8 @@ class JUpdaterExtension extends JUpdateAdapter
 
 			// Don't do anything
 			case 'UPDATES':
+				// Store compatibility info per updates block (usually one per file)
+				$this->compatibility = array();
 				break;
 
 			default:
@@ -63,12 +69,25 @@ class JUpdaterExtension extends JUpdateAdapter
 
 				if ($name == 'TARGETPLATFORM')
 				{
+<<<<<<< HEAD
 					$this->currentUpdate->targetplatform = $attrs;
 				}
 
 				if ($name == 'PHP_MINIMUM')
 				{
 					$this->currentUpdate->php_minimum = '';
+=======
+					$this->current_update->targetplatform = $attrs;
+
+					if (isset($attrs['NAME']) && ($attrs['NAME'] == 'joomla') && !empty($attrs['VERSION']))
+					{
+						$this->current_update->compatibility = $attrs['VERSION'];
+					}
+				}
+				if ($name == 'PHP_MINIMUM')
+				{
+					$this->current_update->php_minimum = '';
+>>>>>>> FETCH_HEAD
 				}
 				break;
 		}
@@ -93,9 +112,20 @@ class JUpdaterExtension extends JUpdateAdapter
 		{
 			case 'UPDATE':
 				$ver = new JVersion;
+<<<<<<< HEAD
 
 				// Lower case and remove the exclamation mark
 				$product = strtolower(JFilterInput::getInstance()->clean($ver->PRODUCT, 'cmd'));
+=======
+				$product = strtolower(JFilterInput::getInstance()->clean($ver->PRODUCT, 'cmd')); // lower case and remove the exclamation mark
+
+				// Keep compatibility information in class property
+				if (isset($this->current_update->compatibility))
+				{
+					$this->compatibility[$this->current_update->version][] = $this->current_update->compatibility;
+					unset($this->current_update->compatibility);
+				}
+>>>>>>> FETCH_HEAD
 
 				// Check that the product matches and that the version matches (optionally a regexp)
 				// Check for optional min_dev_level and max_dev_level attributes to further specify targetplatform (e.g., 3.0.1)
@@ -105,6 +135,7 @@ class JUpdaterExtension extends JUpdateAdapter
 					&& ((!isset($this->currentUpdate->targetplatform->max_dev_level)) || $ver->DEV_LEVEL <= $this->currentUpdate->targetplatform->max_dev_level))
 				{
 					// Check if PHP version supported via <php_minimum> tag, assume true if tag isn't present
+<<<<<<< HEAD
 					if (!isset($this->currentUpdate->php_minimum) || version_compare(PHP_VERSION, $this->currentUpdate->php_minimum, '>='))
 					{
 						$phpMatch = true;
@@ -163,6 +194,46 @@ class JUpdaterExtension extends JUpdateAdapter
 							$this->latest = $this->currentUpdate;
 						}
 					}
+=======
+					if (!isset($this->current_update->php_minimum) || version_compare(PHP_VERSION, $this->current_update->php_minimum, '>='))
+					{
+						$phpMatch = true;
+					}
+					else
+					{
+						// Notify the user of the potential update
+						$msg = JText::sprintf(
+							'JLIB_INSTALLER_AVAILABLE_UPDATE_PHP_VERSION',
+							$this->current_update->name,
+							$this->current_update->version,
+							$this->current_update->php_minimum,
+							PHP_VERSION
+						);
+
+						JFactory::getApplication()->enqueueMessage($msg, 'warning');
+
+						$phpMatch = false;
+					}
+
+					// Target platform and php_minimum aren't valid fields in the update table so unset them to prevent J! from trying to store them
+					unset($this->current_update->targetplatform);
+					unset($this->current_update->php_minimum);
+
+					if ($phpMatch)
+					{
+						if (isset($this->latest))
+						{
+							if (version_compare($this->current_update->version, $this->latest->version, '>') == 1)
+							{
+								$this->latest = $this->current_update;
+							}
+						}
+						else
+						{
+							$this->latest = $this->current_update;
+						}
+					}
+>>>>>>> FETCH_HEAD
 				}
 				break;
 
@@ -202,6 +273,11 @@ class JUpdaterExtension extends JUpdateAdapter
 		{
 			$this->currentUpdate->stability = $this->stabilityTagToInteger((string) $data);
 		}
+				
+		if ($tag == 'PHP_MINIMUM')
+		{
+			$this->current_update->php_minimum = $data;
+		}
 	}
 
 	/**
@@ -215,16 +291,54 @@ class JUpdaterExtension extends JUpdateAdapter
 	 */
 	public function findUpdate($options)
 	{
+<<<<<<< HEAD
 		$response = $this->getUpdateSiteResponse($options);
 
 		if ($response === false)
+=======
+		$url = trim($options['location']);
+		$this->_url = &$url;
+		$this->_update_site_id = $options['update_site_id'];
+
+		if (substr($url, -4) != '.xml')
+>>>>>>> FETCH_HEAD
 		{
 			return false;
 		}
 
+<<<<<<< HEAD
 		if (array_key_exists('minimum_stability', $options))
 		{
 			$this->minimum_stability = $options['minimum_stability'];
+=======
+		$dbo = $this->parent->getDBO();
+
+		$http = JHttpFactory::getHttp();
+
+		try
+		{
+			$response = $http->get($url);
+		}
+		catch (Exception $exc)
+		{
+			$response = null;
+		}
+
+		if (is_null($response) || ($response->code != 200))
+		{
+			$query = $dbo->getQuery(true);
+			$query->update('#__update_sites');
+			$query->set('enabled = 0');
+			$query->where('update_site_id = ' . $this->_update_site_id);
+			$dbo->setQuery($query);
+			$dbo->execute();
+
+			JLog::add("Error opening url: " . $url, JLog::WARNING, 'updater');
+			$app = JFactory::getApplication();
+			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_EXTENSION_OPEN_URL', $url), 'warning');
+
+			return false;
+>>>>>>> FETCH_HEAD
 		}
 
 		$this->xmlParser = xml_parser_create('');
@@ -232,6 +346,7 @@ class JUpdaterExtension extends JUpdateAdapter
 		xml_set_element_handler($this->xmlParser, '_startElement', '_endElement');
 		xml_set_character_data_handler($this->xmlParser, '_characterData');
 
+<<<<<<< HEAD
 		if (!xml_parse($this->xmlParser, $response->body))
 		{
 			// If the URL is missing the .xml extension, try appending it and retry loading the update
@@ -246,11 +361,22 @@ class JUpdaterExtension extends JUpdateAdapter
 
 			$app = JFactory::getApplication();
 			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_EXTENSION_PARSE_URL', $this->_url), 'warning');
+=======
+		if (!xml_parse($this->xml_parser, $response->body))
+		{
+			JLog::add("Error parsing url: " . $url, JLog::WARNING, 'updater');
+			$app = JFactory::getApplication();
+			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_EXTENSION_PARSE_URL', $url), 'warning');
+>>>>>>> FETCH_HEAD
 
 			return false;
 		}
 
+<<<<<<< HEAD
 		xml_parser_free($this->xmlParser);
+=======
+		xml_parser_free($this->xml_parser);
+>>>>>>> FETCH_HEAD
 
 		if (isset($this->latest))
 		{
@@ -282,7 +408,11 @@ class JUpdaterExtension extends JUpdateAdapter
 			$updates = array();
 		}
 
+<<<<<<< HEAD
 		return array('update_sites' => array(), 'updates' => $updates);
+=======
+		return array('update_sites' => array(), 'updates' => $updates, 'compatibility' => $this->compatibility);
+>>>>>>> FETCH_HEAD
 	}
 
 	/**

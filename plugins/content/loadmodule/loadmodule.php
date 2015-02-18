@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  Content.loadmodule
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Plugin
+ * @subpackage	Content.loadmodule
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -107,8 +114,12 @@ class PlgContentLoadmodule extends JPlugin
 
 				$module = trim($matchesmodlist[0]);
 				$name   = htmlspecialchars_decode(trim($matchesmodlist[1]));
+<<<<<<< HEAD
 				$stylemod  = trim($matchesmodlist[2]);
 
+=======
+				$style  = trim($matchesmodlist[2]);
+>>>>>>> FETCH_HEAD
 				// $match[0] is full pattern match, $match[1] is the module,$match[2] is the title
 				$output = $this->_loadmod($module, $name, $stylemod);
 
@@ -162,6 +173,7 @@ class PlgContentLoadmodule extends JPlugin
 	 */
 	protected function _loadmod($module, $title, $style = 'none')
 	{
+<<<<<<< HEAD
 		self::$mods[$module] = '';
 		$document	= JFactory::getDocument();
 		$renderer	= $document->loadRenderer('module');
@@ -174,6 +186,22 @@ class PlgContentLoadmodule extends JPlugin
 			$name = 'mod_' . $module;
 			$mod  = JModuleHelper::getModule($name, $title);
 		}
+=======
+		$moduleinstance = $module . JStringNormalise::toCamelCase($title);
+		if (!isset(self::$mods[$moduleinstance])) {
+			self::$mods[$moduleinstance] = '';
+			$document	= JFactory::getDocument();
+			$renderer	= $document->loadRenderer('module');
+			$mod		= JModuleHelper::getModule($module, $title);
+			// If the module without the mod_ isn't found, try it with mod_.
+			// This allows people to enter it either way in the content
+			if (!isset($mod)){
+				$name = 'mod_'.$module;
+				$mod  = JModuleHelper::getModule($name, $title);
+			}
+			$params = array('style' => $style);
+			ob_start();
+>>>>>>> FETCH_HEAD
 
 		$params = array('style' => $style);
 		ob_start();
@@ -182,6 +210,12 @@ class PlgContentLoadmodule extends JPlugin
 
 		self::$mods[$module] = ob_get_clean();
 
+<<<<<<< HEAD
 		return self::$mods[$module];
+=======
+			self::$mods[$moduleinstance] = ob_get_clean();
+		}
+		return self::$mods[$moduleinstance];
+>>>>>>> FETCH_HEAD
 	}
 }

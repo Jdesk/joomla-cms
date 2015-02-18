@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  HTTP
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -256,7 +260,11 @@ class JHttpTransportCurl implements JHttpTransport
 	 *
 	 * @since   12.1
 	 */
+<<<<<<< HEAD
 	public static function isSupported()
+=======
+	static public function isSupported()
+>>>>>>> FETCH_HEAD
 	{
 		return function_exists('curl_version') && curl_version();
 	}

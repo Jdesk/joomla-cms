@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_languages
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -87,6 +92,7 @@ class LanguagesViewInstalled extends JViewLegacy
 			JToolbarHelper::divider();
 		}
 
+<<<<<<< HEAD
 		if ($canDo->get('core.admin'))
 		{
 			// Add install languages link to the lang installer component.
@@ -96,6 +102,16 @@ class LanguagesViewInstalled extends JViewLegacy
 
 			JToolbarHelper::preferences('com_languages');
 			JToolbarHelper::divider();
+=======
+		if ($canDo->get('core.admin')) {
+			// Add install languages link to the lang installer component
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Link', 'extension', 'COM_LANGUAGES_INSTALL', 'index.php?option=com_installer&view=languages');
+			JToolBarHelper::divider();
+
+			JToolBarHelper::preferences('com_languages');
+			JToolBarHelper::divider();
+>>>>>>> FETCH_HEAD
 		}
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_LANGUAGE_MANAGER_INSTALLED');

@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -47,8 +54,13 @@ class ContentModelForm extends ContentModelArticle
 
 		$this->setState('article.catid', $app->input->getInt('catid'));
 
+<<<<<<< HEAD
 		$return = $app->input->get('return', null, 'base64');
 		$this->setState('return_page', base64_decode($return));
+=======
+		$return = JRequest::getVar('return', null, 'default', 'base64');
+		$this->setState('return_page', urldecode(base64_decode($return)));
+>>>>>>> FETCH_HEAD
 
 		// Load the parameters.
 		$params	= $app->getParams();
@@ -163,7 +175,7 @@ class ContentModelForm extends ContentModelArticle
 	 */
 	public function getReturnPage()
 	{
-		return base64_encode($this->getState('return_page'));
+		return base64_encode(urlencode($this->getState('return_page')));
 	}
 
 	/**

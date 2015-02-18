@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -87,12 +92,26 @@ class ContentViewFeatured extends JViewLegacy
 				$item->text = $item->introtext;
 			}
 
+<<<<<<< HEAD
 			JPluginHelper::importPlugin('content');
 			$dispatcher->trigger('onContentPrepare', array ('com_content.featured', &$item, &$item->params, 0));
 
 			// Old plugins: Use processed text as introtext
 			$item->introtext = $item->text;
 
+=======
+			// Old plugins: Ensure that text property is available
+			if (!isset($item->text))
+			{
+				$item->text = $item->introtext;
+			}
+			JPluginHelper::importPlugin('content');
+			$results = $dispatcher->trigger('onContentPrepare', array ('com_content.featured', &$item, &$this->params, 0));
+
+			// Old plugins: Use processed text as introtext
+			$item->introtext = $item->text;
+
+>>>>>>> FETCH_HEAD
 			$results = $dispatcher->trigger('onContentAfterTitle', array('com_content.featured', &$item, &$item->params, 0));
 			$item->event->afterDisplayTitle = trim(implode("\n", $results));
 

@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Form
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -166,6 +170,7 @@ class JFormFieldText extends JFormField
 		$hint = $this->translateHint ? JText::_($this->hint) : $this->hint;
 
 		// Initialize some field attributes.
+<<<<<<< HEAD
 		$size         = !empty($this->size) ? ' size="' . $this->size . '"' : '';
 		$maxLength    = !empty($this->maxLength) ? ' maxlength="' . $this->maxLength . '"' : '';
 		$class        = !empty($this->class) ? ' class="' . $this->class . '"' : '';
@@ -180,6 +185,14 @@ class JFormFieldText extends JFormField
 		$pattern      = !empty($this->pattern) ? ' pattern="' . $this->pattern . '"' : '';
 		$inputmode    = !empty($this->inputmode) ? ' inputmode="' . $this->inputmode . '"' : '';
 		$dirname      = !empty($this->dirname) ? ' dirname="' . $this->dirname . '"' : '';
+=======
+		$size = $this->element['size'] ? ' size="' . (int) $this->element['size'] . '"' : '';
+		$maxLength = $this->element['maxlength'] ? ' maxlength="' . (int) $this->element['maxlength'] . '"' : '';
+		$class = $this->element['class'] ? ' class="' . (string) $this->element['class'] . '"' : '';
+		$auto		= ((string) $this->element['autocomplete'] == 'off') ? ' autocomplete="off"' : '';
+		$readonly = ((string) $this->element['readonly'] == 'true') ? ' readonly="readonly"' : '';
+		$disabled = ((string) $this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
+>>>>>>> FETCH_HEAD
 
 		// Initialize JavaScript field attributes.
 		$onchange = !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
@@ -209,6 +222,7 @@ class JFormFieldText extends JFormField
 				$datalist .= '<option value="' . $option->value . '">' . $option->text . '</option>';
 			}
 
+<<<<<<< HEAD
 			$datalist .= '</datalist>';
 			$list     = ' list="' . $this->id . '_datalist"';
 		}
@@ -261,5 +275,10 @@ class JFormFieldText extends JFormField
 	protected function getSuggestions()
 	{
 		return $this->getOptions();
+=======
+		return '<input type="text" name="' . $this->name . '" id="' . $this->id . '"' . ' value="'
+			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $size . $disabled
+			. $auto . $readonly . $onchange . $maxLength . '/>';
+>>>>>>> FETCH_HEAD
 	}
 }

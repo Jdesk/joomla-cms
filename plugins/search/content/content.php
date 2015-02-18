@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  Search.content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -164,6 +169,7 @@ class PlgSearchContent extends JPlugin
 			$c_id = $query->castAsChar('c.id');
 			$case_when1 .= $query->concatenate(array($c_id, 'c.alias'), ':');
 			$case_when1 .= ' ELSE ';
+<<<<<<< HEAD
 			$case_when1 .= $c_id . ' END as catslug';
 
 			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created, a.language, a.catid')
@@ -186,6 +192,27 @@ class PlgSearchContent extends JPlugin
 			{
 				$query->where('a.language in (' . $db->quote($tag) . ',' . $db->quote('*') . ')')
 					->where('c.language in (' . $db->quote($tag) . ',' . $db->quote('*') . ')');
+=======
+			$case_when1 .= $c_id.' END as catslug';
+
+			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created, a.language');
+			$query->select($query->concatenate(array('a.introtext', 'a.fulltext')).' AS text');
+			$query->select('c.title AS section, '.$case_when.','.$case_when1.', '.'\'2\' AS browsernav');
+
+			$query->from('#__content AS a');
+			$query->innerJoin('#__categories AS c ON c.id=a.catid');
+			$query->where('('. $where .')' . 'AND a.state=1 AND c.published = 1 AND a.access IN ('.$groups.') '
+						.'AND c.access IN ('.$groups.') '
+						.'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).') '
+						.'AND (a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')' );
+			$query->group('a.id, a.title, a.metadesc, a.metakey, a.created, a.introtext, a.fulltext, c.title, a.alias, c.alias, c.id');
+			$query->order($order);
+
+			// Filter by language
+			if ($app->isSite() && $app->getLanguageFilter()) {
+				$query->where('a.language in (' . $db->Quote($tag) . ',' . $db->Quote('*') . ')');
+				$query->where('c.language in (' . $db->Quote($tag) . ',' . $db->Quote('*') . ')');
+>>>>>>> FETCH_HEAD
 			}
 
 			$db->setQuery($query, 0, $limit);
@@ -196,7 +223,11 @@ class PlgSearchContent extends JPlugin
 			{
 				foreach ($list as $key => $item)
 				{
+<<<<<<< HEAD
 					$list[$key]->href = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
+=======
+					$list[$key]->href = ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language);
+>>>>>>> FETCH_HEAD
 				}
 			}
 

@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Application
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -108,6 +112,7 @@ class JApplicationWeb extends JApplicationBase
 	 */
 	public function __construct(JInput $input = null, Registry $config = null, JApplicationWebClient $client = null)
 	{
+<<<<<<< HEAD
 		// If a input object is given use it.
 		if ($input instanceof JInput)
 		{
@@ -140,6 +145,11 @@ class JApplicationWeb extends JApplicationBase
 		{
 			$this->client = new JApplicationWebClient;
 		}
+=======
+		$this->input  = $input  ? $input : new JInput;
+		$this->config = $config ? $config : new JRegistry;
+		$this->client = $client ? $client : new JWebClient;
+>>>>>>> FETCH_HEAD
 
 		// Load the configuration object.
 		$this->loadConfiguration($this->fetchConfigurationData());

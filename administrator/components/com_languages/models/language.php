@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_languages
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -102,7 +107,11 @@ class LanguagesModelLanguage extends JModelAdmin
 			return $false;
 		}
 
+<<<<<<< HEAD
 		// Set a valid accesslevel in case '0' is stored due to a bug in the installation SQL (was fixed with PR 2714).
+=======
+		// Set a valid accesslevel in case '0' is stored due to a bug in the installation SQL.
+>>>>>>> FETCH_HEAD
 		if ($table->access == '0')
 		{
 			$table->access = (int) JFactory::getConfig()->get('access');
@@ -186,16 +195,26 @@ class LanguagesModelLanguage extends JModelAdmin
 			$isNew = false;
 		}
 
+<<<<<<< HEAD
 		// Prevent white spaces, including East Asian double bytes.
+=======
+		// Prevent white spaces, including East Asian double bytes
+>>>>>>> FETCH_HEAD
 		$spaces = array('/\xE3\x80\x80/', ' ');
 
 		$data['lang_code'] = str_replace($spaces, '', $data['lang_code']);
 		$data['sef'] = str_replace($spaces, '', $data['sef']);
+<<<<<<< HEAD
 		$data['sef'] = JApplicationHelper::stringURLSafe($data['sef']);
 
 		// Bind the data.
 		if (!$table->bind($data))
 		{
+=======
+
+		// Bind the data
+		if (!$table->bind($data)) {
+>>>>>>> FETCH_HEAD
 			$this->setError($table->getError());
 
 			return false;

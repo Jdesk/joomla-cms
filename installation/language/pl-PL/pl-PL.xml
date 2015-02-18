@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metafile
+<<<<<<< HEAD
 	version="3.2"
 	client="installation">
 	<name>Polski (PL)</name>
@@ -9,11 +10,26 @@
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description></description>
+=======
+	version="2.5"
+	client="installation">
+	<name>Polski (Polska)</name>
+	<version>2.5</version>
+	<creationDate>September 2011</creationDate>
+	<author>Polskie Centrum Joomla! - Maciej Słojewski, Stefan Wajda</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Polski plik językowy instalatora Joomla</description>
+>>>>>>> FETCH_HEAD
 	<files>
 		<filename>pl-PL.ini</filename>
 	</files>
 	<metadata>
+<<<<<<< HEAD
 		<name>Polski (PL)</name>
+=======
+		<name>Polski (Polska)</name>
+>>>>>>> FETCH_HEAD
 		<tag>pl-PL</tag>
 		<rtl>0</rtl>
 	</metadata>

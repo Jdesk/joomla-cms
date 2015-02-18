@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_banners
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -143,9 +148,15 @@ class BannersModelClients extends JModelList
 		{
 			$query->where('(a.state IN (0, 1))');
 		}
+<<<<<<< HEAD
 
 		$query->group('a.id, a.name, a.contact, a.checked_out, a.checked_out_time, a.state, a.metakey, a.purchase_type, uc.name');
 
+=======
+		
+		$query->group('a.id, a.name, a.contact, a.checked_out, a.checked_out_time, a.state, a.metakey, a.purchase_type, editor');
+		
+>>>>>>> FETCH_HEAD
 		// Filter by search in title
 		$search = $this->getState('filter.search');
 

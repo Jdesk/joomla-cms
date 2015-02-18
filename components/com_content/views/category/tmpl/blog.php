@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -32,6 +39,7 @@ JHtml::_('behavior.caption');
 		<?php $this->category->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
 		<?php echo $this->category->tagLayout->render($this->category->tags->itemTags); ?>
 	<?php endif; ?>
+<<<<<<< HEAD
 
 	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
 		<div class="category-desc clearfix">
@@ -41,6 +49,27 @@ JHtml::_('behavior.caption');
 			<?php if ($this->params->get('show_description') && $this->category->description) : ?>
 				<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
 			<?php endif; ?>
+=======
+	<div class="clr"></div>
+	</div>
+<?php endif; ?>
+
+<?php if (empty($this->lead_items) && empty($this->link_items) && empty($this->intro_items)) : ?>
+	<?php if ($this->params->get('show_no_articles', 1)) : ?>
+		<p><?php echo JText::_('COM_CONTENT_NO_ARTICLES'); ?></p>
+	<?php endif; ?>
+<?php endif; ?>
+
+<?php $leadingcount=0 ; ?>
+<?php if (!empty($this->lead_items)) : ?>
+<div class="items-leading">
+	<?php foreach ($this->lead_items as &$item) : ?>
+		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?>">
+			<?php
+				$this->item = &$item;
+				echo $this->loadTemplate('item');
+			?>
+>>>>>>> FETCH_HEAD
 		</div>
 	<?php endif; ?>
 
@@ -95,9 +124,20 @@ JHtml::_('behavior.caption');
 		<?php endforeach; ?>
 	<?php endif; ?>
 
+<<<<<<< HEAD
 	<?php if (!empty($this->link_items)) : ?>
 		<div class="items-more">
 			<?php echo $this->loadTemplate('links'); ?>
+=======
+	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
+		<div class="cat-children">
+		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
+		<h3>
+		<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
+		</h3>
+		<?php endif; ?>
+			<?php echo $this->loadTemplate('children'); ?>
+>>>>>>> FETCH_HEAD
 		</div>
 	<?php endif; ?>
 

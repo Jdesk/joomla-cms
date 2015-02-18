@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <metafile
 	version="3.2"
 	client="installation">
@@ -7,13 +8,25 @@
 	<creationDate>2012-09-24</creationDate>
 	<author>Japanese Translation Team</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+<metafile version="2.5" client="installation">
+	<name>Japanese-日本語 (Japan)</name>
+	<version>2.5</version>
+	<creationDate>2011-09-14</creationDate>
+	<author>Joomla! Japanese Translation Team</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description></description>
 	<files>
 		<filename>ja-JP.ini</filename>
 	</files>
 	<metadata>
+<<<<<<< HEAD
 		<name>Japanese 日本語 (Japan)</name>
+=======
+		<name>Japanese 日本語</name>
+>>>>>>> FETCH_HEAD
 		<tag>ja-JP</tag>
 		<rtl>0</rtl>
 	</metadata>

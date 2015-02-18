@@ -3,12 +3,21 @@
 	<name>com_categories</name>
 	<author>Joomla! Project</author>
 	<creationDate>December 2007</creationDate>
+<<<<<<< HEAD
 	<copyright>(C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
 	<version>3.0.0</version>
 	<description>COM_CATEGORIES_XML_DESCRIPTION</description>
+=======
+		<copyright>(C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+		<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+		<authorEmail>admin@joomla.org</authorEmail>
+		<authorUrl>www.joomla.org</authorUrl>
+		<version>2.5.0</version>
+		<description>COM_CATEGORIES_XML_DESCRIPTION</description>
+>>>>>>> FETCH_HEAD
 	<administration>
 		<files folder="admin">
 			<filename>categories.php</filename>

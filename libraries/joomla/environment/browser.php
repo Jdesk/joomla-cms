@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Environment
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -250,6 +254,7 @@ class JBrowser
 				$this->setBrowser('chrome');
 				list ($this->majorVersion, $this->minorVersion) = explode('.', $version[1]);
 			}
+<<<<<<< HEAD
 			elseif (preg_match('|CrMo[/ ]([0-9.]+)|', $this->agent, $version))
 			{
 				$this->setBrowser('chrome');
@@ -264,6 +269,22 @@ class JBrowser
 			elseif (strpos($this->lowerAgent, 'elaine/') !== false
 				|| strpos($this->lowerAgent, 'palmsource') !== false
 				|| strpos($this->lowerAgent, 'digital paths') !== false)
+=======
+			elseif (preg_match('|CrMo[/ ]([0-9.]+)|', $this->_agent, $version))
+			{
+				$this->setBrowser('chrome');
+				list ($this->_majorVersion, $this->_minorVersion) = explode('.', $version[1]);
+			}
+			elseif (preg_match('|CriOS[/ ]([0-9.]+)|', $this->_agent, $version))
+			{
+				$this->setBrowser('chrome');
+				list ($this->_majorVersion, $this->_minorVersion) = explode('.', $version[1]);
+				$this->_mobile = true;
+			}
+			elseif (strpos($this->_lowerAgent, 'elaine/') !== false
+				|| strpos($this->_lowerAgent, 'palmsource') !== false
+				|| strpos($this->_lowerAgent, 'digital paths') !== false)
+>>>>>>> FETCH_HEAD
 			{
 				$this->setBrowser('palm');
 				$this->mobile = true;
@@ -326,7 +347,39 @@ class JBrowser
 				{
 					// Safari.
 					$this->setBrowser('safari');
+<<<<<<< HEAD
 					$this->identifyBrowserVersion();
+=======
+					$this->_setFeature('utf');
+					$this->_setFeature('javascript', 1.4);
+					$this->_setFeature('dom');
+					$this->_setFeature('iframes');
+					if ($this->_majorVersion > 125 || ($this->_majorVersion == 125 && $this->_minorVersion >= 1))
+					{
+						$this->_setFeature('accesskey');
+						$this->_setFeature('xmlhttpreq');
+					}
+					if ($this->_majorVersion > 522)
+					{
+						$this->_setFeature('svg');
+						$this->_setFeature('xhtml+xml');
+					}
+					// Set browser version, not engine version
+					$this->identifyBrowserVersion();
+				}
+				else
+				{
+					// Konqueror.
+					$this->_setFeature('javascript', 1.5);
+					switch ($this->_majorVersion)
+					{
+						case 3:
+							$this->_setFeature('dom');
+							$this->_setFeature('iframes');
+							$this->_setFeature('xhtml+xml');
+							break;
+					}
+>>>>>>> FETCH_HEAD
 				}
 			}
 			elseif (preg_match('|Mozilla/([0-9.]+)|', $this->agent, $version))
@@ -459,6 +512,25 @@ class JBrowser
 		// Can't identify browser version
 		$this->majorVersion = 0;
 		$this->minorVersion = 0;
+	}
+
+	/**
+	 * Set browser version, not by engine version
+	 * Fallback to use when no other method identify the engine version
+	 *
+	 * @return void
+	 */
+	protected function identifyBrowserVersion()
+	{
+		if (preg_match('|Version[/ ]([0-9.]+)|', $this->_agent, $version))
+		{
+			list ($this->_majorVersion, $this->_minorVersion) = explode('.', $version[1]);
+			return;
+		}
+		// Can't identify browser version
+		$this->_majorVersion = 0;
+		$this->_minorVersion = 0;
+		JLog::add("Can't identify browser version. Agent: " . $this->_agent, JLog::NOTICE);
 	}
 
 	/**

@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_media
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -190,9 +195,14 @@ class MediaControllerFolder extends JControllerLegacy
 				// Trigger the onContentBeforeSave event.
 				$object_file = new JObject(array('filepath' => $path));
 				JPluginHelper::importPlugin('content');
+<<<<<<< HEAD
 				$dispatcher	= JEventDispatcher::getInstance();
 				$result = $dispatcher->trigger('onContentBeforeSave', array('com_media.folder', &$object_file, true));
 
+=======
+				$dispatcher	= JDispatcher::getInstance();
+				$result = $dispatcher->trigger('onContentBeforeSave', array('com_media.folder', &$object_file, true));
+>>>>>>> FETCH_HEAD
 				if (in_array(false, $result, true))
 				{
 					// There are some errors in the plugins

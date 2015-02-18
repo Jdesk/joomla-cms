@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_plugins
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -140,8 +145,14 @@ class PluginsModelPlugins extends JModelList
 				}
 			}
 
+<<<<<<< HEAD
 			$direction = ($this->getState('list.direction') == 'desc') ? -1 : 1;
 			JArrayHelper::sortObjects($result, $ordering, $direction, true, true);
+=======
+			$lang = JFactory::getLanguage();
+			$direction = ($this->getState('list.direction') == 'desc') ? -1 : 1;
+			JArrayHelper::sortObjects($result, $ordering, $direction, true, $lang->getLocale());
+>>>>>>> FETCH_HEAD
 
 			$total = count($result);
 			$this->cache[$this->getStoreId('getTotal')] = $total;
@@ -191,8 +202,13 @@ class PluginsModelPlugins extends JModelList
 		{
 			$source = JPATH_PLUGINS . '/' . $item->folder . '/' . $item->element;
 			$extension = 'plg_' . $item->folder . '_' . $item->element;
+<<<<<<< HEAD
 			$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true)
 				|| $lang->load($extension . '.sys', $source, null, false, true);
+=======
+				$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true)
+			||	$lang->load($extension . '.sys', $source, null, false, true);
+>>>>>>> FETCH_HEAD
 			$item->name = JText::_($item->name);
 		}
 	}

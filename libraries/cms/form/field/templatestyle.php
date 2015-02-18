@@ -3,7 +3,11 @@
  * @package     Joomla.Libraries
  * @subpackage  Form
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -166,8 +170,13 @@ class JFormFieldTemplatestyle extends JFormFieldGroupedList
 			foreach ($styles as $style)
 			{
 				$template = $style->template;
+<<<<<<< HEAD
 				$lang->load('tpl_' . $template . '.sys', $client->path, null, false, true)
 					|| $lang->load('tpl_' . $template . '.sys', $client->path . '/templates/' . $template, null, false, true);
+=======
+					$lang->load('tpl_' . $template . '.sys', $client->path, null, false, true)
+				||	$lang->load('tpl_' . $template . '.sys', $client->path . '/templates/' . $template, null, false, true);
+>>>>>>> FETCH_HEAD
 				$name = JText::_($style->name);
 
 				// Initialize the group if necessary.

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .clearfix {
 	*zoom: 1;
 }
@@ -414,6 +415,24 @@ a.badge:focus {
 .btn-mini .badge {
 	top: 0;
 }
+=======
+@charset "UTF-8";
+
+/**
+ * @package		Joomla.Administrator
+ * @subpackage	templates.hathor
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @since		1.6
+ *
+ * Color CSS file for the template - brown
+ * This design thanks to Jennifer Marriot & Elin Waring
+ */
+
+/**
+ * General styles
+ */
+>>>>>>> FETCH_HEAD
 body {
 	background-color: #ffffff;
 	color: #2c2c2c;
@@ -1023,6 +1042,17 @@ button:focus {
 .pagination .page span {
 	color: #999999;
 }
+<<<<<<< HEAD
+=======
+
+.icon-32-extension {
+    background-image: url(../images/toolbar/icon-32-extension.png);
+}
+
+/**
+ * Tooltips
+ */
+>>>>>>> FETCH_HEAD
 .tip {
 	background: #000000;
 	border: 1px solid #FFFFFF;

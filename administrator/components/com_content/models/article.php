@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -88,6 +95,7 @@ class ContentModelArticle extends JModelAdmin
 			$this->table->alias = $data['1'];
 
 			// Reset the ID because we are making a copy
+<<<<<<< HEAD
 			$this->table->id = 0;
 
 			// Reset hits because we are making a copy
@@ -95,6 +103,12 @@ class ContentModelArticle extends JModelAdmin
 
 			// Unpublish because we are making a copy
 			$this->table->state = 0;
+=======
+			$table->id = 0;
+			
+			// Reset hits because we are making a copy
+ 			$table->hits = 0;			
+>>>>>>> FETCH_HEAD
 
 			// New category ID
 			$this->table->catid = $categoryId;

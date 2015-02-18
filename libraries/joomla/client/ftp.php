@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Client
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -41,6 +45,27 @@ if (!defined("FTP_ASCII"))
 	define("FTP_ASCII", 0);
 }
 
+<<<<<<< HEAD
+=======
+// Is FTP extension loaded?  If not try to load it
+if (!extension_loaded('ftp'))
+{
+	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+	{
+		if ( function_exists( 'dl')) 
+		{
+   			@ dl('php_ftp.dll');
+   		}
+	}
+	else
+	{
+		if ( function_exists( 'dl')) 
+		{
+			@ dl('ftp.so');
+		}
+	}
+}
+>>>>>>> FETCH_HEAD
 if (!defined('FTP_NATIVE'))
 {
 	define('FTP_NATIVE', (function_exists('ftp_connect')) ? 1 : 0);

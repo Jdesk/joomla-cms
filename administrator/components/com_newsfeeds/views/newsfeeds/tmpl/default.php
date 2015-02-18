@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_newsfeeds
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_newsfeeds
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -237,8 +244,15 @@ JFactory::getDocument()->addScriptDeclaration('
 			</table>
 		<?php endif;?>
 
+<<<<<<< HEAD
 		<?php // Load the batch processing form. ?>
 		<?php echo $this->loadTemplate('batch'); ?>
+=======
+	<?php //Load the batch processing form. ?>
+	<?php if ($user->authorize('core.create', 'com_newsfeeds') && $user->authorize('core.edit', 'com_newsfeeds') && $user->authorize('core.edit.state', 'com_newsfeeds')) : ?>
+		<?php echo $this->loadTemplate('batch'); ?>
+	<?php endif;?>
+>>>>>>> FETCH_HEAD
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />

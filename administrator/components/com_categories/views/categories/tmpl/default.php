@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_categories
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_categories
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -174,6 +181,7 @@ if ($saveOrder)
 									<?php endif; ?>
 								</td>
 							<?php endif; ?>
+<<<<<<< HEAD
 							<td class="small nowrap hidden-phone">
 								<?php if ($item->language == '*') : ?>
 									<?php echo JText::alt('JALL', 'language'); ?>
@@ -192,6 +200,37 @@ if ($saveOrder)
 		<?php endif; ?>
 		<?php //Load the batch processing form. ?>
 		<?php echo $this->loadTemplate('batch'); ?>
+=======
+							<?php $disabled = $saveOrder ?  '' : 'disabled="disabled"'; ?>
+							<input type="text" name="order[]" size="5" value="<?php echo $orderkey + 1;?>" <?php echo $disabled ?> class="text-area-order" />
+							<?php $originalOrders[] = $orderkey + 1; ?>
+						<?php else : ?>
+							<?php echo $orderkey + 1;?>
+						<?php endif; ?>
+					</td>
+					<td class="center">
+						<?php echo $this->escape($item->access_level); ?>
+					</td>
+					<td class="center nowrap">
+					<?php if ($item->language=='*'):?>
+						<?php echo JText::alt('JALL', 'language'); ?>
+					<?php else:?>
+						<?php echo $item->language_title ? $this->escape($item->language_title) : JText::_('JUNDEFINED'); ?>
+					<?php endif;?>
+					</td>
+					<td class="center">
+						<span title="<?php echo sprintf('%d-%d', $item->lft, $item->rgt);?>">
+							<?php echo (int) $item->id; ?></span>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<?php //Load the batch processing form. ?>
+	<?php if ($user->authorize('core.create', $extension) & $user->authorize('core.edit', $extension) && $user->authorize('core.edit.state', $extension)) : ?>
+		<?php echo $this->loadTemplate('batch'); ?>
+	<?php endif;?>
+>>>>>>> FETCH_HEAD
 
 		<input type="hidden" name="extension" value="<?php echo $extension; ?>" />
 		<input type="hidden" name="task" value="" />

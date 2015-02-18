@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_categories
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_categories
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -38,8 +45,32 @@ JFactory::getDocument()->addScriptDeclaration('
 
 	<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
+<<<<<<< HEAD
 	<div class="form-horizontal">
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
+=======
+		<?php  $fieldSets = $this->form->getFieldsets('attribs'); ?>
+		<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+			<?php $label = !empty($fieldSet->label) ? $fieldSet->label : 'COM_CATEGORIES_'.$name.'_FIELDSET_LABEL'; ?>
+			<?php if ($name != 'editorConfig' && $name != 'basic-limited') : ?>
+				<?php echo JHtml::_('sliders.panel', JText::_($label), $name.'-options'); ?>
+				<?php if (isset($fieldSet->description) && trim($fieldSet->description)) : ?>
+					<p class="tip"><?php echo $this->escape(JText::_($fieldSet->description));?></p>
+				<?php endif; ?>
+				<fieldset class="panelform">
+					<ul class="adminformlist">
+					<?php foreach ($this->form->getFieldset($name) as $field) : ?>
+						<li><?php echo $field->label; ?>
+						<?php echo $field->input; ?></li>
+					<?php endforeach; ?>
+					</ul>
+				</fieldset>
+			<?php endif ?>
+		<?php endforeach; ?>
+	<?php echo JHtml::_('sliders.end'); ?>
+	</div>
+	<div class="clr"></div>
+>>>>>>> FETCH_HEAD
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('JCATEGORY', true)); ?>
 		<div class="row-fluid">

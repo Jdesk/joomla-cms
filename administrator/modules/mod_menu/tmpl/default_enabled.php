@@ -2,8 +2,12 @@
 /**
  * @package     Joomla.Administrator
  * @subpackage  mod_menu
+<<<<<<< HEAD
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -28,7 +32,14 @@ if ($user->authorise('core.admin'))
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_CONFIGURATION'), 'index.php?option=com_config', 'class:config'));
 }
 
+<<<<<<< HEAD
 if ($user->authorise('core.manage', 'com_checkin'))
+=======
+$chm = $user->authorise('core.manage', 'com_checkin');
+$cam = $user->authorise('core.manage', 'com_cache');
+
+if ($chm || $cam )
+>>>>>>> FETCH_HEAD
 {
 	$menu->addSeparator();
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_GLOBAL_CHECKIN'), 'index.php?option=com_checkin', 'class:checkin'));
@@ -94,18 +105,26 @@ if ($user->authorise('core.manage', 'com_users'))
 	}
 
 	$menu->addChild(
+<<<<<<< HEAD
 		new JMenuNode(
 			JText::_('MOD_MENU_COM_USERS_NOTE_CATEGORIES'), 'index.php?option=com_categories&view=categories&extension=com_users', 'class:category'),
+=======
+		new JMenuNode(JText::_('MOD_MENU_COM_USERS_NOTE_CATEGORIES'), 'index.php?option=com_categories&view=categories&extension=com_users', 'class:category'),
+>>>>>>> FETCH_HEAD
 		$createUser
 	);
 
 	if ($createUser)
 	{
 		$menu->addChild(
+<<<<<<< HEAD
 			new JMenuNode(
 				JText::_('MOD_MENU_COM_CONTENT_NEW_CATEGORY'), 'index.php?option=com_categories&task=category.add&extension=com_users',
 				'class:newarticle'
 			)
+=======
+			new JMenuNode(JText::_('MOD_MENU_COM_CONTENT_NEW_CATEGORY'), 'index.php?option=com_categories&task=category.add&extension=com_users', 'class:newarticle')
+>>>>>>> FETCH_HEAD
 		);
 		$menu->getParent();
 	}

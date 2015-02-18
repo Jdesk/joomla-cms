@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_contact
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_contact
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -145,7 +152,10 @@ class ContactTableContact extends JTable
 		if (trim($this->name) == '')
 		{
 			$this->setError(JText::_('COM_CONTACT_WARNING_PROVIDE_VALID_NAME'));
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 			return false;
 		}
 
@@ -168,6 +178,7 @@ class ContactTableContact extends JTable
 			return false;
 		}
 
+<<<<<<< HEAD
 		/*
 		 * Clean up keywords -- eliminate extra spaces between phrases
 		 * and cr (\r) and lf (\n) characters from string.
@@ -183,6 +194,15 @@ class ContactTableContact extends JTable
 
 			// Create array using commas as delimiter.
 			$keys = explode(',', $after_clean);
+=======
+		// clean up keywords -- eliminate extra spaces between phrases
+		// and cr (\r) and lf (\n) characters from string
+		if (!empty($this->metakey)) {
+			// only process if not empty
+			$bad_characters = array("\n", "\r", "\"", "<", ">"); // array of characters to remove
+			$after_clean = JString::str_ireplace($bad_characters, "", $this->metakey); // remove bad characters
+			$keys = explode(',', $after_clean); // create array using commas as delimiter
+>>>>>>> FETCH_HEAD
 			$clean_keys = array();
 
 			foreach ($keys as $key)

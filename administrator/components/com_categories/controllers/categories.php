@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_categories
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -98,6 +103,7 @@ class CategoriesControllerCategories extends JControllerAdmin
 			return true;
 		}
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Deletes and returns correctly.
@@ -140,4 +146,45 @@ class CategoriesControllerCategories extends JControllerAdmin
 
 		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&extension=' . $extension, false));
 	}
+=======
+	/** Deletes and returns correctly.
+ 	 *
+ 	 * @return	void
+ 	 * @since	2.5.12
+ 	 */
+ 	public function delete()
+ 	{
+ 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+ 		
+ 		// Get items to remove from the request.
+ 		$cid = JRequest::getVar('cid', array(), '', 'array');
+ 		$extension = JRequest::getVar('extension', null);
+ 
+ 		if (!is_array($cid) || count($cid) < 1)
+ 		{
+ 			JError::raiseWarning(500, JText::_($this->text_prefix . '_NO_ITEM_SELECTED'));
+ 		}
+ 		else
+ 		{
+ 			// Get the model.
+ 			$model = $this->getModel();
+ 
+ 			// Make sure the item ids are integers
+ 			jimport('joomla.utilities.arrayhelper');
+ 			JArrayHelper::toInteger($cid);
+ 
+ 			// Remove the items.
+ 			if ($model->delete($cid))
+ 			{
+ 				$this->setMessage(JText::plural($this->text_prefix . '_N_ITEMS_DELETED', count($cid)));
+ 			}
+ 			else
+ 			{
+ 				$this->setMessage($model->getError());
+ 			}
+ 		}
+ 
+ 		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&extension=' . $extension, false));
+ 	} 
+>>>>>>> FETCH_HEAD
 }

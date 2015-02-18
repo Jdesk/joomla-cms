@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('JPATH_BASE') or die;
@@ -74,6 +79,7 @@ class JFormFieldMenutype extends JFormFieldList
 		JHtml::_('behavior.framework');
 		JHtml::_('behavior.modal');
 
+<<<<<<< HEAD
 		$getMenuTypesUrl = 'index.php?option=com_menus&view=menutypes&tmpl=component&recordId=' . $recordId;
 		$html[] = '<span class="input-append">'
 			. '<input type="text" ' . $required . ' readonly="readonly" id="' . $this->id . '" value="' . $value . '"' . $size . $class . ' />'
@@ -83,6 +89,11 @@ class JFormFieldMenutype extends JFormFieldList
 			. '</a></span>';
 		$html[] = '<input class="input-small" type="hidden" name="' . $this->name . '" '
 			. 'value="' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '" />';
+=======
+		$html[] = '<input type="text" id="'.$this->id.'" readonly="readonly" disabled="disabled" value="'.$value.'"'.$size.$class.' />';
+		$html[] = '<input type="button" value="'.JText::_('JSELECT').'" onclick="SqueezeBox.fromElement(this, {handler:\'iframe\', size: {x: 600, y: 450}, url:\''.JRoute::_('index.php?option=com_menus&view=menutypes&tmpl=component&recordId='.$recordId).'\'})" />';
+		$html[] = '<input type="hidden" name="'.$this->name.'" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" />';
+>>>>>>> FETCH_HEAD
 
 		return implode("\n", $html);
 	}
