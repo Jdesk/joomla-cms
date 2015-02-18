@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_contact
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_contact
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -372,6 +379,7 @@ class ContactModelContact extends JModelForm
 				$c_id = $query->castAsChar('c.id');
 				$case_when1 .= $query->concatenate(array($c_id, 'c.alias'), ':');
 				$case_when1 .= ' ELSE ';
+<<<<<<< HEAD
 				$case_when1 .= $c_id . ' END as catslug';
 				$query->select($case_when1 . ',' . $case_when)
 					->from('#__content as a')
@@ -387,6 +395,19 @@ class ContactModelContact extends JModelForm
 						('a.created_by = ' . (int) $result->user_id) . ' AND ' .
 						('a.language=' . $db->quote(JFactory::getLanguage()->getTag()) . ' OR a.language=' . $db->quote('*'))
 					);
+=======
+				$case_when1 .= $c_id.' END as catslug';
+				$query->select($case_when1 . ',' . $case_when);
+
+				$query->from('#__content as a');
+				$query->leftJoin('#__categories as c on a.catid=c.id');
+				$query->where('a.created_by = '.(int)$result->user_id);
+				$query->where('a.access IN ('. $groups.')');
+				$query->order('a.state DESC, a.created DESC');
+				// filter per language if plugin published
+				if (JLanguageMultilang::isEnabled()) {
+					$query->where(('a.created_by = ' . (int) $result->user_id) . ' AND ' . ('a.language='.$db->quote(JFactory::getLanguage()->getTag()).' OR a.language='.$db->quote('*')));
+>>>>>>> FETCH_HEAD
 				}
 
 				if (is_numeric($published))

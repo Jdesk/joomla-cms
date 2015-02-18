@@ -4,10 +4,17 @@
 	<author>Joomla! Project</author>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
+<<<<<<< HEAD
 	<copyright>(C) 2005 - 2015 Open Source Matters. All rights reserved</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>3.4.0-rc2-dev</version>
 	<creationDate>February 2015</creationDate>
+=======
+	<copyright>(C) 2005 - 2014 Open Source Matters. All rights reserved</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>2.5.28</version>
+	<creationDate>December 2014</creationDate>
+>>>>>>> FETCH_HEAD
 	<description>FILES_JOOMLA_XML_DESCRIPTION</description>
 
 	<scriptfile>administrator/components/com_admin/script.php</scriptfile>

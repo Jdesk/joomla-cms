@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metafile
+<<<<<<< HEAD
 	version="3.2"
 	client="installation">
 	<name>Swahili (East Africa)</name>
@@ -7,6 +8,15 @@
 	<creationDate>November 2012</creationDate>
 	<author>Hassan Abdalla</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	version="2.5"
+	client="installation">
+	<name>Swahili (East Africa)</name>
+	<version>2.5.8.1</version>
+	<creationDate>October 2012</creationDate>
+	<author>Hassan Abdalla</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description></description>
 	<files>
@@ -18,4 +28,8 @@
 		<rtl>0</rtl>
 	</metadata>
 	<params />
+<<<<<<< HEAD
 </metafile>
+=======
+</metafile>
+>>>>>>> FETCH_HEAD

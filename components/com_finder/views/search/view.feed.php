@@ -3,7 +3,11 @@
  * @package     Joomla.Site
  * @subpackage  com_finder
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -96,7 +100,11 @@ class FinderViewSearch extends JViewLegacy
 				$item->category = $node->title;
 			}
 
+<<<<<<< HEAD
 			// Loads item info into RSS array
+=======
+			// Loads item info into rss array.
+>>>>>>> FETCH_HEAD
 			$this->document->addItem($item);
 		}
 	}

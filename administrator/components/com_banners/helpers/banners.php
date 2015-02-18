@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_banners
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -159,12 +164,22 @@ class BannersHelper extends JHelperContent
 	{
 		$options = array();
 
+<<<<<<< HEAD
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('id As value, name As text')
 			->from('#__banner_clients AS a')
 			->where('a.state = 1')
 			->order('a.name');
+=======
+		$db		= JFactory::getDbo();
+		$query	= $db->getQuery(true);
+
+		$query->select('id As value, name As text');
+		$query->from('#__banner_clients AS a');
+		$query->where('a.state = 1');
+		$query->order('a.name');
+>>>>>>> FETCH_HEAD
 
 		// Get the options.
 		$db->setQuery($query);

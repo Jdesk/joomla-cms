@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -270,8 +274,14 @@ abstract class JFolder
 			if (!$ret = @mkdir($path, $mode))
 			{
 				@umask($origmask);
+<<<<<<< HEAD
 				JLog::add(
 					__METHOD__ . ': ' . JText::_('JLIB_FILESYSTEM_ERROR_COULD_NOT_CREATE_DIRECTORY') . 'Path: ' . $path, JLog::WARNING, 'jerror'
+=======
+				JError::raiseWarning(
+					'SOME_ERROR_CODE', __METHOD__ . ': ' . JText::_('JLIB_FILESYSTEM_ERROR_COULD_NOT_CREATE_DIRECTORY').
+					' Path: ' . $path
+>>>>>>> FETCH_HEAD
 				);
 
 				return false;
@@ -313,11 +323,19 @@ abstract class JFolder
 		try
 		{
 			// Check to make sure the path valid and clean
+<<<<<<< HEAD
 			$path = $pathObject->clean($path);
 		}
 		catch (UnexpectedValueException $e)
 		{
 			throw $e;
+=======
+			$path = JPath::clean($path);
+		}
+		catch (UnexpectedValueException $e)
+		{
+			throw new UnexpectedValueException($e);
+>>>>>>> FETCH_HEAD
 		}
 
 		// Is this really a folder?
@@ -539,7 +557,10 @@ abstract class JFolder
 		{
 			asort($arr);
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		return array_values($arr);
 	}
 
@@ -624,7 +645,7 @@ abstract class JFolder
 				&& (empty($excludefilter_string) || !preg_match($excludefilter_string, $file)))
 			{
 				// Compute the fullpath
-				$fullpath = $path . '/' . $file;
+				$fullpath = $path . DIRECTORY_SEPARATOR . $file;
 
 				// Compute the isDir flag
 				$isDir = is_dir($fullpath);

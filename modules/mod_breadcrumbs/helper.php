@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  mod_breadcrumbs
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	mod_breadcrumbs
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -45,6 +52,7 @@ class ModBreadCrumbsHelper
 		}
 
 		$count = count($items);
+<<<<<<< HEAD
 
 		// Don't use $items here as it references JPathway properties directly
 		$crumbs	= array();
@@ -52,6 +60,13 @@ class ModBreadCrumbsHelper
 		for ($i = 0; $i < $count; $i ++)
 		{
 			$crumbs[$i] = new stdClass;
+=======
+		// don't use $items here as it references JPathway properties directly
+		$crumbs	= array();
+		for ($i = 0; $i < $count; $i ++)
+		{
+			$crumbs[$i] = new stdClass();
+>>>>>>> FETCH_HEAD
 			$crumbs[$i]->name = stripslashes(htmlspecialchars($items[$i]->name, ENT_COMPAT, 'UTF-8'));
 			$crumbs[$i]->link = JRoute::_($items[$i]->link);
 		}
@@ -60,7 +75,11 @@ class ModBreadCrumbsHelper
 		{
 			$item = new stdClass;
 			$item->name = htmlspecialchars($params->get('homeText', JText::_('MOD_BREADCRUMBS_HOME')));
+<<<<<<< HEAD
 			$item->link = JRoute::_('index.php?Itemid=' . $home->id);
+=======
+			$item->link = JRoute::_('index.php?Itemid='.$app->getMenu()->getDefault()->id);
+>>>>>>> FETCH_HEAD
 			array_unshift($crumbs, $item);
 		}
 

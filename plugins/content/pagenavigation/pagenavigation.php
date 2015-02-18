@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  Content.pagenavigation
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -122,6 +127,7 @@ class PlgContentPagenavigation extends JPlugin
 				' AND (publish_down = ' . $db->quote($nullDate) . ' OR publish_down >= ' . $db->quote($now) . ')';
 
 			// Array of articles in same category correctly ordered.
+<<<<<<< HEAD
 			$query = $db->getQuery(true);
 
 			// Sqlsrv changes
@@ -141,6 +147,30 @@ class PlgContentPagenavigation extends JPlugin
 					'a.catid = ' . (int) $row->catid . ' AND a.state = ' . (int) $row->state
 						. ($canPublish ? '' : ' AND a.access IN (' . implode(",", JAccess::getAuthorisedViewLevels($user->id)) . ') ') . $xwhere
 				);
+=======
+			$query	= $db->getQuery(true);
+	       //sqlsrv changes
+	        $case_when = ' CASE WHEN ';
+	        $case_when .= $query->charLength('a.alias');
+	        $case_when .= ' THEN ';
+	        $a_id = $query->castAsChar('a.id');
+	        $case_when .= $query->concatenate(array($a_id, 'a.alias'), ':');
+	        $case_when .= ' ELSE ';
+	        $case_when .= $a_id.' END as slug';
+
+	        $case_when1 = ' CASE WHEN ';
+	        $case_when1 .= $query->charLength('cc.alias');
+	        $case_when1 .= ' THEN ';
+	        $c_id = $query->castAsChar('cc.id');
+	        $case_when1 .= $query->concatenate(array($c_id, 'cc.alias'), ':');
+	        $case_when1 .= ' ELSE ';
+	        $case_when1 .= $c_id.' END as catslug';
+      		$query->select('a.id, a.language,'.$case_when.','.$case_when1);
+			$query->from('#__content AS a');
+			$query->leftJoin('#__categories AS cc ON cc.id = a.catid');
+			$query->where('a.catid = '. (int)$row->catid .' AND a.state = '. (int)$row->state
+						. ($canPublish ? '' : ' AND a.access = ' .(int)$row->access) . $xwhere);
+>>>>>>> FETCH_HEAD
 			$query->order($orderby);
 
 			if ($app->isSite() && $app->getLanguageFilter())
@@ -183,6 +213,7 @@ class PlgContentPagenavigation extends JPlugin
 				$row->prev_label = ($this->params->get('display', 0) == 0) ? JText::_('JPREV') : $row->prev->title;
 				$row->prev = JRoute::_(ContentHelperRoute::getArticleRoute($row->prev->slug, $row->prev->catid, $row->prev->language));
 			}
+<<<<<<< HEAD
 			else
 			{
 				$row->prev_label = '';
@@ -197,6 +228,18 @@ class PlgContentPagenavigation extends JPlugin
 			else
 			{
 				$row->next_label = '';
+=======
+
+			if ($row->prev) {
+				$row->prev = JRoute::_(ContentHelperRoute::getArticleRoute($row->prev->slug, $row->prev->catslug, $row->prev->language));
+			} else {
+				$row->prev = '';
+			}
+
+			if ($row->next) {
+				$row->next = JRoute::_(ContentHelperRoute::getArticleRoute($row->next->slug, $row->next->catslug, $row->next->language));
+			} else {
+>>>>>>> FETCH_HEAD
 				$row->next = '';
 			}
 

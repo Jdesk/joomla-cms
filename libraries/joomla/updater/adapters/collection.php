@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Updater
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -218,10 +222,55 @@ class JUpdaterCollection extends JUpdateAdapter
 	 */
 	public function findUpdate($options)
 	{
+<<<<<<< HEAD
 		$response = $this->getUpdateSiteResponse($options);
 
 		if ($response === false)
 		{
+=======
+		$url = trim($options['location']);
+		$this->_update_site_id = $options['update_site_id'];
+
+		if (substr($url, -4) != '.xml')
+		{
+			if (substr($url, -1) != '/')
+			{
+				$url .= '/';
+			}
+
+			$url .= 'update.xml';
+		}
+
+		$this->base = new stdClass;
+		$this->update_sites = array();
+		$this->updates = array();
+		$dbo = $this->parent->getDBO();
+
+		$http = JHttpFactory::getHttp();
+
+		try
+		{
+			$response = $http->get($url);
+		}
+		catch (Exception $exc)
+		{
+			$response = null;
+		}
+
+		if (is_null($response) || ($response->code != 200))
+		{
+			$query = $dbo->getQuery(true);
+			$query->update('#__update_sites');
+			$query->set('enabled = 0');
+			$query->where('update_site_id = ' . $this->_update_site_id);
+			$dbo->setQuery($query);
+			$dbo->execute();
+
+			JLog::add("Error parsing url: " . $url, JLog::WARNING, 'updater');
+			$app = JFactory::getApplication();
+			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_COLLECTION_OPEN_URL', $url), 'warning');
+
+>>>>>>> FETCH_HEAD
 			return false;
 		}
 
@@ -229,6 +278,7 @@ class JUpdaterCollection extends JUpdateAdapter
 		xml_set_object($this->xmlParser, $this);
 		xml_set_element_handler($this->xmlParser, '_startElement', '_endElement');
 
+<<<<<<< HEAD
 		if (!xml_parse($this->xmlParser, $response->body))
 		{
 			// If the URL is missing the .xml extension, try appending it and retry loading the update
@@ -243,6 +293,13 @@ class JUpdaterCollection extends JUpdateAdapter
 
 			$app = JFactory::getApplication();
 			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_COLLECTION_PARSE_URL', $this->_url), 'warning');
+=======
+		if (!xml_parse($this->xml_parser, $response->body))
+		{
+			JLog::add("Error parsing url: " . $url, JLog::WARNING, 'updater');
+			$app = JFactory::getApplication();
+			$app->enqueueMessage(JText::sprintf('JLIB_UPDATER_ERROR_COLLECTION_PARSE_URL', $url), 'warning');
+>>>>>>> FETCH_HEAD
 
 			return false;
 		}

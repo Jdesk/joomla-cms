@@ -1,10 +1,18 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  Template.hathor
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	Templates.hathor
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @since		1.6
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -17,6 +25,7 @@ $client		= $this->state->get('filter.client_id', 0) ? JText::_('JADMINISTRATOR')
 $clientId	= $this->state->get('filter.client_id', 0);
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_languages&view=installed&client='.$clientId); ?>" method="post" id="adminForm" name="adminForm">
+<<<<<<< HEAD
 <?php if (!empty( $this->sidebar)) : ?>
 	<div id="j-sidebar-container" class="span2">
 		<?php echo $this->sidebar; ?>
@@ -28,6 +37,8 @@ $clientId	= $this->state->get('filter.client_id', 0);
 	<?php if ($this->ftp) : ?>
 		<?php echo $this->loadTemplate('ftp');?>
 	<?php endif; ?>
+=======
+>>>>>>> FETCH_HEAD
 
 	<table class="adminlist">
 		<thead>

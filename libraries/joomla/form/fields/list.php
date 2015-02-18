@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Form
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -61,6 +65,7 @@ class JFormFieldList extends JFormField
 		if ((string) $this->readonly == '1' || (string) $this->readonly == 'true')
 		{
 			$html[] = JHtml::_('select.genericlist', $options, '', trim($attr), 'value', 'text', $this->value, $this->id);
+<<<<<<< HEAD
 
 			// E.g. form field type tag sends $this->value as array
 			if ($this->multiple && is_array($this->value))
@@ -79,6 +84,9 @@ class JFormFieldList extends JFormField
 			{
 				$html[] = '<input type="hidden" name="' . $this->name . '" value="' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"/>';
 			}
+=======
+			$html[] = '<input type="hidden" name="' . $this->name . '" value="' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"/>';
+>>>>>>> FETCH_HEAD
 		}
 		else
 		// Create a regular list.

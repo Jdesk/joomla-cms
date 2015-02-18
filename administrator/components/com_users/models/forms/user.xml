@@ -17,7 +17,11 @@
 
 		<field name="password" type="password"
 			autocomplete="off"
+<<<<<<< HEAD
 			class="validate-password"
+=======
+			class="inputbox validate-password"
+>>>>>>> FETCH_HEAD
 			description="COM_USERS_USER_FIELD_PASSWORD_DESC"
 			filter="raw"
 			validate="password"
@@ -27,13 +31,21 @@
 
 		<field name="password2" type="password"
 			autocomplete="off"
+<<<<<<< HEAD
 			class="validate-password"
+=======
+			class="inputbox validate-password"
+>>>>>>> FETCH_HEAD
 			description="COM_USERS_USER_FIELD_PASSWORD2_DESC"
 			filter="raw"
 			label="COM_USERS_USER_FIELD_PASSWORD2_LABEL"
 			size="30"
 			validate="equals"
+<<<<<<< HEAD
 			field="password"
+=======
+			field="password2"
+>>>>>>> FETCH_HEAD
 		/>
 
 		<field name="email" type="email"

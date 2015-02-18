@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  HTTP
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -34,10 +38,17 @@ class JHttpTransportStream implements JHttpTransport
 	 */
 	public function __construct(Registry $options)
 	{
+<<<<<<< HEAD
 		// Verify that URLs can be used with fopen();
 		if (!ini_get('allow_url_fopen'))
 		{
 			throw new RuntimeException('Cannot use a stream transport when "allow_url_fopen" is disabled.');
+=======
+		// Verify that fopen() is available.
+		if (!self::isSupported())
+		{
+			throw new RuntimeException('Cannot use a stream transport when fopen() is not available or "allow_url_fopen" is disabled.');
+>>>>>>> FETCH_HEAD
 		}
 
 		// Verify that fopen() is available.
@@ -141,6 +152,11 @@ class JHttpTransportStream implements JHttpTransport
 		$track_errors = ini_get('track_errors');
 		ini_set('track_errors', true);
 
+		// Capture PHP errors
+		$php_errormsg = '';
+		$track_errors = ini_get('track_errors');
+		ini_set('track_errors', true);
+
 		// Open the stream for reading.
 		$stream = @fopen((string) $uri, 'r', false, $context);
 
@@ -231,13 +247,21 @@ class JHttpTransportStream implements JHttpTransport
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Method to check if http transport stream available for use
+=======
+	 * method to check if http transport stream available for using
+>>>>>>> FETCH_HEAD
 	 *
 	 * @return bool true if available else false
 	 *
 	 * @since   12.1
 	 */
+<<<<<<< HEAD
 	public static function isSupported()
+=======
+	static public function isSupported()
+>>>>>>> FETCH_HEAD
 	{
 		return function_exists('fopen') && is_callable('fopen') && ini_get('allow_url_fopen');
 	}

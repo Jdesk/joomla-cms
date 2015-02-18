@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -122,6 +129,7 @@ if (!empty($this->items))
 				 <tr class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
 				<?php else: ?>
 				<tr class="cat-list-row<?php echo $i % 2; ?>" >
+<<<<<<< HEAD
 				<?php endif; ?>
 					<td <?php echo $headerTitle; ?> class="list-title">
 						<?php if (in_array($article->access, $this->user->getAuthorisedViewLevels())) : ?>
@@ -157,6 +165,21 @@ if (!empty($this->items))
 							<span class="list-published label label-warning">
 								<?php echo JText::_('JEXPIRED'); ?>
 							</span>
+=======
+			<?php endif; ?>
+				<?php if (in_array($article->access, $this->user->getAuthorisedViewLevels())) : ?>
+
+					<td class="list-title">
+						<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language)); ?>">
+							<?php echo $this->escape($article->title); ?></a>
+
+						<?php if ($article->params->get('access-edit')) : ?>
+						<ul class="actions">
+							<li class="edit-icon">
+								<?php echo JHtml::_('icon.edit', $article, $params); ?>
+							</li>
+						</ul>
+>>>>>>> FETCH_HEAD
 						<?php endif; ?>
 					</td>
 					<?php if ($this->params->get('list_show_date')) : ?>
@@ -195,6 +218,26 @@ if (!empty($this->items))
 							<?php endif; ?>
 						</td>
 					<?php endif; ?>
+<<<<<<< HEAD
+=======
+
+				<?php else : // Show unauth links. ?>
+					<td>
+						<?php
+							echo $this->escape($article->title).' : ';
+							$menu		= JFactory::getApplication()->getMenu();
+							$active		= $menu->getActive();
+							$itemId		= $active->id;
+							$link = JRoute::_('index.php?option=com_users&view=login&Itemid='.$itemId);
+							$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language));
+							$fullURL = new JURI($link);
+							$fullURL->setVar('return', base64_encode(urlencode($returnURL)));
+						?>
+						<a href="<?php echo $fullURL; ?>" class="register">
+							<?php echo JText::_( 'COM_CONTENT_REGISTER_TO_READ_MORE' ); ?></a>
+					</td>
+				<?php endif; ?>
+>>>>>>> FETCH_HEAD
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  mod_menu
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -129,6 +134,7 @@ class ModMenuHelper
 						$item->flink = JRoute::_($item->flink);
 					}
 
+<<<<<<< HEAD
 					// We prevent the double encoding because for some reason the $item is shared for menu modules and we get double encoding
 					// when the cause of that is found the argument should be removed
 					$item->title        = htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8', false);
@@ -136,6 +142,12 @@ class ModMenuHelper
 					$item->anchor_title = htmlspecialchars($item->params->get('menu-anchor_title', ''), ENT_COMPAT, 'UTF-8', false);
 					$item->menu_image   = $item->params->get('menu_image', '') ?
 						htmlspecialchars($item->params->get('menu_image', ''), ENT_COMPAT, 'UTF-8', false) : '';
+=======
+					$item->title = htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8', false);
+					$item->anchor_css   = htmlspecialchars($item->params->get('menu-anchor_css', ''), ENT_COMPAT, 'UTF-8', false);
+					$item->anchor_title = htmlspecialchars($item->params->get('menu-anchor_title', ''), ENT_COMPAT, 'UTF-8', false);
+					$item->menu_image   = $item->params->get('menu_image', '') ? htmlspecialchars($item->params->get('menu_image', ''), ENT_COMPAT, 'UTF-8', false) : '';
+>>>>>>> FETCH_HEAD
 				}
 
 				if (isset($items[$lastitem]))

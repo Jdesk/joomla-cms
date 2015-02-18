@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -785,6 +789,21 @@ class ModulesModelModule extends JModelAdmin
 	{
 		$table->title		= htmlspecialchars_decode($table->title, ENT_QUOTES);
 		$table->position	= trim($table->position);
+<<<<<<< HEAD
+=======
+
+		if (empty($table->id))
+		{
+			// Set the values
+			//$table->created	= $date->toSql();
+		}
+		else
+		{
+			// Set the values
+			//$table->modified	= $date->toSql();
+			//$table->modified_by	= $user->get('id');
+		}
+>>>>>>> FETCH_HEAD
 	}
 
 	/**
@@ -811,7 +830,11 @@ class ModulesModelModule extends JModelAdmin
 		$formFile = JPath::clean($client->path . '/modules/' . $module . '/' . $module . '.xml');
 
 		// Load the core and/or local language file(s).
+<<<<<<< HEAD
 		$lang->load($module, $client->path, null, false, true)
+=======
+			$lang->load($module, $client->path, null, false, true)
+>>>>>>> FETCH_HEAD
 		||	$lang->load($module, $client->path . '/modules/' . $module, null, false, true);
 
 		if (file_exists($formFile))

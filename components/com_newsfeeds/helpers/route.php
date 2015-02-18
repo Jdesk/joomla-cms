@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_newsfeeds
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_newsfeeds
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -55,11 +62,14 @@ abstract class NewsfeedsHelperRoute
 			$link .= '&lang=' . $language;
 			$needles['language'] = $language;
 		}
+<<<<<<< HEAD
 
 		if ($item = self::_findItem($needles))
 		{
 			$link .= '&Itemid=' . $item;
 		}
+=======
+>>>>>>> FETCH_HEAD
 
 		return $link;
 	}
@@ -92,6 +102,16 @@ abstract class NewsfeedsHelperRoute
 		else
 		{
 			$needles = array();
+<<<<<<< HEAD
+=======
+			
+			//Create the link
+			$link = 'index.php?option=com_newsfeeds&view=category&id='.$id;
+			
+			$catids = array_reverse($category->getPath());
+			$needles['category'] = $catids;
+			$needles['categories'] = $catids;
+>>>>>>> FETCH_HEAD
 
 			// Create the link
 			$link = 'index.php?option=com_newsfeeds&view=category&id=' . $id;
@@ -102,6 +122,7 @@ abstract class NewsfeedsHelperRoute
 
 			if ($language && $language != "*" && JLanguageMultilang::isEnabled())
 			{
+<<<<<<< HEAD
 				$link .= '&lang=' . $language;
 				$needles['language'] = $language;
 			}
@@ -109,6 +130,9 @@ abstract class NewsfeedsHelperRoute
 			if ($item = self::_findItem($needles))
 			{
 				$link .= '&Itemid=' . $item;
+=======
+				$link .= '&Itemid='.$item;
+>>>>>>> FETCH_HEAD
 			}
 		}
 
@@ -190,10 +214,15 @@ abstract class NewsfeedsHelperRoute
 			}
 		}
 
+<<<<<<< HEAD
 		// Check if the active menuitem matches the requested language
 		$active = $menus->getActive();
 
 		if ($active && ($language == '*' || in_array($active->language, array('*', $language)) || !JLanguageMultilang::isEnabled()))
+=======
+		$active = $menus->getActive();
+		if ($active)
+>>>>>>> FETCH_HEAD
 		{
 			return $active->id;
 		}

@@ -3,10 +3,17 @@
 	version="3.3"
 	client="installation">
 	<name>Português (pt-PT)</name>
+<<<<<<< HEAD
 	<version>3.3.3</version>
 	<creationDate>2014-08-06</creationDate>
 	<author>Comunidade JoomlaPT! Portugal</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<version>2.5</version>
+	<creationDate>24-07-2011</creationDate>
+	<author>Comunidade Joomlapt.com</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description>Idioma de instalação Joomla v3.x - português europeu pt-PT</description>
 	<files>

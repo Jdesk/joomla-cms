@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * @copyright	Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -13,6 +17,7 @@
 
 #frame form{ text-align: right; }
 label { float:right; }
+<<<<<<< HEAD
 fieldset.input p {clear: right;}
 
 /* -- message styles ----------------------------------- */
@@ -25,3 +30,11 @@ fieldset.input p {clear: right;}
 	left: -20px;
 	right: 0px;
 }
+=======
+
+/* -- message styles ----------------------------------- */
+
+#system-message {
+	text-align: right;
+}
+>>>>>>> FETCH_HEAD

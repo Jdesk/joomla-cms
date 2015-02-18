@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_installer
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_installer
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -157,6 +164,13 @@ class InstallerModel extends JModelList
 					$source = $path . '/modules/' . $extension;
 						$lang->load("$extension.sys", $path, null, false, true)
 					||	$lang->load("$extension.sys", $source, null, false, true);
+<<<<<<< HEAD
+=======
+				break;
+				case 'package':
+					$extension = $item->element;
+						$lang->load("$extension.sys", JPATH_SITE, null, false, true);
+>>>>>>> FETCH_HEAD
 				break;
 				case 'plugin':
 					$extension = 'plg_' . $item->folder . '_' . $item->element;
@@ -169,11 +183,14 @@ class InstallerModel extends JModelList
 					$source = $path . '/templates/' . $item->element;
 						$lang->load("$extension.sys", $path, null, false, true)
 					||	$lang->load("$extension.sys", $source, null, false, true);
+<<<<<<< HEAD
 				break;
 				case 'package':
 				default:
 					$extension = $item->element;
 						$lang->load("$extension.sys", JPATH_SITE, null, false, true);
+=======
+>>>>>>> FETCH_HEAD
 				break;
 			}
 

@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_media
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -59,6 +64,7 @@ class MediaViewMediaList extends JViewLegacy
 		$state = $this->get('state');
 
 		// Check for invalid folder name
+<<<<<<< HEAD
 		if (empty($state->folder))
 		{
 			$dirname = JRequest::getVar('folder', '', '', 'string');
@@ -75,6 +81,28 @@ class MediaViewMediaList extends JViewLegacy
 		$this->documents = &$documents;
 		$this->folders = &$folders;
 		$this->state = &$state;
+=======
+		if (empty($state->folder)) {
+			$dirname = JRequest::getVar('folder', '', '', 'string');
+			if (!empty($dirname)) {
+				$dirname = htmlspecialchars($dirname, ENT_COMPAT, 'UTF-8');
+				if ($lang->hasKey('COM_MEDIA_ERROR_UNABLE_TO_BROWSE_FOLDER_WARNDIRNAME'))
+				{
+					JError::raiseWarning(100, JText::sprintf('COM_MEDIA_ERROR_UNABLE_TO_BROWSE_FOLDER_WARNDIRNAME', $dirname));
+				}
+				else
+				{
+					JError::raiseWarning(100, sprintf('Unable to browse:&#160;%s. Directory name must only contain alphanumeric characters and no spaces.', $dirname));
+				}
+			}
+		}
+
+		$this->baseURL = JURI::root();
+		$this->assignRef('images', $images);
+		$this->assignRef('documents', $documents);
+		$this->assignRef('folders', $folders);
+		$this->assignRef('state', $state);
+>>>>>>> FETCH_HEAD
 
 		parent::display($tpl);
 	}

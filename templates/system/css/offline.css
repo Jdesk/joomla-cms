@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * @copyright	Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -57,14 +61,18 @@ input    { border: 1px solid #0E67A1; }
 input.button 		 { background-color: white; }
 input.button:hover { border-color:  #FC902E; }
 
+<<<<<<< HEAD
 fieldset.input p {clear: left;}
 
+=======
+>>>>>>> FETCH_HEAD
 #frmlogin	      { margin: 0 10px 0 10px;  }
 #frmlogin fieldset.button { text-align: right; }
 
 /* -- message styles ----------------------------------- */
 
 #system-message {
+<<<<<<< HEAD
 	margin: 0 auto;
 	padding: 20px 0 0;
 	width: 445px;
@@ -96,6 +104,26 @@ fieldset.input p {clear: left;}
 	top: -2px;
 	cursor: pointer;
 }
+=======
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #CCCCCC;
+	margin: 10px auto 0;
+	padding: 5px 15px 10px;
+	text-align: left;
+	width: 410px;
+}
+
+#system-message dt {
+	color: red;
+	margin: 5px 0;
+	font-weight: bold;
+}
+
+#system-message dd {
+	margin: 0px;
+}
+
+>>>>>>> FETCH_HEAD
 .login {
 	margin-top: 5px;
 }

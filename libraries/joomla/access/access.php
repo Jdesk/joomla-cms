@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Access
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -98,7 +102,12 @@ class JAccess
 		{
 			$db = JFactory::getDbo();
 			$assets = JTable::getInstance('Asset', 'JTable', array('dbo' => $db));
+<<<<<<< HEAD
 			$asset = $assets->getRootId();
+=======
+			$rootId = $assets->getRootId();
+			$asset = $rootId;
+>>>>>>> FETCH_HEAD
 		}
 
 		// Get the rules for the asset recursively to root if not already retrieved.
@@ -140,7 +149,11 @@ class JAccess
 		{
 			$db = JFactory::getDbo();
 			$assets = JTable::getInstance('Asset', 'JTable', array('dbo' => $db));
+<<<<<<< HEAD
 			$asset = $assets->getRootId();
+=======
+			$rootId = $assets->getRootId();
+>>>>>>> FETCH_HEAD
 		}
 
 		// Get the rules for the asset recursively to root if not already retrieved.
@@ -251,10 +264,17 @@ class JAccess
 			$db = JFactory::getDbo();
 			$assets = JTable::getInstance('Asset', 'JTable', array('dbo' => $db));
 			$rootId = $assets->getRootId();
+<<<<<<< HEAD
 			$query->clear()
 				->select('rules')
 				->from('#__assets')
 				->where('id = ' . $db->quote($rootId));
+=======
+			$query = $db->getQuery(true);
+			$query->select('rules');
+			$query->from('#__assets');
+			$query->where('id = ' . $db->quote($rootId));
+>>>>>>> FETCH_HEAD
 			$db->setQuery($query);
 			$result = $db->loadResult();
 			$result = array($result);
@@ -457,6 +477,10 @@ class JAccess
 	 * @since       11.1
 	 * @deprecated  12.3 (Platform) & 4.0 (CMS)  Use JAccess::getActionsFromFile or JAccess::getActionsFromData instead.
 	 * @codeCoverageIgnore
+<<<<<<< HEAD
+=======
+	 * 
+>>>>>>> FETCH_HEAD
 	 */
 	public static function getActions($component, $section = 'component')
 	{

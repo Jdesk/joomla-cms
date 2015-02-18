@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Session
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -37,15 +41,29 @@ class JSessionStorageMemcache extends JSessionStorage
 		}
 
 		$config = JFactory::getConfig();
+<<<<<<< HEAD
+=======
+
+		$this->_compress	= $config->get('memcache_compress', false)?MEMCACHE_COMPRESSED:false;
+		$this->_persistent	= $config->get('memcache_persist', true);
+>>>>>>> FETCH_HEAD
 
 		// This will be an array of loveliness
 		// @todo: multiple servers
 		$this->_servers = array(
 			array(
+<<<<<<< HEAD
 				'host' => $config->get('session_memcache_server_host', 'localhost'),
 				'port' => $config->get('session_memcache_server_port', 11211)
 			)
 		);
+=======
+				'host' => $config->get('memcache_server_host', 'localhost'),
+				'port' => $config->get('memcache_server_port', 11211)
+			)
+		);
+	}
+>>>>>>> FETCH_HEAD
 
 		parent::__construct($options);
 	}

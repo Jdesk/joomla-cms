@@ -3,7 +3,11 @@
  * @package     Joomla.Libraries
  * @subpackage  Form
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -35,8 +39,13 @@ class JFormRuleCaptcha extends JFormRule
 	 */
 	public function test(SimpleXMLElement $element, $value, $group = null, Registry $input = null, JForm $form = null)
 	{
+<<<<<<< HEAD
 		$plugin    = $element['plugin'] ?: JFactory::getApplication()->getParams()->get('captcha', JFactory::getConfig()->get('captcha', 0));
 		$namespace = $element['namespace'] ?: $form->getName();
+=======
+		$plugin    = $element['plugin'] ? (string) $element['plugin'] : JFactory::getApplication()->getParams()->get('captcha', JFactory::getConfig()->get('captcha', 0));
+		$namespace = $element['namespace'] ? (string) $element['namespace'] : $form->getName();
+>>>>>>> FETCH_HEAD
 
 		// Use 0 for none
 		if ($plugin === 0 || $plugin === '0')

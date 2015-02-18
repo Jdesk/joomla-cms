@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_contact
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -247,8 +251,15 @@ JFactory::getDocument()->addScriptDeclaration('
 			</table>
 		<?php endif;?>
 
+<<<<<<< HEAD
 		<?php //Load the batch processing form. ?>
 		<?php echo $this->loadTemplate('batch'); ?>
+=======
+	<?php //Load the batch processing form. ?>
+	<?php if ($user->authorize('core.create', 'com_contacts') && $user->authorize('core.edit', 'com_contacts') && $user->authorize('core.edit.state', 'com_contacts')) : ?>
+		<?php echo $this->loadTemplate('batch'); ?>
+	<?php endif;?>
+>>>>>>> FETCH_HEAD
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />

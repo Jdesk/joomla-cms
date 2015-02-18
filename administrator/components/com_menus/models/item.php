@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -635,8 +639,13 @@ class MenusModelItem extends JModelAdmin
 				{
 					// Load the language file for the component.
 					$lang = JFactory::getLanguage();
+<<<<<<< HEAD
 					$lang->load($args['option'], JPATH_ADMINISTRATOR, null, false, true)
 					|| $lang->load($args['option'], JPATH_ADMINISTRATOR . '/components/' . $args['option'], null, false, true);
+=======
+						$lang->load($args['option'], JPATH_ADMINISTRATOR, null, false, true)
+					||	$lang->load($args['option'], JPATH_ADMINISTRATOR . '/components/' . $args['option'], null, false, true);
+>>>>>>> FETCH_HEAD
 
 					// Determine the component id.
 					$component = JComponentHelper::getComponent($args['option']);
@@ -999,6 +1008,7 @@ class MenusModelItem extends JModelAdmin
 		}
 		else
 		{
+<<<<<<< HEAD
 			// We don't have a component. Load the form XML to get the help path
 			$xmlFile = JPath::find(JPATH_ROOT . '/administrator/components/com_menus/models/forms', 'item_' . $type . '.xml');
 
@@ -1009,11 +1019,34 @@ class MenusModelItem extends JModelAdmin
 			}
 
 			// Get the help data from the XML file if present.
+=======
+
+			// We don't have a component. Load the form XML to get the help path
+
+			$xmlFile = JPath::find(JPATH_ROOT . '/administrator/components/com_menus/models/forms', 'item_' . $type . '.xml');
+
+
+
+			// Attempt to load the xml file.
+
+			if ($xmlFile && !$xml = simplexml_load_file($xmlFile))
+			{
+
+				throw new Exception(JText::_('JERROR_LOADFILE_FAILED'));
+
+			}
+
+
+
+			// Get the help data from the XML file if present.
+
+>>>>>>> FETCH_HEAD
 			$help = $xml->xpath('/form/help');
 		}
 
 		if (!empty($help))
 		{
+<<<<<<< HEAD
 			$helpKey = trim((string) $help[0]['key']);
 			$helpURL = trim((string) $help[0]['url']);
 			$helpLoc = trim((string) $help[0]['local']);
@@ -1021,6 +1054,23 @@ class MenusModelItem extends JModelAdmin
 			$this->helpKey = $helpKey ? $helpKey : $this->helpKey;
 			$this->helpURL = $helpURL ? $helpURL : $this->helpURL;
 			$this->helpLocal = (($helpLoc == 'true') || ($helpLoc == '1') || ($helpLoc == 'local')) ? true : false;
+=======
+
+			$helpKey = trim((string) $help[0]['key']);
+
+			$helpURL = trim((string) $help[0]['url']);
+
+			$helpLoc = trim((string) $help[0]['local']);
+
+
+
+			$this->helpKey = $helpKey ? $helpKey : $this->helpKey;
+
+			$this->helpURL = $helpURL ? $helpURL : $this->helpURL;
+
+			$this->helpLocal = (($helpLoc == 'true') || ($helpLoc == '1') || ($helpLoc == 'local')) ? true : false;
+
+>>>>>>> FETCH_HEAD
 		}
 
 		// Now load the component params.
@@ -1536,7 +1586,10 @@ class MenusModelItem extends JModelAdmin
 			{
 				$title = JString::increment($title);
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 			$alias = JString::increment($alias, 'dash');
 		}
 

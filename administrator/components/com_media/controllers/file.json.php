@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_media
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -47,6 +52,7 @@ class MediaControllerFile extends JControllerLegacy
 		JLog::addLogger(array('text_file' => 'upload.error.php'), JLog::ALL, array('upload'));
 
 		// Get some data from the request
+<<<<<<< HEAD
 		$file   = $this->input->files->get('Filedata', '', 'array');
 		$folder = $this->input->get('folder', '', 'path');
 
@@ -57,6 +63,18 @@ class MediaControllerFile extends JControllerLegacy
 			|| $_SERVER['CONTENT_LENGTH'] > $mediaHelper->toBytes(ini_get('upload_max_filesize'))
 			|| $_SERVER['CONTENT_LENGTH'] > $mediaHelper->toBytes(ini_get('post_max_size'))
 			|| $_SERVER['CONTENT_LENGTH'] > $mediaHelper->toBytes(ini_get('memory_limit')))
+=======
+		$file		= JRequest::getVar('Filedata', '', 'files', 'array');
+		$folder		= JRequest::getVar('folder', '', '', 'path');
+		$return		= JRequest::getVar('return-url', null, 'post', 'base64');
+
+		if (
+			$_SERVER['CONTENT_LENGTH']>($params->get('upload_maxsize', 0) * 1024 * 1024) ||
+			$_SERVER['CONTENT_LENGTH']>(int)(ini_get('upload_max_filesize'))* 1024 * 1024 ||
+			$_SERVER['CONTENT_LENGTH']>(int)(ini_get('post_max_size'))* 1024 * 1024 ||
+			$_SERVER['CONTENT_LENGTH']>(int)(ini_get('memory_limit'))* 1024 * 1024
+		)
+>>>>>>> FETCH_HEAD
 		{
 			$response = array(
 				'status' => '0',
@@ -100,9 +118,13 @@ class MediaControllerFile extends JControllerLegacy
 			$object_file = new JObject($file);
 			$object_file->filepath = $filepath;
 			$result = $dispatcher->trigger('onContentBeforeSave', array('com_media.file', &$object_file, true));
+<<<<<<< HEAD
 
 			if (in_array(false, $result, true))
 			{
+=======
+			if (in_array(false, $result, true)) {
+>>>>>>> FETCH_HEAD
 				// There are some errors in the plugins
 				JLog::add('Errors before save: ' . $object_file->filepath . ' : ' . implode(', ', $object_file->getErrors()), JLog::INFO, 'upload');
 

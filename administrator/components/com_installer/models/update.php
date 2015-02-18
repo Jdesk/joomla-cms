@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_installer
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_installer
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -300,6 +307,7 @@ class InstallerModelUpdate extends JModelList
 	private function install($update)
 	{
 		$app = JFactory::getApplication();
+<<<<<<< HEAD
 
 		if (isset($update->get('downloadurl')->_data))
 		{
@@ -323,6 +331,11 @@ class InstallerModelUpdate extends JModelList
 		}
 		else
 		{
+=======
+		if (isset($update->get('downloadurl')->_data)) {
+			$url = trim($update->downloadurl->_data);
+		} else {
+>>>>>>> FETCH_HEAD
 			JError::raiseWarning('', JText::_('COM_INSTALLER_INVALID_EXTENSION_UPDATE'));
 
 			return false;

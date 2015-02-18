@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -26,12 +31,22 @@ class ContentViewFeatured extends JViewLegacy
 	public function display($tpl = null)
 	{
 		// Parameters
+<<<<<<< HEAD
 		$app       = JFactory::getApplication();
 		$doc       = JFactory::getDocument();
 		$params    = $app->getParams();
 		$feedEmail = $app->get('feed_email', 'author');
 		$siteEmail = $app->get('mailfrom');
 		$doc->link = JRoute::_('index.php?option=com_content&view=featured');
+=======
+		$app 		= JFactory::getApplication();
+		$doc		= JFactory::getDocument();
+		$params		= $app->getParams();
+		$feedEmail	= $app->getCfg('feed_email', 'author');
+		$siteEmail	= $app->getCfg('mailfrom');
+
+		$doc->link	= JRoute::_('index.php?option=com_content&view=featured');
+>>>>>>> FETCH_HEAD
 
 		// Get some data from the model
 		$app->input->set('limit', $app->get('feed_limit'));
@@ -59,7 +74,11 @@ class ContentViewFeatured extends JViewLegacy
 			$db->setQuery($query);
 			$row->fulltext = $db->loadResult();
 
+<<<<<<< HEAD
 			$description	= ($params->get('feed_summary', 0) ? $row->introtext . $row->fulltext : $row->introtext);
+=======
+			$description	= ($params->get('feed_summary', 0) ? $row->introtext.$row->fulltext : $row->introtext);
+>>>>>>> FETCH_HEAD
 			$author			= $row->created_by_alias ? $row->created_by_alias : $row->author;
 
 			// Load individual item creator class
@@ -67,6 +86,10 @@ class ContentViewFeatured extends JViewLegacy
 			$item->title		= $title;
 			$item->link			= $link;
 			$item->date			= $row->publish_up;
+<<<<<<< HEAD
+=======
+			$item_category		= $categories->get($row->catid);
+>>>>>>> FETCH_HEAD
 			$item->category		= array();
 
 			// All featured articles are categorized as "Featured"
@@ -81,8 +104,13 @@ class ContentViewFeatured extends JViewLegacy
 				}
 			}
 
+<<<<<<< HEAD
 			$item->author = $author;
 
+=======
+
+			$item->author = $author;
+>>>>>>> FETCH_HEAD
 			if ($feedEmail == 'site')
 			{
 				$item->authorEmail = $siteEmail;
@@ -95,7 +123,11 @@ class ContentViewFeatured extends JViewLegacy
 			// Add readmore link to description if introtext is shown, show_readmore is true and fulltext exists
 			if (!$params->get('feed_summary', 0) && $params->get('feed_show_readmore', 0) && $row->fulltext)
 			{
+<<<<<<< HEAD
 				$description .= '<p class="feed-readmore"><a target="_blank" href ="' . $item->link . '">' . JText::_('COM_CONTENT_FEED_READMORE') . '</a></p>';
+=======
+				$description .= '<p class="feed-readmore"><a target="_blank" href ="' . $item->link . '">'.JText::_('COM_CONTENT_FEED_READMORE').'</a></p>';
+>>>>>>> FETCH_HEAD
 			}
 
 			// Load item description and add div

@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Cache
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -624,19 +628,31 @@ class JCache
 						// We have to serialize the content of the arrays because the may contain other arrays which is a notice in PHP 5.4 and newer
 						$nowvalue 		= array_map('serialize', $headnow[$now]);
 						$beforevalue 	= array_map('serialize', $options['headerbefore'][$now]);
+<<<<<<< HEAD
 
 						$newvalue = array_diff_assoc($nowvalue, $beforevalue);
 						$newvalue = array_map('unserialize', $newvalue);
 
+=======
+						
+						$newvalue = array_diff_assoc($nowvalue, $beforevalue);
+						$newvalue = array_map('unserialize', $newvalue);
+						
+>>>>>>> FETCH_HEAD
 						// Special treatment for script and style declarations.
 						if (($now == 'script' || $now == 'style') && is_array($newvalue) && is_array($options['headerbefore'][$now]))
 						{
 							foreach ($newvalue as $type => $currentScriptStr)
 							{
 								if (isset($options['headerbefore'][$now][strtolower($type)]))
+<<<<<<< HEAD
 								{
 									$oldScriptStr = $options['headerbefore'][$now][strtolower($type)];
 
+=======
+								{ 
+									$oldScriptStr = $options['headerbefore'][$now][strtolower($type)];
+>>>>>>> FETCH_HEAD
 									if ($oldScriptStr != $currentScriptStr)
 									{
 										// Save only the appended declaration.
@@ -714,7 +730,23 @@ class JCache
 	{
 		$app = JFactory::getApplication();
 
+<<<<<<< HEAD
 		$registeredurlparams = new stdClass;
+=======
+		// Get url parameters set by plugins
+		if (!empty($app->registeredurlparams))
+		{
+			$registeredurlparams = $app->registeredurlparams;
+		}
+		else
+		{
+			/*
+			$registeredurlparams = new stdClass;
+			$registeredurlparams->Itemid 	= 'INT';
+			$registeredurlparams->catid 	= 'INT';
+			$registeredurlparams->id 		= 'INT';
+			*/
+>>>>>>> FETCH_HEAD
 
 		// Get url parameters set by plugins
 		if (!empty($app->registeredurlparams))

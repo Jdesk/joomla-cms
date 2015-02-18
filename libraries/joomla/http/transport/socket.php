@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  HTTP
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -63,7 +67,7 @@ class JHttpTransportSocket implements JHttpTransport
 	 * @since   11.3
 	 * @throws  RuntimeException
 	 */
-	public function request($method, JUri $uri, $data = null, array $headers = null, $timeout = null, $userAgent = null)
+	public function request($method, JUri $uri, $data = null, array $headers = null, $timeout = 30, $userAgent = null)
 	{
 		$connection = $this->connect($uri, $timeout);
 
@@ -306,6 +310,7 @@ class JHttpTransportSocket implements JHttpTransport
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Method to check if http transport socket available for use
 	 *
 	 * @return  boolean   True if available else false
@@ -313,6 +318,15 @@ class JHttpTransportSocket implements JHttpTransport
 	 * @since   12.1
 	 */
 	public static function isSupported()
+=======
+	 * method to check if http transport socket available for using
+	 *
+	 * @return bool true if available else false
+	 *
+	 * @since   12.1
+	 */
+	static public function isSupported()
+>>>>>>> FETCH_HEAD
 	{
 		return function_exists('fsockopen') && is_callable('fsockopen');
 	}

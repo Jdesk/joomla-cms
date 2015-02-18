@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -32,7 +39,11 @@ abstract class JHtmlIcon
 	{
 		JHtml::_('bootstrap.tooltip');
 
+<<<<<<< HEAD
 		$uri = JUri::getInstance();
+=======
+		$url = 'index.php?option=com_content&task=article.add&return='.base64_encode(urlencode($uri)).'&a_id=0&catid=' . $category->id;
+>>>>>>> FETCH_HEAD
 
 		$url = 'index.php?option=com_content&task=article.add&return=' . base64_encode($uri) . '&a_id=0&catid=' . $category->id;
 
@@ -86,8 +97,13 @@ abstract class JHtmlIcon
 		$uri      = JUri::getInstance();
 		$base     = $uri->toString(array('scheme', 'host', 'port'));
 		$template = JFactory::getApplication()->getTemplate();
+<<<<<<< HEAD
 		$link     = $base . JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language), false);
 		$url      = 'index.php?option=com_mailto&tmpl=component&template=' . $template . '&link=' . MailToHelper::addLink($link);
+=======
+		$link	= $base.JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language) , false);
+		$url	= 'index.php?option=com_mailto&tmpl=component&template='.$template.'&link='.MailToHelper::addLink($link);
+>>>>>>> FETCH_HEAD
 
 		$status = 'width=400,height=350,menubar=yes,resizable=yes';
 
@@ -165,7 +181,17 @@ abstract class JHtmlIcon
 			return '<span class="hasTooltip" title="' . JHtml::tooltipText($tooltip . '', 0) . '">' . $button . '</span>';
 		}
 
+<<<<<<< HEAD
 		$url = 'index.php?option=com_content&task=article.edit&a_id=' . $article->id . '&return=' . base64_encode($uri);
+=======
+		$url	= 'index.php?option=com_content&task=article.edit&a_id='.$article->id.'&return='.base64_encode(urlencode($uri));
+		$icon	= $article->state ? 'edit.png' : 'edit_unpublished.png';
+		if (strtotime($article->publish_up) > strtotime(JFactory::getDate()))
+		{
+			$icon = 'edit_unpublished.png';
+		}
+		$text	= JHtml::_('image', 'system/'.$icon, JText::_('JGLOBAL_EDIT'), NULL, true);
+>>>>>>> FETCH_HEAD
 
 		if ($article->state == 0)
 		{
@@ -228,12 +254,17 @@ abstract class JHtmlIcon
 	 */
 	public static function print_popup($article, $params, $attribs = array(), $legacy = false)
 	{
+<<<<<<< HEAD
 		$app = JFactory::getApplication();
 		$input = $app->input;
 		$request = $input->request;
 
 		$url  = ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language);
 		$url .= '&tmpl=component&print=1&layout=default&page=' . @ $request->limitstart;
+=======
+		$url  = ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language);
+		$url .= '&tmpl=component&print=1&layout=default&page='.@ $request->limitstart;
+>>>>>>> FETCH_HEAD
 
 		$status = 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no';
 

@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_media
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -59,6 +64,7 @@ class MediaControllerFile extends JControllerLegacy
 		{
 			return false;
 		}
+<<<<<<< HEAD
 
 		// Total length of post back data in bytes.
 		$contentLength = (int) $_SERVER['CONTENT_LENGTH'];
@@ -75,6 +81,14 @@ class MediaControllerFile extends JControllerLegacy
 		// Check for the total size of post back data.
 		if (($postMaxSize > 0 && $contentLength > $postMaxSize)
 			|| ($memoryLimit != -1 && $contentLength > $memoryLimit))
+=======
+		if (
+			$_SERVER['CONTENT_LENGTH']>($params->get('upload_maxsize', 0) * 1024 * 1024) ||
+			$_SERVER['CONTENT_LENGTH']>(int)(ini_get('upload_max_filesize'))* 1024 * 1024 ||
+			$_SERVER['CONTENT_LENGTH']>(int)(ini_get('post_max_size'))* 1024 * 1024 ||
+			(($_SERVER['CONTENT_LENGTH'] > (int) (ini_get('memory_limit')) * 1024 * 1024) && ((int) (ini_get('memory_limit')) != -1))
+		)
+>>>>>>> FETCH_HEAD
 		{
 			JError::raiseWarning(100, JText::_('COM_MEDIA_ERROR_WARNUPLOADTOOLARGE'));
 
@@ -99,6 +113,14 @@ class MediaControllerFile extends JControllerLegacy
 
 				return false;
 			}
+<<<<<<< HEAD
+=======
+			if ($file['size']>($params->get('upload_maxsize', 0) * 1024 * 1024))
+			{
+				JError::raiseNotice(100, JText::_('COM_MEDIA_ERROR_WARNFILETOOLARGE'));
+				return false;
+			}
+>>>>>>> FETCH_HEAD
 
 			if (JFile::exists($file['filepath']))
 			{
@@ -137,7 +159,10 @@ class MediaControllerFile extends JControllerLegacy
 			// Trigger the onContentBeforeSave event.
 			$object_file = new JObject($file);
 			$result = $dispatcher->trigger('onContentBeforeSave', array('com_media.file', &$object_file, true));
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 			if (in_array(false, $result, true))
 			{
 				// There are some errors in the plugins

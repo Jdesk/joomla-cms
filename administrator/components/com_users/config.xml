@@ -56,7 +56,10 @@
 		<field
 			name="mail_to_admin"
 			type="radio"
+<<<<<<< HEAD
 			class="btn-group btn-group-yesno"
+=======
+>>>>>>> FETCH_HEAD
 			default="1"
 			label="COM_USERS_CONFIG_FIELD_MAILTOADMIN_LABEL"
 			description="COM_USERS_CONFIG_FIELD_MAILTOADMIN_DESC">

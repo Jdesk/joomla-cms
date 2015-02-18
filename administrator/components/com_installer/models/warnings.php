@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_installer
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_installer
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -109,6 +116,14 @@ class InstallerModelWarnings extends JModelList
 		}
 
 		$memory_limit = $this->return_bytes(ini_get('memory_limit'));
+<<<<<<< HEAD
+=======
+		if ($memory_limit < (8 * 1024 * 1024) && $memory_limit != -1) { // 8MB
+			$messages[] = array('message'=>JText::_('COM_INSTALLER_MSG_WARNINGS_LOWMEMORYWARN'), 'description'=>JText::_('COM_INSTALLER_MSG_WARNINGS_LOWMEMORYDESC'));
+		} elseif ($memory_limit < (16 * 1024 * 1024) && $memory_limit != -1) { //16MB
+			$messages[] = array('message'=>JText::_('COM_INSTALLER_MSG_WARNINGS_MEDMEMORYWARN'), 'description'=>JText::_('COM_INSTALLER_MSG_WARNINGS_MEDMEMORYDESC'));
+		}
+>>>>>>> FETCH_HEAD
 
 		if ($memory_limit < (8 * 1024 * 1024) && $memory_limit != -1)
 		{

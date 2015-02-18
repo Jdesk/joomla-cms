@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -173,7 +177,11 @@ class MenusControllerItem extends JControllerForm
 
 		if ($data['type'] == 'url')
 		{
+<<<<<<< HEAD
 			$data['link'] = str_replace(array('"', '>', '<'), '', $data['link']);
+=======
+			 $data['link'] = str_replace(array('"', '>', '<'), '', $data['link']);
+>>>>>>> FETCH_HEAD
 
 			if (strstr($data['link'], ':'))
 			{
@@ -185,9 +193,13 @@ class MenusControllerItem extends JControllerForm
 				if (!in_array($protocol, $scheme))
 				{
 					$app->enqueueMessage(JText::_('JLIB_APPLICATION_ERROR_SAVE_NOT_PERMITTED'), 'warning');
+<<<<<<< HEAD
 					$this->setRedirect(
 						JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_item . $this->getRedirectToItemAppend($recordId), false)
 					);
+=======
+					$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_item . $this->getRedirectToItemAppend($recordId), false));
+>>>>>>> FETCH_HEAD
 
 					return false;
 				}

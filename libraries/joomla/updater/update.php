@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Updater
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -261,6 +265,7 @@ class JUpdate extends JObject
 			// For everything else there's...the default!
 			default:
 				$name = strtolower($name);
+<<<<<<< HEAD
 
 				if (!isset($this->currentUpdate->$name))
 				{
@@ -269,6 +274,13 @@ class JUpdate extends JObject
 
 				$this->currentUpdate->$name->_data = '';
 
+=======
+				if (!isset($this->_current_update->$name))
+				{
+					$this->_current_update->$name = new stdClass;
+				}
+				$this->_current_update->$name->_data = '';
+>>>>>>> FETCH_HEAD
 				foreach ($attrs as $key => $data)
 				{
 					$key = strtolower($key);
@@ -308,7 +320,11 @@ class JUpdate extends JObject
 					&& ((!isset($this->currentUpdate->targetplatform->max_dev_level)) || $ver->DEV_LEVEL <= $this->currentUpdate->targetplatform->max_dev_level))
 				{
 					// Check if PHP version supported via <php_minimum> tag, assume true if tag isn't present
+<<<<<<< HEAD
 					if (!isset($this->currentUpdate->php_minimum) || version_compare(PHP_VERSION, $this->currentUpdate->php_minimum->_data, '>='))
+=======
+					if (!isset($this->_current_update->php_minimum) || version_compare(PHP_VERSION, $this->_current_update->php_minimum->_data, '>='))
+>>>>>>> FETCH_HEAD
 					{
 						$phpMatch = true;
 					}
@@ -317,6 +333,7 @@ class JUpdate extends JObject
 						$phpMatch = false;
 					}
 
+<<<<<<< HEAD
 					// Check minimum stability
 					$stabilityMatch = true;
 
@@ -332,11 +349,24 @@ class JUpdate extends JObject
 							if (version_compare($this->currentUpdate->version->_data, $this->latest->version->_data, '>') == 1)
 							{
 								$this->latest = $this->currentUpdate;
+=======
+					if ($phpMatch)
+					{
+						if (isset($this->_latest))
+						{
+							if (version_compare($this->_current_update->version->_data, $this->_latest->version->_data, '>') == 1)
+							{
+								$this->_latest = $this->_current_update;
+>>>>>>> FETCH_HEAD
 							}
 						}
 						else
 						{
+<<<<<<< HEAD
 							$this->latest = $this->currentUpdate;
+=======
+							$this->_latest = $this->_current_update;
+>>>>>>> FETCH_HEAD
 						}
 					}
 				}
@@ -383,6 +413,7 @@ class JUpdate extends JObject
 		// Throw the data for this item together
 		$tag = strtolower($tag);
 
+<<<<<<< HEAD
 		if ($tag == 'tag')
 		{
 			$this->currentUpdate->stability = $this->stabilityTagToInteger((string) $data);
@@ -393,6 +424,12 @@ class JUpdate extends JObject
 		if (isset($this->currentUpdate->$tag))
 		{
 			$this->currentUpdate->$tag->_data .= $data;
+=======
+		//$this->_current_update->$tag->_data .= $data;
+		if (isset($this->_current_update->$tag))
+		{
+			$this->_current_update->$tag->_data .= $data;
+>>>>>>> FETCH_HEAD
 		}
 	}
 
@@ -414,12 +451,20 @@ class JUpdate extends JObject
 		{
 			$response = $http->get($url);
 		}
+<<<<<<< HEAD
 		catch (RuntimeException $e)
+=======
+		catch (Exception $exc)
+>>>>>>> FETCH_HEAD
 		{
 			$response = null;
 		}
 
+<<<<<<< HEAD
 		if ($response === null || $response->code !== 200)
+=======
+		if (is_null($response) || ($response->code != 200))
+>>>>>>> FETCH_HEAD
 		{
 			// TODO: Add a 'mark bad' setting here somehow
 			JLog::add(JText::sprintf('JLIB_UPDATER_ERROR_EXTENSION_OPEN_URL', $url), JLog::WARNING, 'jerror');
@@ -434,6 +479,7 @@ class JUpdate extends JObject
 		xml_set_element_handler($this->xmlParser, '_startElement', '_endElement');
 		xml_set_character_data_handler($this->xmlParser, '_characterData');
 
+<<<<<<< HEAD
 		if (!xml_parse($this->xmlParser, $response->body))
 		{
 			JLog::add(
@@ -449,6 +495,19 @@ class JUpdate extends JObject
 
 		xml_parser_free($this->xmlParser);
 
+=======
+		if (!xml_parse($this->xml_parser, $response->body))
+		{
+			die(
+				sprintf(
+					"XML error: %s at line %d", xml_error_string(xml_get_error_code($this->xml_parser)),
+					xml_get_current_line_number($this->xml_parser)
+				)
+			);
+		}
+
+		xml_parser_free($this->xml_parser);
+>>>>>>> FETCH_HEAD
 		return true;
 	}
 

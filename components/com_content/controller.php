@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -76,6 +83,7 @@ class ContentController extends JControllerLegacy
 			$cachable = false;
 		}
 
+<<<<<<< HEAD
 		$safeurlparams = array(
 			'catid' => 'INT',
 			'id' => 'INT',
@@ -93,6 +101,10 @@ class ContentController extends JControllerLegacy
 			'print' => 'BOOLEAN',
 			'lang' => 'CMD',
 			'Itemid' => 'INT');
+=======
+		$safeurlparams = array('catid'=>'INT', 'id'=>'INT', 'cid'=>'ARRAY', 'year'=>'INT', 'month'=>'INT', 'limit'=>'UINT', 'limitstart'=>'UINT',
+			'showall'=>'INT', 'return'=>'BASE64', 'filter'=>'STRING', 'filter_order'=>'CMD', 'filter_order_Dir'=>'CMD', 'filter-search'=>'STRING', 'print'=>'BOOLEAN', 'lang'=>'CMD', 'Itemid'=>'INT');
+>>>>>>> FETCH_HEAD
 
 		// Check for edit form.
 		if ($vName == 'form' && !$this->checkEditId('com_content.edit.article', $id))

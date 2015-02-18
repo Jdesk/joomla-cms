@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  FileSystem
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -166,8 +170,13 @@ class JPath
 	{
 		if (strpos($path, '..') !== false)
 		{
+<<<<<<< HEAD
 			// Don't translate
 			throw new Exception('JPath::check Use of relative paths not permitted', 20);
+=======
+			JError::raiseError(20, 'JPath::check Use of relative paths not permitted');
+			jexit();
+>>>>>>> FETCH_HEAD
 		}
 
 		$path = self::clean($path);

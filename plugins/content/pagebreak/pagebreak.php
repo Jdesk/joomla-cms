@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  Content.pagebreak
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -217,6 +222,7 @@ class PlgContentPagebreak extends JPlugin
 						elseif (isset($match['title']))
 						{
 							$title	= stripslashes($match['title']);
+<<<<<<< HEAD
 						}
 						else
 						{
@@ -224,6 +230,12 @@ class PlgContentPagebreak extends JPlugin
 						}
 
 						$t[] = (string) JHtml::_($style . '.panel', $title, 'article' . $row->id . '-' . $style . $key);
+=======
+						} else {
+							$title	= JText::sprintf('PLG_CONTENT_PAGEBREAK_PAGE_NUM', $key + 1);
+						}
+						$t[] = (string) JHtml::_($style.'.panel', $title, 'basic-details');
+>>>>>>> FETCH_HEAD
 					}
 
 					$t[] = (string) $subtext;
@@ -257,7 +269,11 @@ class PlgContentPagebreak extends JPlugin
 		$showall = $input->getInt('showall', 0);
 
 		// TOC header.
+<<<<<<< HEAD
 		$row->toc = '<div class="pull-right article-index">';
+=======
+		$row->toc = '<div id="article-index">';
+>>>>>>> FETCH_HEAD
 
 		if ($this->params->get('article_index') == 1)
 		{
@@ -273,19 +289,35 @@ class PlgContentPagebreak extends JPlugin
 
 		// TOC first Page link.
 		$class = ($limitstart === 0 && $showall === 0) ? 'toclink active' : 'toclink';
+<<<<<<< HEAD
 		$row->toc .= '<ul class="nav nav-tabs nav-stacked">
 		<li class="' . $class . '">
 			<a href="'
 			. JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=&limitstart=')
 			. '" class="' . $class . '">' . $heading . '</a>
+=======
+		$row->toc .= '<ul>
+		<li>
+
+			<a href="'. JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language).'&showall=&limitstart=') .'" class="'.$class.'">'
+			. $heading .
+			'</a>
+
+>>>>>>> FETCH_HEAD
 		</li>
 		';
 
 		$i = 2;
 
+<<<<<<< HEAD
 		foreach ($matches as $bot)
 		{
 			$link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=&limitstart=' . ($i - 1));
+=======
+		foreach ($matches as $bot) {
+			$link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language).'&showall=&limitstart='. ($i-1));
+
+>>>>>>> FETCH_HEAD
 
 			if (@$bot[0])
 			{
@@ -322,9 +354,14 @@ class PlgContentPagebreak extends JPlugin
 			$i++;
 		}
 
+<<<<<<< HEAD
 		if ($this->params->get('showall'))
 		{
 			$link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=1&limitstart=');
+=======
+		if ($this->params->get('showall')) {
+			$link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language).'&showall=1&limitstart=');
+>>>>>>> FETCH_HEAD
 			$class = ($showall == 1) ? 'toclink active' : 'toclink';
 			$row->toc .= '
 			<li>
@@ -364,8 +401,12 @@ class PlgContentPagebreak extends JPlugin
 		{
 			$page_next = $page + 1;
 
+<<<<<<< HEAD
 			$link_next = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=&limitstart=' . ($page_next));
 
+=======
+			$link_next = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language).'&showall=&limitstart='. ($page_next));
+>>>>>>> FETCH_HEAD
 			// Next >>
 			$next = '<a href="' . $link_next . '">' . JText::_('JNEXT') . $pnSpace . JText::_('JGLOBAL_GT') . JText::_('JGLOBAL_GT') . '</a>';
 		}
@@ -378,8 +419,12 @@ class PlgContentPagebreak extends JPlugin
 		{
 			$page_prev = $page - 1 == 0 ? '' : $page - 1;
 
+<<<<<<< HEAD
 			$link_prev = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=&limitstart=' . ($page_prev));
 
+=======
+			$link_prev = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language).'&showall=&limitstart='. ($page_prev));
+>>>>>>> FETCH_HEAD
 			// << Prev
 			$prev = '<a href="' . $link_prev . '">' . JText::_('JGLOBAL_LT') . JText::_('JGLOBAL_LT') . $pnSpace . JText::_('JPREV') . '</a>';
 		}

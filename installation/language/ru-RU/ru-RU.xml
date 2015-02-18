@@ -3,17 +3,28 @@
 	version="3.2"
 	client="installation">
 	<name>Russian (CIS)</name>
+<<<<<<< HEAD
 	<version>3.2.0</version>
 	<creationDate>2012-09-27</creationDate>
 	<author>Joomlaportal.ru</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<version>2.5</version>
+	<creationDate>2011-01-09</creationDate>
+	<author>Russian Translation Community</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description>Русский языковой файл для мастера установки Joomla</description>
 	<files>
 		<filename>ru-RU.ini</filename>
 	</files>
 	<metadata>
+<<<<<<< HEAD
 		<name>Russian Русский</name>
+=======
+		<name>Russian-Русский (CIS)</name>
+>>>>>>> FETCH_HEAD
 		<tag>ru-RU</tag>
 		<rtl>0</rtl>
 	</metadata>

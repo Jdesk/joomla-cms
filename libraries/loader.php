@@ -2,7 +2,11 @@
 /**
  * @package    Joomla.Platform
  *
+<<<<<<< HEAD
  * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -561,15 +565,41 @@ abstract class JLoader
 	{
 		foreach (self::$prefixes as $prefix => $lookup)
 		{
+<<<<<<< HEAD
 			$chr = strlen($prefix) < strlen($class) ? $class[strlen($prefix)] : 0;
 
 			if (strpos($class, $prefix) === 0 && ($chr === strtoupper($chr)))
+=======
+			if (strpos($class, $prefix) === 0 && self::isFirstLetterAfterPrefixUpperCase($prefix, $class))
+>>>>>>> FETCH_HEAD
 			{
 				return self::_load(substr($class, strlen($prefix)), $lookup);
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Check if first letter after the prefix length is uppercase (First letter of class name)
+	 * This allows to match proper library when one library prefix is included in the prefix of another class
+	 * e.g: LMyclass and LibMyclass
+	 *
+	 * @param   string  $prefix  Library prefix
+	 * @param   string  $class   Classname
+	 *
+	 * @return bool
+	 */
+	private static function isFirstLetterAfterPrefixUpperCase($prefix, $class)
+	{
+		if (strlen($prefix) >= strlen($class))
+		{
+			return false;
+		}
+
+		$chr = $class[strlen($prefix)];
+
+		return $chr === strtoupper($chr);
 	}
 
 	/**
