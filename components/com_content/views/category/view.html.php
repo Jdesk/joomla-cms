@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -36,6 +43,7 @@ class ContentViewCategory extends JViewCategory
 	 */
 	protected $link_items = array();
 
+<<<<<<< HEAD
 	/**
 	 * @var    integer  Number of columns in a multi column display
 	 * @since  3.2
@@ -53,6 +61,38 @@ class ContentViewCategory extends JViewCategory
 	 * @since  3.2
 	 */
 	protected $defaultPageTitle = 'JGLOBAL_ARTICLES';
+=======
+	function display($tpl = null)
+	{
+		$app	= JFactory::getApplication();
+		$user	= JFactory::getUser();
+
+		// Get some data from the models
+		$state		= $this->get('State');
+		$params		= $state->params;
+		$items		= $this->get('Items');
+		$category	= $this->get('Category');
+		$children	= $this->get('Children');
+		$parent		= $this->get('Parent');
+		$pagination = $this->get('Pagination');
+
+		// Check for errors.
+		if (count($errors = $this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", $errors));
+			return false;
+		}
+
+		if ($category == false)
+		{
+			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));
+		}
+
+		if ($parent == false)
+		{
+			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));
+		}
+>>>>>>> FETCH_HEAD
 
 	/**
 	 * @var    string  The name of the view to link individual items to
@@ -91,8 +131,13 @@ class ContentViewCategory extends JViewCategory
 				$item->parent_slug = null;
 			}
 
+<<<<<<< HEAD
 			$item->catslug = $item->category_alias ? ($item->catid . ':' . $item->category_alias) : $item->catid;
 			$item->event   = new stdClass;
+=======
+			$item->catslug = $item->category_alias ? ($item->catid.':'.$item->category_alias) : $item->catid;
+			$item->event = new stdClass();
+>>>>>>> FETCH_HEAD
 
 			$dispatcher = JEventDispatcher::getInstance();
 
@@ -103,7 +148,11 @@ class ContentViewCategory extends JViewCategory
 			}
 
 			JPluginHelper::importPlugin('content');
+<<<<<<< HEAD
 			$dispatcher->trigger('onContentPrepare', array ('com_content.category', &$item, &$item->params, 0));
+=======
+			$results = $dispatcher->trigger('onContentPrepare', array ('com_content.category', &$item, &$this->params, 0));
+>>>>>>> FETCH_HEAD
 
 			// Old plugins: Use processed text as introtext
 			$item->introtext = $item->text;

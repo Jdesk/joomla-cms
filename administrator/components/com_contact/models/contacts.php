@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_contact
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_contact
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -243,10 +250,16 @@ class ContactModelContacts extends JModelList
 			{
 				$query->where('a.id = ' . (int) substr($search, 3));
 			}
+<<<<<<< HEAD
 			elseif (stripos($search, 'author:') === 0)
 			{
 				$search = $db->quote('%' . $db->escape(substr($search, 7), true) . '%');
 				$query->where('(uc.name LIKE ' . $search . ' OR uc.username LIKE ' . $search . ')');
+=======
+			elseif (stripos($search, 'author:') === 0) {
+				$search = $db->Quote('%'.$db->escape(substr($search, 7), true).'%');
+				$query->where('(uc.name LIKE '.$search.' OR uc.username LIKE '.$search.')');
+>>>>>>> FETCH_HEAD
 			}
 			else
 			{

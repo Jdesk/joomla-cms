@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  User
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -304,10 +308,17 @@ abstract class JUserHelper
 	 */
 	public static function hashPassword($password)
 	{
+<<<<<<< HEAD
 		// JCrypt::hasStrongPasswordSupport() includes a fallback for us in the worst case
 		JCrypt::hasStrongPasswordSupport();
 
 		return password_hash($password, PASSWORD_DEFAULT);
+=======
+		// Use PHPass's portable hashes with a cost of 10.
+		$phpass = new PasswordHash(10, true);
+
+		return $phpass->HashPassword($password);
+>>>>>>> FETCH_HEAD
 	}
 
 	/**
@@ -336,6 +347,7 @@ abstract class JUserHelper
 
 			$match = $phpass->CheckPassword($password, $hash);
 
+<<<<<<< HEAD
 			$rehash = true;
 		}
 		elseif ($hash[0] == '$')
@@ -358,6 +370,9 @@ abstract class JUserHelper
 			$match = JCrypt::timingSafeCompare($hash, $testcrypt);
 
 			$rehash = true;
+=======
+			$rehash = false;
+>>>>>>> FETCH_HEAD
 		}
 		else
 		{
@@ -368,9 +383,13 @@ abstract class JUserHelper
 
 			$rehash = true;
 
+<<<<<<< HEAD
 			// Compile the hash to compare
 			// If the salt is empty AND there is a ':' in the original hash, we must append ':' at the end
 			$testcrypt = md5($password . $salt) . ($salt ? ':' . $salt : (strpos($hash, ':') !== false ? ':' : ''));
+=======
+			$testcrypt = md5($password . $salt) . ($salt ? ':' . $salt : '');
+>>>>>>> FETCH_HEAD
 
 			$match = JCrypt::timingSafeCompare($hash, $testcrypt);
 		}
@@ -379,7 +398,11 @@ abstract class JUserHelper
 		if ((int) $user_id > 0 && $match && $rehash)
 		{
 			$user = new JUser($user_id);
+<<<<<<< HEAD
 			$user->password = static::hashPassword($password);
+=======
+			$user->password = self::hashPassword($password);
+>>>>>>> FETCH_HEAD
 			$user->save();
 		}
 
@@ -402,6 +425,10 @@ abstract class JUserHelper
 	 * @return  string  The encrypted password.
 	 *
 	 * @since   11.1
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> FETCH_HEAD
 	 * @deprecated  4.0
 	 */
 	public static function getCryptedPassword($plaintext, $salt = '', $encryption = 'md5-hex', $show_encrypt = false)

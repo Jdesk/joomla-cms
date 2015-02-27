@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Application
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -157,51 +161,55 @@ class JApplicationDaemon extends JApplicationCli
 		JLog::add('Received signal: ' . $signal, JLog::DEBUG);
 
 		// Let's make sure we have an application instance.
-		if (!is_subclass_of(static::$instance, 'JApplicationDaemon'))
+		if (!is_subclass_of(self::$instance, 'JApplicationDaemon'))
 		{
 			JLog::add('Cannot find the application instance.', JLog::EMERGENCY);
 			throw new RuntimeException('Cannot find the application instance.');
 		}
 
 		// Fire the onReceiveSignal event.
-		static::$instance->triggerEvent('onReceiveSignal', array($signal));
+		self::$instance->triggerEvent('onReceiveSignal', array($signal));
 
 		switch ($signal)
 		{
 			case SIGINT:
 			case SIGTERM:
 				// Handle shutdown tasks
-				if (static::$instance->running && static::$instance->isActive())
+				if (self::$instance->running && self::$instance->isActive())
 				{
-					static::$instance->shutdown();
+					self::$instance->shutdown();
 				}
 				else
 				{
-					static::$instance->close();
+					self::$instance->close();
 				}
 				break;
 			case SIGHUP:
 				// Handle restart tasks
-				if (static::$instance->running && static::$instance->isActive())
+				if (self::$instance->running && self::$instance->isActive())
 				{
-					static::$instance->shutdown(true);
+					self::$instance->shutdown(true);
 				}
 				else
 				{
-					static::$instance->close();
+					self::$instance->close();
 				}
 				break;
 			case SIGCHLD:
 				// A child process has died
+<<<<<<< HEAD
 				while (static::$instance->pcntlWait($signal, WNOHANG || WUNTRACED) > 0)
+=======
+				while (self::$instance->pcntlWait($signal, WNOHANG or WUNTRACED) > 0)
+>>>>>>> FETCH_HEAD
 				{
 					usleep(1000);
 				}
 				break;
 			case SIGCLD:
-				while (static::$instance->pcntlWait($signal, WNOHANG) > 0)
+				while (self::$instance->pcntlWait($signal, WNOHANG) > 0)
 				{
-					$signal = static::$instance->pcntlChildExitStatus($signal);
+					$signal = self::$instance->pcntlChildExitStatus($signal);
 				}
 				break;
 			default:

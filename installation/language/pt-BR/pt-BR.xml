@@ -2,11 +2,19 @@
 <metafile
 	version="3.2"
 	client="installation">
+<<<<<<< HEAD
 	<name>Português Brasileiro (pt-BR)</name>
 	<version>3.2.0</version>
 	<creationDate>January 2015</creationDate>
 	<author>Equipe de Tradução no Brasil</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<name>Português (Brasil)</name>
+	<version>2.5</version>
+	<creationDate>Janeiro 2011</creationDate>
+	<author>Joomla! Brasil</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved. </copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description></description>
 	<files>

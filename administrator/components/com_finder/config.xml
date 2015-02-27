@@ -93,7 +93,10 @@
 		</field>
 		<field name="show_advanced_tips"
 			type="radio"
+<<<<<<< HEAD
 			class="btn-group btn-group-yesno"
+=======
+>>>>>>> FETCH_HEAD
 			default="1"
 			label="COM_FINDER_CONFIG_SHOW_ADVANCED_TIPS_LABEL"
 			description="COM_FINDER_CONFIG_SHOW_ADVANCED_TIPS_DESCRIPTION">

@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_users
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -42,10 +49,17 @@ class UsersHelperDebug
 			foreach ($items as &$item)
 			{
 				// Load language
+<<<<<<< HEAD
 				$extension = $item->value;
 				$source = JPATH_ADMINISTRATOR . '/components/' . $extension;
 				$lang->load("$extension.sys", JPATH_ADMINISTRATOR, null, false, true)
 					|| $lang->load("$extension.sys", $source, null, false, true);
+=======
+				$extension 	= $item->value;
+				$source 	= JPATH_ADMINISTRATOR . '/components/' . $extension;
+					$lang->load("$extension.sys", JPATH_ADMINISTRATOR, null, false, true)
+				||	$lang->load("$extension.sys", $source, null, false, true);
+>>>>>>> FETCH_HEAD
 
 				// Translate component name
 				$item->text = JText::_($item->text);
@@ -117,6 +131,7 @@ class UsersHelperDebug
 				}
 
 				// Load language
+<<<<<<< HEAD
 				$lang = JFactory::getLanguage();
 				$extension = 'com_config';
 				$source = JPATH_ADMINISTRATOR . '/components/' . $extension;
@@ -125,6 +140,14 @@ class UsersHelperDebug
 					|| $lang->load($extension, $source, null, false, false)
 					|| $lang->load($extension, JPATH_ADMINISTRATOR, $lang->getDefault(), false, false)
 					|| $lang->load($extension, $source, $lang->getDefault(), false, false);
+=======
+				$lang 		= JFactory::getLanguage();
+				$extension 	= 'com_config';
+				$source 	= JPATH_ADMINISTRATOR . '/components/' . $extension;
+
+					$lang->load("$extension.sys", JPATH_ADMINISTRATOR, null, false, true)
+				||	$lang->load("$extension.sys", $source, null, false, true);
+>>>>>>> FETCH_HEAD
 			}
 		}
 

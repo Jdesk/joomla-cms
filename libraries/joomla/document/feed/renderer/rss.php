@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Document
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -80,7 +84,11 @@ class JDocumentRendererRSS extends JDocumentRenderer
 		$feed .= "	<channel>\n";
 		$feed .= "		<title>" . $feed_title . "</title>\n";
 		$feed .= "		<description><![CDATA[" . $data->description . "]]></description>\n";
+<<<<<<< HEAD
 		$feed .= "		<link>" . str_replace(' ', '%20', $url . $datalink) . "</link>\n";
+=======
+		$feed .= "		<link>" . str_replace(' ', '%20', $url . $data->link) . "</link>\n";
+>>>>>>> FETCH_HEAD
 		$feed .= "		<lastBuildDate>" . htmlspecialchars($now->toRFC822(true), ENT_COMPAT, 'UTF-8') . "</lastBuildDate>\n";
 		$feed .= "		<generator>" . $data->getGenerator() . "</generator>\n";
 		$feed .= '		<atom:link rel="self" type="application/rss+xml" href="' . str_replace(' ', '%20', $url . $syndicationURL) . "\"/>\n";

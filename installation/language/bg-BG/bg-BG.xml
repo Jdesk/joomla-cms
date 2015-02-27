@@ -5,8 +5,13 @@
 	<name>Bulgarian (Български)</name>
 	<version>3.2.0</version>
 	<creationDate>August 2011</creationDate>
+<<<<<<< HEAD
 	<author>Yuriy Boev</author>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<author>Stefan Ilivanov</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description>Bulgarian language installation for Joomla</description>
 	<files>

@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  mod_related_items
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	mod_related_items
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -75,6 +82,7 @@ abstract class ModRelatedItemsHelper
 
 				if (count($likes))
 				{
+<<<<<<< HEAD
 					// Select other items based on the metakey field 'like' the keys found
 					$query->clear()
 						->select('a.id')
@@ -93,6 +101,26 @@ abstract class ModRelatedItemsHelper
 					$case_when .= $query->concatenate(array($a_id, 'a.alias'), ':');
 					$case_when .= ' ELSE ';
 					$case_when .= $a_id . ' END as slug';
+=======
+					// select other items based on the metakey field 'like' the keys found
+					$query->clear();
+					$query->select('a.id');
+					$query->select('a.title');
+					$query->select('DATE_FORMAT(a.created, "%Y-%m-%d") as created');
+					$query->select('a.catid');
+					$query->select('a.language');
+					$query->select('cc.access AS cat_access');
+					$query->select('cc.published AS cat_state');
+
+		            //sqlsrv changes
+			        $case_when = ' CASE WHEN ';
+			        $case_when .= $query->charLength('a.alias');
+			        $case_when .= ' THEN ';
+			        $a_id = $query->castAsChar('a.id');
+			        $case_when .= $query->concatenate(array($a_id, 'a.alias'), ':');
+			        $case_when .= ' ELSE ';
+			        $case_when .= $a_id.' END as slug';
+>>>>>>> FETCH_HEAD
 					$query->select($case_when);
 
 					$case_when = ' CASE WHEN ';
@@ -136,7 +164,11 @@ abstract class ModRelatedItemsHelper
 						{
 							if ($row->cat_state == 1)
 							{
+<<<<<<< HEAD
 								$row->route = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language));
+=======
+								$row->route = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catslug, $row->language));
+>>>>>>> FETCH_HEAD
 								$related[] = $row;
 							}
 						}

@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -390,9 +394,16 @@ class UsersModelUser extends JModelAdmin
 	 */
 	public function block(&$pks, $value = 1)
 	{
+<<<<<<< HEAD
 		$app        = JFactory::getApplication();
 		$dispatcher = JEventDispatcher::getInstance();
 		$user       = JFactory::getUser();
+=======
+		// Initialise variables.
+		$app		= JFactory::getApplication();
+		$dispatcher	= JDispatcher::getInstance();
+		$user		= JFactory::getUser();
+>>>>>>> FETCH_HEAD
 
 		// Check if I am a Super Admin
 		$iAmSuperAdmin = $user->authorise('core.admin');
@@ -412,8 +423,13 @@ class UsersModelUser extends JModelAdmin
 			}
 			elseif ($table->load($pk))
 			{
+<<<<<<< HEAD
 				$old   = $table->getProperties();
 				$allow = $user->authorise('core.edit.state', 'com_users');
+=======
+				$old	= $table->getProperties();
+				$allow	= $user->authorise('core.edit.state', 'com_users');
+>>>>>>> FETCH_HEAD
 
 				// Don't allow non-super-admin to delete a super admin
 				$allow = (!$iAmSuperAdmin && JAccess::check($pk, 'core.admin')) ? false : $allow;
@@ -450,8 +466,13 @@ class UsersModelUser extends JModelAdmin
 							return false;
 						}
 
+<<<<<<< HEAD
 						// Trigger the before save event.
 						$result = $dispatcher->trigger($this->event_before_save, array($old, false, $table->getProperties()));
+=======
+						// Trigger the onUserBeforeSave event.
+						$result = $dispatcher->trigger('onUserBeforeSave', array($old, false, $table->getProperties()));
+>>>>>>> FETCH_HEAD
 
 						if (in_array(false, $result, true))
 						{
@@ -547,8 +568,13 @@ class UsersModelUser extends JModelAdmin
 							return false;
 						}
 
+<<<<<<< HEAD
 						// Trigger the before save event.
 						$result = $dispatcher->trigger($this->event_before_save, array($old, false, $table->getProperties()));
+=======
+						// Trigger the onUserBeforeSave event.
+						$result = $dispatcher->trigger('onUserBeforeSave', array($old, false, $table->getProperties()));
+>>>>>>> FETCH_HEAD
 
 						if (in_array(false, $result, true))
 						{
@@ -627,6 +653,7 @@ class UsersModelUser extends JModelAdmin
 				return false;
 			}
 
+<<<<<<< HEAD
 			$done = true;
 		}
 
@@ -637,6 +664,8 @@ class UsersModelUser extends JModelAdmin
 				return false;
 			}
 
+=======
+>>>>>>> FETCH_HEAD
 			$done = true;
 		}
 
@@ -771,11 +800,15 @@ class UsersModelUser extends JModelAdmin
 
 			try
 			{
+<<<<<<< HEAD
 				$db->execute();
 			}
 			catch (RuntimeException $e)
 			{
 				$this->setError($e->getMessage());
+=======
+				$this->setError($db->getErrorMsg());
+>>>>>>> FETCH_HEAD
 
 				return false;
 			}
@@ -820,11 +853,15 @@ class UsersModelUser extends JModelAdmin
 
 			try
 			{
+<<<<<<< HEAD
 				$db->execute();
 			}
 			catch (RuntimeException $e)
 			{
 				$this->setError($e->getMessage());
+=======
+				$this->setError($db->getErrorMsg());
+>>>>>>> FETCH_HEAD
 
 				return false;
 			}
@@ -867,6 +904,10 @@ class UsersModelUser extends JModelAdmin
 	 */
 	public function getAssignedGroups($userId = null)
 	{
+<<<<<<< HEAD
+=======
+		// Initialise variables.
+>>>>>>> FETCH_HEAD
 		$userId = (!empty($userId)) ? $userId : (int) $this->getState('user.id');
 
 		if (empty($userId))
@@ -876,11 +917,19 @@ class UsersModelUser extends JModelAdmin
 			$groupsIDs = $this->getForm()->getValue('groups');
 
 			if (!empty($groupsIDs))
+<<<<<<< HEAD
 			{
 				$result = $groupsIDs;
 			}
 			else
 			{
+=======
+			{
+				$result = $groupsIDs;
+			}
+			else
+			{
+>>>>>>> FETCH_HEAD
 				$config = JComponentHelper::getParams('com_users');
 
 				if ($groupId = $config->get('new_usertype'))

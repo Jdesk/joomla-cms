@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Document
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -622,9 +626,14 @@ class JDocumentHTML extends JDocument
 		// Load the language file for the template
 		$lang = JFactory::getLanguage();
 
+<<<<<<< HEAD
 		// 1.5 or core then 1.6
 		$lang->load('tpl_' . $template, JPATH_BASE, null, false, true)
 			|| $lang->load('tpl_' . $template, $directory . '/' . $template, null, false, true);
+=======
+			$lang->load('tpl_' . $template, JPATH_BASE, null, false, true)
+		||	$lang->load('tpl_' . $template, $directory . '/' . $template, null, false, true);
+>>>>>>> FETCH_HEAD
 
 		// Assign the variables
 		$this->template = $template;

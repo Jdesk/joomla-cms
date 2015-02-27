@@ -3,7 +3,11 @@
  * @package     Joomla.Plugin
  * @subpackage  User.profile
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -76,6 +80,7 @@ class JFormFieldTos extends JFormFieldRadio
 			) . '"';
 		}
 
+<<<<<<< HEAD
 		$tosarticle = $this->element['article'] > 0 ? (int) $this->element['article'] : 0;
 
 		$link = '';
@@ -97,6 +102,10 @@ class JFormFieldTos extends JFormFieldRadio
 		{
 			$link = $text;
 		}
+=======
+		$tosarticle = $this->element['article'] ? (int) $this->element['article'] : 1;
+		$link = '<a class="modal" title="" href="index.php?option=com_content&amp;view=article&amp;layout=modal&amp;id=' . $tosarticle . '&amp;tmpl=component" rel="{handler: \'iframe\', size: {x:800, y:500}}">' . $text . '</a>';
+>>>>>>> FETCH_HEAD
 
 		// Add the label text and closing tag.
 		$label .= '>' . $link . '<span class="star">&#160;*</span></label>';

@@ -1,8 +1,15 @@
 1- What is this?
+<<<<<<< HEAD
 	* This is a Joomla! installation/upgrade package to version 3.x
 	* Joomla! Official site: http://www.joomla.org
 	* Joomla! 3.4 version history - https://docs.joomla.org/Joomla_3.4_version_history
 	* Detailed changes in the Changelog: https://github.com/joomla/joomla-cms/commits/master
+=======
+    * This is a Joomla! installation/upgrade package to version 2.5.x
+    * Joomla! Official site: http://www.joomla.org
+    * Joomla 2.5 version history - http://docs.joomla.org/Joomla_2.5_version_history
+    * Detailed changes in the Changelog: https://github.com/joomla/joomla-cms/commits/2.5.x
+>>>>>>> FETCH_HEAD
 
 2- What is Joomla?
 	* Joomla is a Content Management System (CMS) which enables you to build Web sites and powerful online applications.
@@ -33,11 +40,19 @@
 	* There are lots of ready made templates that you can download.
 
 8- Ready to install Joomla?
+<<<<<<< HEAD
 	* See minimum requirements here: http://www.joomla.org/technical-requirements.html
 	* How do you install Joomla! ? - https://docs.joomla.org/Installing_Joomla!
 	* Start your Joomla experience building your site with a local test server.
 	When ready it can be moved to an on-line hosting account of your choice.
 	See the tutorial: https://docs.joomla.org/Tutorial:Joomla_Local_install
+=======
+    * See minimum requirements here: http://www.joomla.org/technical-requirements.html
+    * How do you install Joomla! ? - http://docs.joomla.org/J2.5:Installing_Joomla
+    * Start your Joomla experience building your site with a local test server.
+	When ready it can be moved to an on-line hosting account of your choice. 
+	See the tutorial: http://docs.joomla.org/Tutorial:Joomla_Local_install
+>>>>>>> FETCH_HEAD
 
 9- Updates are free!
 	* Always use the latest version: http://www.joomla.org/download.html
@@ -65,7 +80,14 @@
 	* Are you a Web designer? https://docs.joomla.org/Web_designers
 
 Copyright:
+<<<<<<< HEAD
 	* Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.
 	* Credits: https://docs.joomla.org/Joomla!_Credits_and_Thanks
 	* Distributed under the GNU General Public License version 2 or later
 	* See Licenses details at https://docs.joomla.org/Joomla_Licenses
+=======
+    * Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.
+    * Credits: http://docs.joomla.org/Joomla!_Credits_and_Thanks
+    * Distributed under the GNU General Public License version 2 or later
+    * See Licenses details at http://docs.joomla.org/Joomla_Licenses
+>>>>>>> FETCH_HEAD

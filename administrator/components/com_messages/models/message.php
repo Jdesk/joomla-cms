@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_messages
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -61,32 +66,52 @@ class MessagesModelMessage extends JModelAdmin
 	 */
 	public function delete(&$pks)
 	{
+<<<<<<< HEAD
 		$pks   = (array) $pks;
 		$table = $this->getTable();
 		$user  = JFactory::getUser();
+=======
+		$pks = (array) $pks;
+		$table = $this->getTable();
+		$user = JFactory::getUser();
+>>>>>>> FETCH_HEAD
 
 		// Iterate the items to delete each one.
 		foreach ($pks as $i => $pk)
 		{
 			if ($table->load($pk))
 			{
+<<<<<<< HEAD
 				if ($table->user_id_to != $user->id)
 				{
 					// Prune items that you can't change.
 					unset($pks[$i]);
 					JLog::add(JText::_('JLIB_APPLICATION_ERROR_DELETE_NOT_PERMITTED'), JLog::WARNING, 'jerror');
 
+=======
+				if ($table->user_id_to !== $user->id)
+				{
+					// Prune items that you can't change.
+					unset($pks[$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_DELETE_NOT_PERMITTED'));
+>>>>>>> FETCH_HEAD
 					return false;
 				}
 			}
 			else
 			{
 				$this->setError($table->getError());
+<<<<<<< HEAD
 
 				return false;
 			}
 		}
 
+=======
+				return false;
+			}
+		}
+>>>>>>> FETCH_HEAD
 		return parent::delete($pks);
 	}
 
@@ -239,9 +264,15 @@ class MessagesModelMessage extends JModelAdmin
 	 */
 	public function publish(&$pks, $value = 1)
 	{
+<<<<<<< HEAD
 		$user  = JFactory::getUser();
 		$table = $this->getTable();
 		$pks   = (array) $pks;
+=======
+		$user = JFactory::getUser();
+		$table = $this->getTable();
+		$pks = (array) $pks;
+>>>>>>> FETCH_HEAD
 
 		// Check that the recipient matches the current user
 		foreach ($pks as $i => $pk)
@@ -250,6 +281,7 @@ class MessagesModelMessage extends JModelAdmin
 
 			if ($table->load($pk))
 			{
+<<<<<<< HEAD
 				if ($table->user_id_to != $user->id)
 				{
 					// Prune items that you can't change.
@@ -259,6 +291,17 @@ class MessagesModelMessage extends JModelAdmin
 					return false;
 				}
 			}
+=======
+				if ($table->user_id_to !== $user->id)
+				{
+					// Prune items that you can't change.
+					unset($pks[$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+					return false;
+				}
+			}
+
+>>>>>>> FETCH_HEAD
 		}
 
 		return parent::publish($pks, $value);

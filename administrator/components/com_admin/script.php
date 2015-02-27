@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_admin
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_admin
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -238,6 +245,7 @@ class JoomlaInstallerScript
 		$extensions[] = array('plugin', 'joomlaupdate', 'quickicon', 0);
 		$extensions[] = array('plugin', 'extensionupdate', 'quickicon', 0);
 		$extensions[] = array('plugin', 'recaptcha', 'captcha', 0);
+<<<<<<< HEAD
 		$extensions[] = array('plugin', 'categories', 'finder', 0);
 		$extensions[] = array('plugin', 'contacts', 'finder', 0);
 		$extensions[] = array('plugin', 'content', 'finder', 0);
@@ -246,6 +254,9 @@ class JoomlaInstallerScript
 		$extensions[] = array('plugin', 'totp', 'twofactorauth', 0);
 		$extensions[] = array('plugin', 'yubikey', 'twofactorauth', 0);
 		$extensions[] = array('plugin', 'nocaptcha', 'captcha', 0);
+=======
+		$extensions[] = array('plugin', 'eosnotify', 'quickicon', 0);
+>>>>>>> FETCH_HEAD
 
 		// Templates
 		$extensions[] = array('template', 'beez3', '', 0);
@@ -364,6 +375,7 @@ class JoomlaInstallerScript
 			'/media/com_finder/images/calendar.png',
 			'/media/com_finder/images/mime/index.html',
 			'/media/com_finder/images/mime/pdf.png',
+<<<<<<< HEAD
 			'/components/com_media/controller.php',
 			'/components/com_media/helpers/index.html',
 			'/components/com_media/helpers/media.php',
@@ -674,12 +686,15 @@ class JoomlaInstallerScript
 			'/media/system/css/mooRainbow.css',
 			'/media/system/js/mooRainbow-uncompressed.js',
 			'/media/system/js/mooRainbow.js',
+=======
+>>>>>>> FETCH_HEAD
 			'/media/system/js/swf-uncompressed.js',
 			'/media/system/js/swf.js',
 			'/media/system/js/uploader-uncompressed.js',
 			'/media/system/js/uploader.js',
 			'/media/system/swf/index.html',
 			'/media/system/swf/uploader.swf',
+<<<<<<< HEAD
 			// Joomla! 3.2
 			'/administrator/components/com_contact/models/fields/modal/contacts.php',
 			'/administrator/components/com_newsfeeds/models/fields/modal/newsfeeds.php',
@@ -1160,6 +1175,8 @@ class JoomlaInstallerScript
 			'/media/editors/codemirror/js/php.js',
 			'/media/editors/codemirror/js/xml-fold.js',
 			'/media/editors/codemirror/js/xml.js',
+=======
+>>>>>>> FETCH_HEAD
 		);
 
 		// TODO There is an issue while deleting folders using the ftp mode
@@ -1167,6 +1184,7 @@ class JoomlaInstallerScript
 			'/administrator/components/com_admin/sql/updates/sqlsrv',
 			'/media/com_finder/images/mime',
 			'/media/com_finder/images',
+<<<<<<< HEAD
 			'/components/com_media/helpers',
 			// Joomla 3.0
 			'/administrator/components/com_contact/elements',
@@ -1241,6 +1259,9 @@ class JoomlaInstallerScript
 			'/libraries/phpmailer',
 			'/media/editors/codemirror/css',
 			'/media/editors/codemirror/js',
+=======
+			'/media/system/swf/',
+>>>>>>> FETCH_HEAD
 		);
 
 		jimport('joomla.filesystem.file');

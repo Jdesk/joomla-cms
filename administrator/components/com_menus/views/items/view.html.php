@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_menus
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -92,7 +99,11 @@ class MenusViewItems extends JViewLegacy
 
 				case 'component':
 				default:
+<<<<<<< HEAD
 					// Load language
+=======
+					// load language
+>>>>>>> FETCH_HEAD
 						$lang->load($item->componentname . '.sys', JPATH_ADMINISTRATOR, null, false, true)
 					||	$lang->load($item->componentname . '.sys', JPATH_ADMINISTRATOR . '/components/' . $item->componentname, null, false, true);
 
@@ -128,7 +139,14 @@ class MenusViewItems extends JViewLegacy
 										{
 											// Use template folder for layout file
 											$temp = explode(':', $vars['layout']);
+<<<<<<< HEAD
 											$file = JPATH_SITE . '/templates/' . $temp[0] . '/html/' . $item->componentname . '/' . $vars['view'] . '/' . $temp[1] . '.xml';
+=======
+											$file = JPATH_SITE.'/templates/'.$temp[0].'/html/'.$item->componentname.'/'.$vars['view'].'/'.$temp[1].'.xml';
+											// Load template language file
+												$lang->load('tpl_' . $temp[0] . '.sys', JPATH_SITE, null, false, true)
+											||	$lang->load('tpl_' . $temp[0] . '.sys', JPATH_SITE . '/templates/' . $temp[0], null, false, true);
+>>>>>>> FETCH_HEAD
 
 											// Load template language file
 											$lang->load('tpl_' . $temp[0] . '.sys', JPATH_SITE, null, false, true)

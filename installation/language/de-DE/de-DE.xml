@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <metafile version="3.2" client="installation">
     <name>German (Germany-Switzerland-Austria)</name>
     <version>3.3.2</version>
@@ -17,3 +18,23 @@
     </metadata>
     <params />
 </metafile>
+=======
+<metafile	version="2.5"	client="installation">
+	<name>German (Germany-Switzerland-Austria)</name>
+	<version>2.5</version>
+	<creationDate>2010-11-20</creationDate>
+	<author>J!German</author>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description></description>
+	<files>
+		<filename>de-DE.ini</filename>
+	</files>
+	<metadata>
+		<name>German (DE-CH-AT)</name>
+		<tag>de-DE</tag>
+		<rtl>0</rtl>
+	</metadata>
+	<params />
+</metafile>
+>>>>>>> FETCH_HEAD

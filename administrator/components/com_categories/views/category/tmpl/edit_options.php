@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_categories
  *
@@ -7,6 +8,12 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  *
  * @deprecated  3.2
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_categories
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;

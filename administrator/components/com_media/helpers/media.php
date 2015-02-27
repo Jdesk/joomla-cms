@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_media
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -56,6 +61,7 @@ abstract class MediaHelper
 	/**
 	 * Checks if the file can be uploaded
 	 *
+<<<<<<< HEAD
 	 * @param   array   $file   File information
 	 * @param   string  $error  An error message to be returned
 	 *
@@ -63,11 +69,64 @@ abstract class MediaHelper
 	 *
 	 * @since   1.5
 	 * @deprecated  4.0  Use JHelperMedia::canUpload instead
+=======
+	 * @param array File information
+	 * @param string An error message to be returned
+	 * @return  boolean
+>>>>>>> FETCH_HEAD
 	 */
 	public static function canUpload($file, $error = '')
 	{
+<<<<<<< HEAD
 		JLog::add('MediaHelper::canUpload() is deprecated. Use JHelperMedia::canUpload() instead.', JLog::WARNING, 'deprecated');
 		$mediaHelper = new JHelperMedia;
+=======
+		$params = JComponentHelper::getParams('com_media');
+
+		if (empty($file['name']))
+		{
+			$err = 'COM_MEDIA_ERROR_UPLOAD_INPUT';
+			return false;
+		}
+
+		jimport('joomla.filesystem.file');
+		if ($file['name'] !== JFile::makesafe($file['name']))
+		{
+			$err = 'COM_MEDIA_ERROR_WARNFILENAME';
+			return false;
+		}
+
+		$format = strtolower(JFile::getExt($file['name']));
+
+		// Media file names should never have executable extensions buried in them.
+		$executable = array(
+				'php', 'js', 'exe', 'phtml', 'java', 'perl', 'py', 'asp','dll', 'go', 'ade', 'adp', 'bat', 'chm', 'cmd', 'com', 'cpl', 'hta', 'ins', 'isp',
+				'jse', 'lib', 'mde', 'msc', 'msp', 'mst', 'pif', 'scr', 'sct', 'shb', 'sys', 'vb', 'vbe', 'vbs', 'vxd', 'wsc', 'wsf', 'wsh'
+		);
+
+		$explodedFileName = explode('.', $file['name']);
+
+		if (count($explodedFileName > 2))
+		{
+			foreach ($executable as $extensionName)
+			{
+				if (in_array($extensionName, $explodedFileName))
+				{
+					$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
+
+					return false;
+				}
+			}
+		}
+
+		$allowable = explode(',', $params->get('upload_extensions'));
+		$ignored = explode(',', $params->get('ignore_extensions'));
+		if ($format == '' || $format == false || (!in_array($format, $allowable) && !in_array($format, $ignored)))
+		{
+			$err = 'COM_MEDIA_ERROR_WARNFILETYPE';
+			return false;
+		}
+>>>>>>> FETCH_HEAD
 
 		return $mediaHelper->canUpload($file, 'com_media');
 	}

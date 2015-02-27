@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Plugin
  * @subpackage  Content.vote
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -79,6 +84,7 @@ class PlgContentVote extends JPlugin
 
 			if ($view == 'article' && $row->state == 1)
 			{
+<<<<<<< HEAD
 				$uri = JUri::getInstance();
 				$uri->setQuery($uri->getQuery() . '&hitcount=0');
 
@@ -99,6 +105,24 @@ class PlgContentVote extends JPlugin
 				$html .= '<input type="hidden" name="task" value="article.vote" />';
 				$html .= '<input type="hidden" name="hitcount" value="0" />';
 				$html .= '<input type="hidden" name="url" value="' . htmlspecialchars($uri->toString()) . '" />';
+=======
+				$uri = JFactory::getURI();
+				$uri->setQuery($uri->getQuery().'&hitcount=0');
+
+				$html .= '<form method="post" action="' . htmlspecialchars($uri->toString()) . '">';
+				$html .= '<div class="content_vote">';
+				$html .= JText::_( 'PLG_VOTE_POOR' );
+				$html .= '<input type="radio" title="'.JText::sprintf('PLG_VOTE_VOTE', '1').'" name="user_rating" value="1" />';
+				$html .= '<input type="radio" title="'.JText::sprintf('PLG_VOTE_VOTE', '2').'" name="user_rating" value="2" />';
+				$html .= '<input type="radio" title="'.JText::sprintf('PLG_VOTE_VOTE', '3').'" name="user_rating" value="3" />';
+				$html .= '<input type="radio" title="'.JText::sprintf('PLG_VOTE_VOTE', '4').'" name="user_rating" value="4" />';
+				$html .= '<input type="radio" title="'.JText::sprintf('PLG_VOTE_VOTE', '5').'" name="user_rating" value="5" checked="checked" />';
+				$html .= JText::_( 'PLG_VOTE_BEST' );
+				$html .= '&#160;<input class="button" type="submit" name="submit_vote" value="'. JText::_( 'PLG_VOTE_RATE' ) .'" />';
+				$html .= '<input type="hidden" name="task" value="article.vote" />';
+				$html .= '<input type="hidden" name="hitcount" value="0" />';
+				$html .= '<input type="hidden" name="url" value="'.  htmlspecialchars($uri->toString()) .'" />';
+>>>>>>> FETCH_HEAD
 				$html .= JHtml::_('form.token');
 				$html .= '</span>';
 				$html .= '</form>';

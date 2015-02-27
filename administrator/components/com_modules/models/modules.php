@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -202,8 +207,13 @@ class ModulesModelModules extends JModelList
 		{
 			$extension = $item->module;
 			$source = constant('JPATH_' . strtoupper($client)) . "/modules/$extension";
+<<<<<<< HEAD
 			$lang->load("$extension.sys", constant('JPATH_' . strtoupper($client)), null, false, true)
 				|| $lang->load("$extension.sys", $source, null, false, true);
+=======
+				$lang->load("$extension.sys", constant('JPATH_' . strtoupper($client)), null, false, true)
+			||	$lang->load("$extension.sys", $source, null, false, true);
+>>>>>>> FETCH_HEAD
 			$item->name = JText::_($item->name);
 
 			if (is_null($item->pages))

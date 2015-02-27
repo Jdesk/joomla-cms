@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_users
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -244,10 +251,16 @@ abstract class JHtmlUsers
 
 			if ($title)
 			{
+<<<<<<< HEAD
 				$lang->load("plg_editors_$value.sys", JPATH_ADMINISTRATOR, null, false, true)
 					|| $lang->load("plg_editors_$value.sys", JPATH_PLUGINS . '/editors/' . $value, null, false, true);
 				$lang->load($title . '.sys');
 
+=======
+					$lang->load("plg_editors_$value.sys", JPATH_ADMINISTRATOR, null, false, true)
+				||	$lang->load("plg_editors_$value.sys", JPATH_PLUGINS . '/editors/' . $value, null, false, true);
+				$lang->load($title.'.sys');
+>>>>>>> FETCH_HEAD
 				return JText::_($title);
 			}
 			else

@@ -3,8 +3,13 @@
  * @package     Joomla.Libraries
  * @subpackage  Version
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
+=======
+ * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
+>>>>>>> FETCH_HEAD
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -23,7 +28,11 @@ final class JVersion
 	public $RELEASE = '3.4';
 
 	/** @var  string  Maintenance version. */
+<<<<<<< HEAD
 	public $DEV_LEVEL = '0-rc2-dev';
+=======
+	public $DEV_LEVEL = '28';
+>>>>>>> FETCH_HEAD
 
 	/** @var  string  Development STATUS. */
 	public $DEV_STATUS = 'Beta';
@@ -35,16 +44,27 @@ final class JVersion
 	public $CODENAME = 'Ember';
 
 	/** @var  string  Release date. */
+<<<<<<< HEAD
 	public $RELDATE = '17-February-2015';
 
 	/** @var  string  Release time. */
 	public $RELTIME = '18:00';
+=======
+	public $RELDATE = '10-December-2014';
+
+	/** @var  string  Release time. */
+	public $RELTIME = '15:00';
+>>>>>>> FETCH_HEAD
 
 	/** @var  string  Release timezone. */
 	public $RELTZ = 'GMT';
 
 	/** @var  string  Copyright Notice. */
+<<<<<<< HEAD
 	public $COPYRIGHT = 'Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.';
+=======
+	public $COPYRIGHT = 'Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.';
+>>>>>>> FETCH_HEAD
 
 	/** @var  string  Link text. */
 	public $URL = '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';

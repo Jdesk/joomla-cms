@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Filter
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -695,8 +699,19 @@ class JFilterInput
 		if (!is_array($ttr))
 		{
 			// Entity decode
+<<<<<<< HEAD
 			$trans_tbl = get_html_translation_table(HTML_ENTITIES, ENT_COMPAT, 'ISO-8859-1');
 
+=======
+			if (version_compare(PHP_VERSION, '5.3.4', '>='))
+			{
+				$trans_tbl = get_html_translation_table(HTML_ENTITIES, ENT_COMPAT, 'ISO-8859-1');
+			}
+			else
+			{
+				$trans_tbl = get_html_translation_table(HTML_ENTITIES, ENT_COMPAT);
+			}
+>>>>>>> FETCH_HEAD
 			foreach ($trans_tbl as $k => $v)
 			{
 				$ttr[$v] = utf8_encode($k);
@@ -706,6 +721,7 @@ class JFilterInput
 		$source = strtr($source, $ttr);
 
 		// Convert decimal
+<<<<<<< HEAD
 		$source = preg_replace_callback('/&#(\d+);/m', function($m)
 		{
 			return utf8_encode(chr($m[1]));
@@ -718,6 +734,11 @@ class JFilterInput
 			return utf8_encode(chr('0x' . $m[1]));
 		}, $source
 		);
+=======
+		$source = preg_replace_callback('/&#(\d+);/m', "callbackJFilterInputConvertDecimal", $source); // decimal notation
+		// Convert hex
+		$source = preg_replace_callback('/&#x([a-f0-9]+);/mi', "callbackJFilterInputConvertHex", $source); // hex notation
+>>>>>>> FETCH_HEAD
 
 		return $source;
 	}
@@ -810,5 +831,35 @@ class JFilterInput
 		}
 
 		return $return;
+	}
+}
+
+if (! function_exists('callbackJFilterInputConvertDecimal'))
+{
+	/**
+	 * Decimal decode callback for JFilterInput::_decode.
+	 *
+	 * @param   $matches
+	 *
+	 * @return  string
+	 */
+	function callbackJFilterInputConvertDecimal($matches)
+	{
+		return utf8_encode(chr($matches[1]));
+	}
+}
+
+if (! function_exists('callbackJFilterInputConvertHex'))
+{
+	/**
+	 * Hex decode callback for JFilterInput::_decode.
+	 *
+	 * @param   $matches
+	 *
+	 * @return  string
+	 */
+	function callbackJFilterInputConvertHex($matches)
+	{
+		return utf8_encode(chr('0x' . $matches[1]));
 	}
 }

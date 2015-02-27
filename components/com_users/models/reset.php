@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_users
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -201,6 +208,7 @@ class UsersModelReset extends JModelForm
 			return false;
 		}
 
+<<<<<<< HEAD
 		// Check if the user is reusing the current password if required to reset their password
 		if ($user->requireReset == 1 && JUserHelper::verifyPassword($data['password1'], $user->password))
 		{
@@ -208,6 +216,10 @@ class UsersModelReset extends JModelForm
 
 			return false;
 		}
+=======
+		// Generate the new password hash.
+		$password = JUserHelper::hashPassword($data['password1']);
+>>>>>>> FETCH_HEAD
 
 		// Update the user object.
 		$user->password = JUserHelper::hashPassword($data['password1']);

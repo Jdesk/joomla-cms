@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  Layout
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	com_content
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -15,6 +22,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 $canEdit = $this->item->params->get('access-edit');
 $info    = $params->get('info_block_position', 0);
 ?>
+<<<<<<< HEAD
 <?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())
 	|| ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != JFactory::getDbo()->getNullDate())) : ?>
 	<div class="system-unpublished">
@@ -24,6 +32,21 @@ $info    = $params->get('info_block_position', 0);
 
 <?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.icons', array('params' => $params, 'item' => $this->item, 'print' => false)); ?>
+=======
+
+<?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
+<div class="system-unpublished">
+<?php endif; ?>
+<?php if ($params->get('show_title')) : ?>
+	<h2>
+		<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>">
+			<?php echo $this->escape($this->item->title); ?></a>
+		<?php else : ?>
+			<?php echo $this->escape($this->item->title); ?>
+		<?php endif; ?>
+	</h2>
+>>>>>>> FETCH_HEAD
 <?php endif; ?>
 
 <?php if ($params->get('show_tags') && !empty($this->item->tags->itemTags)) : ?>
@@ -59,6 +82,7 @@ $info    = $params->get('info_block_position', 0);
 		$itemId = $active->id;
 		$link1 = JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId);
 		$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language));
+<<<<<<< HEAD
 		$link = new JUri($link1);
 		$link->setVar('return', base64_encode($returnURL));
 	endif; ?>
@@ -69,6 +93,31 @@ $info    = $params->get('info_block_position', 0);
 
 <?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())
 	|| ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != JFactory::getDbo()->getNullDate())) : ?>
+=======
+		$link = new JURI($link1);
+		$link->setVar('return', base64_encode(urlencode($returnURL)));
+	endif;
+?>
+		<p class="readmore">
+				<a href="<?php echo $link; ?>">
+					<?php if (!$params->get('access-view')) :
+						echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
+					elseif ($readmore = $this->item->alternative_readmore) :
+						echo $readmore;
+						if ($params->get('show_readmore_title', 0) != 0) :
+						    echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+						endif;
+					elseif ($params->get('show_readmore_title', 0) == 0) :
+						echo JText::sprintf('COM_CONTENT_READ_MORE_TITLE');
+					else :
+						echo JText::_('COM_CONTENT_READ_MORE');
+						echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+					endif; ?></a>
+		</p>
+<?php endif; ?>
+
+<?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
+>>>>>>> FETCH_HEAD
 </div>
 <?php endif; ?>
 

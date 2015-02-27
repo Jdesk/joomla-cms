@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -144,6 +149,7 @@ class ContentModelArticles extends JModelList
 		$id .= ':' . serialize($this->getState('filter.published'));
 		$id .= ':' . $this->getState('filter.access');
 		$id .= ':' . $this->getState('filter.featured');
+<<<<<<< HEAD
 		$id .= ':' . serialize($this->getState('filter.article_id'));
 		$id .= ':' . $this->getState('filter.article_id.include');
 		$id .= ':' . serialize($this->getState('filter.category_id'));
@@ -151,6 +157,15 @@ class ContentModelArticles extends JModelList
 		$id .= ':' . serialize($this->getState('filter.author_id'));
 		$id .= ':' . $this->getState('filter.author_id.include');
 		$id .= ':' . serialize($this->getState('filter.author_alias'));
+=======
+		$id .= ':' . $this->getState('filter.article_id');
+		$id .= ':' . $this->getState('filter.article_id.include');
+		$id	.= ':' . serialize($this->getState('filter.category_id'));
+		$id .= ':' . $this->getState('filter.category_id.include');
+		$id	.= ':' . serialize($this->getState('filter.author_id'));
+		$id .= ':' . $this->getState('filter.author_id.include');
+		$id	.= ':' . serialize($this->getState('filter.author_alias'));
+>>>>>>> FETCH_HEAD
 		$id .= ':' . $this->getState('filter.author_alias.include');
 		$id .= ':' . $this->getState('filter.date_filtering');
 		$id .= ':' . $this->getState('filter.date_field');
@@ -181,11 +196,19 @@ class ContentModelArticles extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
+<<<<<<< HEAD
 				'a.id, a.title, a.alias, a.introtext, a.fulltext, ' .
 					'a.checked_out, a.checked_out_time, ' .
 					'a.catid, a.created, a.created_by, a.created_by_alias, ' .
 					// Use created if modified is 0
 					'CASE WHEN a.modified = ' . $db->quote($db->getNullDate()) . ' THEN a.created ELSE a.modified END as modified, ' .
+=======
+				'a.id, a.title, a.alias, a.title_alias, a.introtext, a.language, ' .
+				'a.checked_out, a.checked_out_time, ' .
+				'a.catid, a.created, a.created_by, a.created_by_alias, ' .
+				// use created if modified is 0
+				'CASE WHEN a.modified = 0 THEN a.created ELSE a.modified END as modified, ' .
+>>>>>>> FETCH_HEAD
 					'a.modified_by, uam.name as modified_by_name,' .
 					// Use created if publish_up is 0
 					'CASE WHEN a.publish_up = ' . $db->quote($db->getNullDate()) . ' THEN a.created ELSE a.publish_up END as publish_up,' .
@@ -227,8 +250,25 @@ class ContentModelArticles extends JModelList
 		$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author")
 			->select("ua.email AS author_email")
 
+<<<<<<< HEAD
 			->join('LEFT', '#__users AS ua ON ua.id = a.created_by')
 			->join('LEFT', '#__users AS uam ON uam.id = a.modified_by');
+=======
+		// Get contact id
+		$subQuery = $db->getQuery(true);
+		$subQuery->select('MAX(contact.id) AS id');
+		$subQuery->from('#__contact_details AS contact');
+		$subQuery->where('contact.published = 1');
+		$subQuery->where('contact.user_id = a.created_by');
+
+		// Filter by language
+		if ($this->getState('filter.language'))
+		{
+			$subQuery->where('(contact.language in (' . $db->quote(JFactory::getLanguage()->getTag()) . ',' . $db->quote('*') . ') OR contact.language IS NULL)');
+		}
+
+		$query->select('(' . $subQuery . ') as contactid');
+>>>>>>> FETCH_HEAD
 
 		// Join over the categories to get parent category titles
 		$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias')
@@ -266,11 +306,18 @@ class ContentModelArticles extends JModelList
 		$query->join('LEFT OUTER', '(' . $subquery . ') AS badcats ON badcats.id = c.id');
 
 		// Filter by access level.
+<<<<<<< HEAD
 		if ($access = $this->getState('filter.access'))
 		{
 			$groups = implode(',', $user->getAuthorisedViewLevels());
 			$query->where('a.access IN (' . $groups . ')')
 				->where('c.access IN (' . $groups . ')');
+=======
+		if ($access = $this->getState('filter.access')) {
+			$groups	= implode(',', $user->getAuthorisedViewLevels());
+			$query->where('a.access IN ('.$groups.')');
+			$query->where('c.access IN ('.$groups.')');
+>>>>>>> FETCH_HEAD
 		}
 
 		// Filter by published state
@@ -442,6 +489,7 @@ class ContentModelArticles extends JModelList
 		}
 
 		// Define null and now dates
+<<<<<<< HEAD
 		$nullDate	= $db->quote($db->getNullDate());
 		$nowDate	= $db->quote(JFactory::getDate()->toSql());
 
@@ -450,6 +498,16 @@ class ContentModelArticles extends JModelList
 		{
 			$query->where('(a.publish_up = ' . $nullDate . ' OR a.publish_up <= ' . $nowDate . ')')
 				->where('(a.publish_down = ' . $nullDate . ' OR a.publish_down >= ' . $nowDate . ')');
+=======
+		$nullDate	= $db->Quote($db->getNullDate());
+		$nowDate	= $db->Quote(JFactory::getDate()->toSql());
+
+		if ((!$user->authorise('core.edit.state', 'com_content')) && (!$user->authorise('core.edit', 'com_content')))
+		{
+			// Filter by start and end dates.
+			$query->where('(a.publish_up = '.$nullDate.' OR a.publish_up <= '.$nowDate.')');
+			$query->where('(a.publish_down = '.$nullDate.' OR a.publish_down >= '.$nowDate.')');
+>>>>>>> FETCH_HEAD
 		}
 
 		// Filter by Date Range or Relative Date
@@ -512,6 +570,7 @@ class ContentModelArticles extends JModelList
 		}
 
 		// Filter by language
+<<<<<<< HEAD
 		if ($this->getState('filter.language'))
 		{
 			$query->where('a.language in (' . $db->quote(JFactory::getLanguage()->getTag()) . ',' . $db->quote('*') . ')');
@@ -519,6 +578,14 @@ class ContentModelArticles extends JModelList
 
 		// Add the list ordering clause.
 		$query->order($this->getState('list.ordering', 'a.ordering') . ' ' . $this->getState('list.direction', 'ASC'));
+=======
+		if ($this->getState('filter.language')) {
+			$query->where('a.language in ('.$db->quote(JFactory::getLanguage()->getTag()).','.$db->quote('*').')');
+		}
+
+		// Add the list ordering clause.
+		$query->order($this->getState('list.ordering', 'a.ordering').' '.$this->getState('list.direction', 'ASC'));
+>>>>>>> FETCH_HEAD
 
 		return $query;
 	}

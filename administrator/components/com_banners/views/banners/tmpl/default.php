@@ -3,7 +3,11 @@
  * @package     Joomla.Administrator
  * @subpackage  com_banners
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -169,6 +173,7 @@ if ($saveOrder)
 								<?php echo sprintf('%.2f%%', $item->impmade ? 100 * $item->clicks / $item->impmade : 0); ?>
 							</td>
 
+<<<<<<< HEAD
 							<td class="small nowrap hidden-phone">
 								<?php if ($item->language == '*'): ?>
 									<?php echo JText::alt('JALL', 'language'); ?>
@@ -186,6 +191,12 @@ if ($saveOrder)
 		<?php endif; ?>
 		<?php //Load the batch processing form. ?>
 		<?php echo $this->loadTemplate('batch'); ?>
+=======
+	<?php //Load the batch processing form. ?>
+	<?php if ($user->authorize('core.create', 'com_banners') && $user->authorize('core.edit', 'com_banners') && $user->authorize('core.edit.state', 'com_banners')) : ?>
+		<?php echo $this->loadTemplate('batch'); ?>
+	<?php endif;?>
+>>>>>>> FETCH_HEAD
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />

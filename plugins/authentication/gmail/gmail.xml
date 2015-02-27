@@ -3,7 +3,11 @@
 	<name>plg_authentication_gmail</name>
 	<author>Joomla! Project</author>
 	<creationDate>February 2006</creationDate>
+<<<<<<< HEAD
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+=======
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+>>>>>>> FETCH_HEAD
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
@@ -58,6 +62,7 @@
 					label="PLG_GMAIL_FIELD_USER_BLACKLIST_LABEL"
 					size="20"
 				/>
+<<<<<<< HEAD
 				<field
 					name="backendLogin"
 					type="radio"
@@ -68,6 +73,15 @@
 				>
 					<option value="1">JENABLED</option>
 					<option value="0">JDISABLED</option>
+=======
+				<field name="backendLogin" type="radio"
+					default="0"
+					description="PLG_GMAIL_FIELD_BACKEND_LOGIN_DESC"
+					label="PLG_GMAIL_FIELD_BACKEND_LOGIN_LABEL"
+					>
+						<option value="1">JENABLED</option>
+						<option value="0">JDISABLED</option>
+>>>>>>> FETCH_HEAD
 				</field>
 			</fieldset>
 		</fields>

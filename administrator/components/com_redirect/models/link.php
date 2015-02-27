@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_redirect
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -38,7 +43,15 @@ class RedirectModelLink extends JModelAdmin
 			return false;
 		}
 
+<<<<<<< HEAD
 		$user = JFactory::getUser();
+=======
+			if ($record->published != -2) {
+				return false;
+			}
+			$user = JFactory::getUser();
+			return $user->authorise('core.delete', 'com_redirect');
+>>>>>>> FETCH_HEAD
 
 		return $user->authorise('core.delete', 'com_redirect');
 	}
@@ -57,7 +70,12 @@ class RedirectModelLink extends JModelAdmin
 		$user = JFactory::getUser();
 
 		// Check the component since there are no categories or other assets.
+<<<<<<< HEAD
 		return $user->authorise('core.edit.state', 'com_redirect');
+=======
+			return $user->authorise('core.edit.state', 'com_redirect');
+
+>>>>>>> FETCH_HEAD
 	}
 
 	/**
@@ -164,8 +182,12 @@ class RedirectModelLink extends JModelAdmin
 		$comment = (!empty($comment)) ? $comment : JText::sprintf('COM_REDIRECT_REDIRECTED_ON', JHtml::_('date', time()));
 
 		// Access checks.
+<<<<<<< HEAD
 		if (!$user->authorise('core.edit', 'com_redirect'))
 		{
+=======
+		if (!$user->authorise('core.edit', 'com_redirect')) {
+>>>>>>> FETCH_HEAD
 			$pks = array();
 			$this->setError(JText::_('JLIB_APPLICATION_ERROR_EDIT_NOT_PERMITTED'));
 

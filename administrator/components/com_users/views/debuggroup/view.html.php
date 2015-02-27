@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -57,6 +62,7 @@ class UsersViewDebuggroup extends JViewLegacy
 			return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 		}
 
+<<<<<<< HEAD
 		$this->actions    = $this->get('DebugActions');
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
@@ -64,6 +70,15 @@ class UsersViewDebuggroup extends JViewLegacy
 		$this->group      = $this->get('Group');
 		$this->levels     = UsersHelperDebug::getLevelsOptions();
 		$this->components = UsersHelperDebug::getComponents();
+=======
+		$this->actions		= $this->get('DebugActions');
+		$this->items		= $this->get('Items');
+		$this->pagination	= $this->get('Pagination');
+		$this->state		= $this->get('State');
+		$this->group		= $this->get('Group');
+		$this->levels		= UsersHelperDebug::getLevelsOptions();
+		$this->components	= UsersHelperDebug::getComponents();
+>>>>>>> FETCH_HEAD
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))

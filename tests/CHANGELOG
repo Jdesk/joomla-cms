@@ -1,6 +1,10 @@
 0. Metadata
 -----------
+<<<<<<< HEAD
 Copyright:		Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+Copyright:		Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
 License:		GNU General Public License version 2 or later; see LICENSE.txt
 
 1. Copyright and disclaimer
@@ -26,6 +30,7 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+<<<<<<< HEAD
 05-Dec-2013 Mark Dexter
  # Clean up some webdriver tests to hopefully fix intermittent problems.
 
@@ -314,6 +319,10 @@ $ -> Language fix or change
 24-Aug-2012 Mark Dexter
  # Fix first batch of system tests for 3.0 with Bootstrap templates
  # Fix two more system tests
+=======
+04-Nov-2012 Mark Dexter
+ ^ Add phpunit.xml.dist file and fix redirect test
+>>>>>>> FETCH_HEAD
 
 30-Jul-2012 Mark Dexter
  ^ Add ability to capture screenshots on failure for system tests

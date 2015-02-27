@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Crypt
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -286,6 +290,7 @@ class JCrypt
 		// They are only identical strings if $result is exactly 0...
 		return $result === 0;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Tests for the availability of updated crypt().
@@ -311,4 +316,6 @@ class JCrypt
 
 		return true;
 	}
+=======
+>>>>>>> FETCH_HEAD
 }

@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  User
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -289,7 +293,10 @@ class JUser extends JObject
 			return new JUser;
 		}
 
+<<<<<<< HEAD
 		// Check if the user ID is already cached.
+=======
+>>>>>>> FETCH_HEAD
 		if (empty(self::$instances[$id]))
 		{
 			$user = new JUser($id, $userHelper);
@@ -614,7 +621,11 @@ class JUser extends JObject
 
 			$this->password_clear = JArrayHelper::getValue($array, 'password', '', 'string');
 
+<<<<<<< HEAD
 			$array['password'] = $this->userHelper->hashPassword($array['password']);
+=======
+			$array['password'] = JUserHelper::hashPassword($array['password']);
+>>>>>>> FETCH_HEAD
 
 			// Set the registration timestamp
 			$this->set('registerDate', JFactory::getDate()->toSql());
@@ -642,6 +653,7 @@ class JUser extends JObject
 
 				$this->password_clear = JArrayHelper::getValue($array, 'password', '', 'string');
 
+<<<<<<< HEAD
 				// Check if the user is reusing the current password if required to reset their password
 				if ($this->requireReset == 1 && $this->userHelper->verifyPassword($this->password_clear, $this->password))
 				{
@@ -654,6 +666,9 @@ class JUser extends JObject
 
 				// Reset the change password flag
 				$array['requireReset'] = 0;
+=======
+				$array['password'] = JUserHelper::hashPassword($array['password']);
+>>>>>>> FETCH_HEAD
 			}
 			else
 			{
@@ -708,6 +723,7 @@ class JUser extends JObject
 		$table = $this->getTable();
 		$this->params = (string) $this->_params;
 		$table->bind($this->getProperties());
+
 
 		// Allow an exception to be thrown.
 		try

@@ -2,8 +2,13 @@
 /**
  * @package    Joomla.Cli
  *
+<<<<<<< HEAD
  * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
+>>>>>>> FETCH_HEAD
  */
 
 /**
@@ -19,6 +24,7 @@
  */
 
 // Make sure we're being called from the command line, not a web interface
+<<<<<<< HEAD
 if (PHP_SAPI !== 'cli')
 {
 	die('This is a command line only application.');
@@ -26,6 +32,12 @@ if (PHP_SAPI !== 'cli')
 
 // We are a valid entry point.
 const _JEXEC = 1;
+=======
+if (PHP_SAPI !== 'cli') die('This is a command line only application.');
+
+// We are a valid entry point.
+define('_JEXEC', 1);
+>>>>>>> FETCH_HEAD
 
 // Load system defines
 if (file_exists(dirname(__DIR__) . '/defines.php'))
@@ -156,7 +168,13 @@ class FinderCli extends JApplicationCli
 	 */
 	private function index()
 	{
+<<<<<<< HEAD
 		require_once JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer/indexer.php';
+=======
+		// Import library dependencies.
+		require_once JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer/indexer.php';
+		jimport('joomla.application.component.helper');
+>>>>>>> FETCH_HEAD
 
 		// Disable caching.
 		$config = JFactory::getConfig();
@@ -174,9 +192,6 @@ class FinderCli extends JApplicationCli
 
 		// Trigger the onStartIndex event.
 		JEventDispatcher::getInstance()->trigger('onStartIndex');
-
-		// Remove the script time limit.
-		@set_time_limit(0);
 
 		// Get the indexer state.
 		$state = FinderIndexer::getState();
@@ -207,7 +222,11 @@ class FinderCli extends JApplicationCli
 				$state->batchOffset = 0;
 
 				// Trigger the onBuildIndex event.
+<<<<<<< HEAD
 				JEventDispatcher::getInstance()->trigger('onBuildIndex');
+=======
+				JDispatcher::getInstance()->trigger('onBuildIndex');
+>>>>>>> FETCH_HEAD
 
 				// Batch reporting.
 				$this->out(JText::sprintf('FINDER_CLI_BATCH_COMPLETE', ($i + 1), round(microtime(true) - $this->qtime, 3)), true);
@@ -241,8 +260,14 @@ class FinderCli extends JApplicationCli
 		$this->out(JText::_('FINDER_CLI_INDEX_PURGE'));
 
 		// Load the model.
+<<<<<<< HEAD
 		JModelLegacy::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/models', 'FinderModel');
 		$model = JModelLegacy::getInstance('Index', 'FinderModel');
+=======
+		jimport('joomla.application.component.model');
+		JModel::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/models', 'FinderModel');
+		$model = JModel::getInstance('Index', 'FinderModel');
+>>>>>>> FETCH_HEAD
 
 		// Attempt to purge the index.
 		$return = $model->purge();
@@ -377,3 +402,4 @@ class FinderCli extends JApplicationCli
 // Instantiate the application object, passing the class name to JCli::getInstance
 // and use chaining to execute the application.
 JApplicationCli::getInstance('FinderCli')->execute();
+

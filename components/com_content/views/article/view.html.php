@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -68,7 +73,11 @@ class ContentViewArticle extends JViewLegacy
 		}
 
 		// TODO: Change based on shownoauth
+<<<<<<< HEAD
 		$item->readmore_link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language));
+=======
+		$item->readmore_link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language));
+>>>>>>> FETCH_HEAD
 
 		// Merge article params. If this is single-article view, menu params override article params
 		// Otherwise, article params override menu item params
@@ -133,6 +142,7 @@ class ContentViewArticle extends JViewLegacy
 		// Check the view access to the article (the model has already computed the values).
 		if ($item->params->get('access-view') == false && ($item->params->get('show_noauth', '0') == '0'))
 		{
+<<<<<<< HEAD
 			JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
 
 			return;
@@ -140,6 +150,13 @@ class ContentViewArticle extends JViewLegacy
 
 		if ($item->params->get('show_intro', '1') == '1')
 		{
+=======
+				JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+				return;
+		}
+
+		if ($item->params->get('show_intro', '1') == '1') {
+>>>>>>> FETCH_HEAD
 			$item->text = $item->introtext . ' ' . $item->fulltext;
 		}
 		elseif ($item->fulltext)

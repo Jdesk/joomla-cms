@@ -5,11 +5,17 @@
  * Joomla is assumed to include the /unittest/ directory.
  * eg, /path/to/joomla/unittest/
  *
+<<<<<<< HEAD
  * @package     Joomla.UnitTest
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  * @link        http://www.phpunit.de/manual/current/en/installation.html
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @link		http://www.phpunit.de/manual/current/en/installation.html
+>>>>>>> FETCH_HEAD
  */
 
 define('_JEXEC', 1);
@@ -101,8 +107,21 @@ require_once JPATH_PLATFORM . '/import.legacy.php';
 JError::setErrorHandling(E_NOTICE, 'message');
 JError::setErrorHandling(E_WARNING, 'message');
 
+<<<<<<< HEAD
 // Bootstrap the CMS libraries.
 require_once JPATH_LIBRARIES . '/cms.php';
+=======
+// Exclude all of the tests from code coverage reports
+if (method_exists('PHPUnit_Util_Filter', 'addDirectoryToFilter'))
+{
+	PHPUnit_Util_Filter::addDirectoryToFilter(JPATH_BASE . '/tests');
+}
+else
+{
+	$codeCoverageFilter = new PHP_CodeCoverage_Filter;
+	$codeCoverageFilter->addDirectoryToBlacklist(JPATH_BASE . '/tests');
+}
+>>>>>>> FETCH_HEAD
 
 // Register the core Joomla test classes.
 JLoader::registerPrefix('Test', __DIR__ . '/core');

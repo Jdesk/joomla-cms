@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_modules
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -132,9 +139,15 @@ class ModulesModelSelect extends JModelList
 
 			// 1.5 Format; Core files or language packs then
 			// 1.6 3PD Extension Support
+<<<<<<< HEAD
 			$lang->load($item->module . '.sys', $client->path, null, false, true)
 				|| $lang->load($item->module . '.sys', $client->path . '/modules/' . $item->module, null, false, true);
 			$item->name = JText::_($item->name);
+=======
+				$lang->load($item->module . '.sys', $client->path, null, false, true)
+			||	$lang->load($item->module . '.sys', $client->path . '/modules/' . $item->module, null, false, true);
+			$item->name	= JText::_($item->name);
+>>>>>>> FETCH_HEAD
 
 			if (isset($item->xml) && $text = trim($item->xml->description))
 			{

@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Updater
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -110,6 +114,7 @@ class JUpdater extends JAdapter
 	 */
 	public function findUpdates($eid = 0, $cacheTimeout = 0, $minimum_stability = self::STABILITY_STABLE)
 	{
+<<<<<<< HEAD
 		$db     = $this->getDBO();
 		$query  = $db->getQuery(true);
 
@@ -120,6 +125,17 @@ class JUpdater extends JAdapter
 			->where('a.enabled = 1');
 
 		if ($eid)
+=======
+		$dbo = $this->getDBO();
+		$retval = false;
+
+		// Push it into an array
+		if (!is_array($eid))
+		{
+			$query = 'SELECT DISTINCT update_site_id, type, location, last_check_timestamp FROM #__update_sites WHERE enabled = 1';
+		}
+		else
+>>>>>>> FETCH_HEAD
 		{
 			$query->join('INNER', '#__update_sites_extensions AS b ON a.update_site_id = b.update_site_id');
 
@@ -213,6 +229,31 @@ class JUpdater extends JAdapter
 								{
 									$current_update->extension_id = $eid;
 									$current_update->store();
+								}
+
+								// Store compatibility information into the extension table
+								if (!empty($update_result['compatibility']))
+								{
+									$system_data = json_decode($extension->system_data);
+									$system_data->compatibility = new stdClass();
+
+									$compatibility = $update_result['compatibility'];
+									ksort($compatibility);
+
+									// Check data for current installed version
+									if (!empty($compatibility[$data['version']]))
+									{
+										$system_data->compatibility->installed          = new stdClass();
+										$system_data->compatibility->installed->value   = $compatibility[$data['version']];
+										$system_data->compatibility->installed->version = $data['version'];
+									}
+
+									// Get last item in array which is highest release
+									$system_data->compatibility->available          = new stdClass();
+									$system_data->compatibility->available->value   = end($compatibility);
+									$system_data->compatibility->available->version = key($compatibility);
+									$extension->system_data = json_encode($system_data);
+									$extension->store();
 								}
 							}
 							else

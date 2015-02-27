@@ -3,7 +3,11 @@
  * @package     Joomla.Plugin
  * @subpackage  System.Debug
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -193,8 +197,25 @@ class PlgSystemDebug extends JPlugin
 			return;
 		}
 
+<<<<<<< HEAD
 		// User has to be authorised to see the debug information.
 		if (!$this->isAuthorisedDisplayDebug())
+=======
+		// Load the language
+		$this->loadLanguage();
+
+		// Capture output
+		$contents = ob_get_contents();
+
+		if ($contents)
+		{
+			ob_end_clean();
+		}
+
+		// No debug for Safari and Chrome redirection
+		if (strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'webkit') !== false
+			&& substr($contents, 0, 50) == '<html><head><meta http-equiv="refresh" content="0;')
+>>>>>>> FETCH_HEAD
 		{
 			return;
 		}
@@ -450,9 +471,15 @@ class PlgSystemDebug extends JPlugin
 
 				if (is_string($entries))
 				{
+<<<<<<< HEAD
 					$html[] = '<code>';
 					$html[] = $sKey . ' &rArr; ' . $entries . '<br />';
 					$html[] = '</code>';
+=======
+					$html .= '<code>';
+					$html .= $sKey . ' &rArr; ' . $entries . '<br />';
+					$html .= '</code>';
+>>>>>>> FETCH_HEAD
 				}
 			}
 		}

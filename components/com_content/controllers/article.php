@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -250,9 +255,14 @@ class ContentControllerArticle extends JControllerForm
 			$append .= '&catid=' . $catId;
 		}
 
+<<<<<<< HEAD
 		if ($return)
 		{
 			$append .= '&return=' . base64_encode($return);
+=======
+		if ($return) {
+			$append .= '&return='.base64_encode(urlencode($return));
+>>>>>>> FETCH_HEAD
 		}
 
 		return $append;
@@ -271,6 +281,7 @@ class ContentControllerArticle extends JControllerForm
 	{
 		$return = $this->input->get('return', null, 'base64');
 
+<<<<<<< HEAD
 		if (empty($return) || !JUri::isInternal(base64_decode($return)))
 		{
 			return JUri::base();
@@ -278,6 +289,13 @@ class ContentControllerArticle extends JControllerForm
 		else
 		{
 			return base64_decode($return);
+=======
+		if (empty($return) || !JUri::isInternal(urldecode(base64_decode($return)))) {
+			return JURI::base();
+		}
+		else {
+			return urldecode(base64_decode($return));
+>>>>>>> FETCH_HEAD
 		}
 	}
 

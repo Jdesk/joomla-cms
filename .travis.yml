@@ -1,6 +1,7 @@
 language: php
 
 php:
+<<<<<<< HEAD
   - 5.3
   - 5.4
   - 5.5
@@ -44,3 +45,12 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 
+=======
+  - 5.2
+  - 5.3
+  - 5.4
+
+branches:
+  only:
+    - master
+>>>>>>> FETCH_HEAD

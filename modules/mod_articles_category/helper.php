@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  mod_articles_category
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	mod_articles_category
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -231,7 +238,11 @@ abstract class ModArticlesCategoryHelper
 			if ($access || in_array($item->access, $authorised))
 			{
 				// We know that user has the privilege to view the article
+<<<<<<< HEAD
 				$item->link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language));
+=======
+				$item->link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language));
+>>>>>>> FETCH_HEAD
 			}
 			else
 			{
@@ -279,6 +290,11 @@ abstract class ModArticlesCategoryHelper
 				$item->introtext = JHtml::_('content.prepare', $item->introtext, '', 'mod_articles_category.content');
 				$item->introtext = self::_cleanIntrotext($item->introtext);
 			}
+<<<<<<< HEAD
+=======
+			$item->displayIntrotext = $show_introtext ? self::truncate($item->introtext, $introtext_limit) : '';
+			$item->displayReadmore = $item->alternative_readmore;
+>>>>>>> FETCH_HEAD
 
 			$item->displayIntrotext = $show_introtext ? self::truncate($item->introtext, $introtext_limit) : '';
 			$item->displayReadmore  = $item->alternative_readmore;
@@ -307,6 +323,7 @@ abstract class ModArticlesCategoryHelper
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Method to truncate introtext
 	 *
 	 * The goal is to get the proper length plain text string with as much of
@@ -322,6 +339,22 @@ abstract class ModArticlesCategoryHelper
 	public static function truncate($html, $maxLength = 0)
 	{
 		$baseLength = strlen($html);
+=======
+	* Method to truncate introtext 
+	* 
+	* The goal is to get the proper length plain text string with as much of 
+	* the html intact as possible with all tags properly closed.
+	* 
+	* @param string   $html       The content of the introtext to be truncated
+	* @param integer  $maxLength  The maximum number of charactes to render
+	* 
+	* @return  string  The truncated string
+	*/
+	public static function truncate($html, $maxLength = 0)
+	{
+		$baseLength = strlen($html);
+		$diffLength = 0;
+>>>>>>> FETCH_HEAD
 
 		// First get the plain text string. This is the rendered text we want to end up with.
 		$ptString = JHtml::_('string.truncate', $html, $maxLength, $noSplit = true, $allowHtml = false);
@@ -330,6 +363,7 @@ abstract class ModArticlesCategoryHelper
 		{
 			// Now get the string if we allow html.
 			$htmlString = JHtml::_('string.truncate', $html, $maxLength, $noSplit = true, $allowHtml = true);
+<<<<<<< HEAD
 
 			// Now get the plain text from the html string.
 			$htmlStringToPtString = JHtml::_('string.truncate', $htmlString, $maxLength, $noSplit = true, $allowHtml = false);
@@ -340,18 +374,35 @@ abstract class ModArticlesCategoryHelper
 				return $htmlString;
 			}
 
+=======
+
+			// Now get the plain text from the html string.
+			$htmlStringToPtString = JHtml::_('string.truncate', $htmlString, $maxLength, $noSplit = true, $allowHtml = false);
+
+			// If the new plain text string matches the original plain text string we are done.
+			if ($ptString == $htmlStringToPtString)
+			{
+				return $htmlString;
+			}
+>>>>>>> FETCH_HEAD
 			// Get the number of html tag characters in the first $maxlength characters
 			$diffLength = strlen($ptString) - strlen($htmlStringToPtString);
 
 			// Set new $maxlength that adjusts for the html tags
 			$maxLength += $diffLength;
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 			if ($baseLength <= $maxLength || $diffLength <= 0)
 			{
 				return $htmlString;
 			}
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		return $html;
 	}
 

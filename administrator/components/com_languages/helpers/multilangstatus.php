@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_languages
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -101,6 +106,7 @@ abstract class MultilangstatusHelper
 	 */
 	public static function getHomepages()
 	{
+<<<<<<< HEAD
 		// Check for Home pages languages.
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
@@ -110,6 +116,17 @@ abstract class MultilangstatusHelper
 			->where('home = 1')
 			->where('published = 1')
 			->where('client_id = 0');
+=======
+		// Check for Home pages languages
+		$db		= JFactory::getDBO();
+		$query	= $db->getQuery(true);
+		$query->select('language');
+		$query->select('id');
+		$query->from($db->quoteName('#__menu'));
+		$query->where('home = 1');
+		$query->where('published = 1');
+		$query->where('client_id = 0');
+>>>>>>> FETCH_HEAD
 		$db->setQuery($query);
 
 		return $db->loadObjectList('language');
@@ -127,6 +144,7 @@ abstract class MultilangstatusHelper
 		$query = $db->getQuery(true);
 
 		// Select all fields from the languages table.
+<<<<<<< HEAD
 		$query->select('a.*', 'l.home')
 			->select('a.published AS published')
 			->select('a.lang_code AS lang_code')
@@ -142,6 +160,23 @@ abstract class MultilangstatusHelper
 			->where('e.client_id = 0')
 			->where('e.enabled = 1')
 			->where('e.state = 0');
+=======
+		$query->select('a.*', 'l.home');
+		$query->select('a.published AS published');
+		$query->select('a.lang_code AS lang_code');
+		$query->from('#__languages AS a');
+
+		// Select the language home pages
+		$query->select('l.home AS home');
+		$query->select('l.language AS home_language');
+		$query->join('LEFT', '#__menu  AS l  ON  l.language = a.lang_code AND l.home=1 AND l.published=1 AND l.language <> \'*\'' );
+		$query->select('e.enabled AS enabled');
+		$query->select('e.element AS element');
+		$query->join('LEFT', '#__extensions  AS e ON e.element = a.lang_code');
+		$query->where('e.client_id = 0');
+		$query->where('e.enabled = 1');
+		$query->where('e.state = 0');
+>>>>>>> FETCH_HEAD
 
 		$db->setQuery($query);
 

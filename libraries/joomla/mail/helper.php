@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Mail
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -129,7 +133,10 @@ abstract class JMailHelper
 		 */
 		$allowed = 'a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-';
 		$regex = "/^[$allowed][\.$allowed]{0,63}$/";
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		if (!preg_match($regex, $local) || substr($local, -1) == '.' || $local[0] == '.' || preg_match('/\.\./', $local))
 		{
 			return false;
@@ -154,7 +161,10 @@ abstract class JMailHelper
 		// Check the domain
 		$domain_array = explode(".", rtrim($domain, '.'));
 		$regex = '/^[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/';
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 		foreach ($domain_array as $domain)
 		{
 			// Convert domain to punycode

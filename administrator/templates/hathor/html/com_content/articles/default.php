@@ -1,10 +1,18 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  Template.hathor
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	Templates.hathor
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @since		1.6
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -198,12 +206,15 @@ $n			= count($this->items);
 				</td>
 				<?php if ($assoc) : ?>
 				<td class="center">
+<<<<<<< HEAD
 					<?php if ($item->association):?>
 						<?php echo JHtml::_('contentadministrator.association', $item->id); ?>
 					<?php endif;?>
 				</td>
 				<?php endif;?>
 				<td class="center">
+=======
+>>>>>>> FETCH_HEAD
 					<?php if ($item->created_by_alias) : ?>
 						<?php echo $this->escape($item->author_name); ?>
 						<p class="smallsub"> <?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></p>

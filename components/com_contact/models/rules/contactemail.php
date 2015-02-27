@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_contact
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Site
+ * @subpackage	Contact
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -43,12 +50,17 @@ class JFormRuleContactEmail extends JFormRuleEmail
 		$params = JComponentHelper::getParams('com_contact');
 		$banned = $params->get('banned_email');
 
+<<<<<<< HEAD
 		if ($banned)
 		{
 			foreach (explode(';', $banned) as $item)
 			{
 				if ($item != '' && JString::stristr($value, $item) !== false)
 				{
+=======
+		foreach(explode(';', $banned) as $item){
+			if ($item != '' && JString::stristr($value, $item) !== false)
+>>>>>>> FETCH_HEAD
 					return false;
 				}
 			}

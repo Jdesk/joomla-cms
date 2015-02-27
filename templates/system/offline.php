@@ -1,10 +1,16 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  Template.system
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package	Joomla.Site
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license	GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -31,8 +37,13 @@ $twofactormethods = UsersHelper::getTwoFactorMethods();
 <body>
 <jdoc:include type="message" />
 	<div id="frame" class="outline">
+<<<<<<< HEAD
 		<?php if ($app->get('offline_image') && file_exists($app->get('offline_image'))) : ?>
 			<img src="<?php echo $app->get('offline_image'); ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" />
+=======
+		<?php if ($app->getCfg('offline_image') && file_exists($app->getCfg('offline_image'))) : ?>
+		<img src="<?php echo $app->getCfg('offline_image'); ?>" alt="<?php echo htmlspecialchars($app->getCfg('sitename')); ?>" />
+>>>>>>> FETCH_HEAD
 		<?php endif; ?>
 		<h1>
 			<?php echo htmlspecialchars($app->get('sitename')); ?>
@@ -56,6 +67,7 @@ $twofactormethods = UsersHelper::getTwoFactorMethods();
 			<label for="passwd"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></label>
 			<input type="password" name="password" class="inputbox" size="18" alt="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>" id="passwd" />
 		</p>
+<<<<<<< HEAD
 		<?php if (count($twofactormethods) > 1) : ?>
 			<p id="form-login-secretkey">
 				<label for="secretkey"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></label>
@@ -66,6 +78,18 @@ $twofactormethods = UsersHelper::getTwoFactorMethods();
 			<label>&nbsp;</label>
 			<input type="submit" name="Submit" class="button login" value="<?php echo JText::_('JLOGIN'); ?>" />
 		</p>
+=======
+		<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
+		<p id="form-login-remember">
+			<label for="remember"><?php echo JText::_('JGLOBAL_REMEMBER_ME') ?></label>
+			<input type="checkbox" name="remember" class="inputbox" value="yes" alt="<?php echo JText::_('JGLOBAL_REMEMBER_ME') ?>" id="remember" />
+		</p>
+		<?php  endif; ?>
+		<p id="submit-buton">
+			<label>&nbsp;</label>
+			<input type="submit" name="Submit" class="button login" value="<?php echo JText::_('JLOGIN') ?>" />
+		</p>
+>>>>>>> FETCH_HEAD
 		<input type="hidden" name="option" value="com_users" />
 		<input type="hidden" name="task" value="user.login" />
 		<input type="hidden" name="return" value="<?php echo base64_encode(JUri::base()); ?>" />

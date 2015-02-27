@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .clearfix {
 	*zoom: 1;
 }
@@ -414,6 +415,45 @@ a.badge:focus {
 .btn-mini .badge {
 	top: 0;
 }
+=======
+@charset "UTF-8";
+
+/**
+ * @package		Joomla.Administrator
+ * @subpackage	templates.hathor
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @since		1.6
+ *
+ * Color CSS file for the template - standard
+ */
+
+/**
+ * Main colors:
+ * #2c2c2c	Text
+ * #054993	Links
+ * #ffffff	Background, border, text
+ * #f9fade	Background alternate, button/icon/menu background
+ * #e5f0fa	Background (input required)
+ * #e3e4ca	Background Hover, Right/Bottom icon borders
+ * #c7c8b2	Main borders
+ * #868778	Top/Left icon hover borders
+ * #f6f7db	Right/Bottom icon hover borders
+ *
+ * Special Use Colors:
+ * #a20000	Text Error, border invalid
+ * #cccccc	Text (faded)
+ * #005800	Text (success)
+ * #eeeeee	Background (input disabled)
+ * #ffffcf	Background‚ permissions debug
+ * #cfffda	Background‚ permissions debug
+ * #ffcfcf	Background‚ permissions debug
+ */
+
+/**
+ * General styles
+ */
+>>>>>>> FETCH_HEAD
 body {
 	background-color: #ffffff;
 	color: #2c2c2c;
@@ -1023,6 +1063,16 @@ button:focus {
 .pagination .page span {
 	color: #999999;
 }
+<<<<<<< HEAD
+=======
+
+.icon-32-extension {
+    background-image: url(../images/toolbar/icon-32-extension.png);
+}
+/**
+ * Tooltips
+ */
+>>>>>>> FETCH_HEAD
 .tip {
 	background: #000000;
 	border: 1px solid #FFFFFF;

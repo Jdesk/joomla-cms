@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_installer
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_installer
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -140,5 +147,38 @@ class InstallerViewManage extends InstallerViewDefault
 
 		parent::addToolbar();
 		JToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_MANAGE');
+	}
+
+	/**
+	 * Creates the content for the tooltip which shows compatibility information
+	 *
+	 * @var  string  $system_data  System_data information
+	 *
+	 * @since  2.5.28
+	 *
+	 * @return  string  Content for tooltip
+	 */
+	protected function createCompatibilityInfo($system_data)
+	{
+		$system_data = json_decode($system_data);
+
+		if (empty($system_data->compatibility))
+		{
+			return '';
+		}
+
+		$compatibility = $system_data->compatibility;
+
+		$info = JText::sprintf('COM_INSTALLER_COMPATIBILITY_TOOLTIP_INSTALLED',
+					$compatibility->installed->version,
+					implode(', ', $compatibility->installed->value)
+				)
+				. '<br/>'
+				. JText::sprintf('COM_INSTALLER_COMPATIBILITY_TOOLTIP_AVAILABLE',
+					$compatibility->available->version,
+					implode(', ', $compatibility->available->value)
+				);
+
+		return $info;
 	}
 }

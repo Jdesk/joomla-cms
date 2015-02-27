@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Site
  * @subpackage  com_content
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -91,6 +96,7 @@ class ContentViewForm extends JViewLegacy
 
 		$this->params = $params;
 
+<<<<<<< HEAD
 		// Override global params with article specific params
 		$this->params->merge($this->item->params);
 		$this->user   = $user;
@@ -98,6 +104,10 @@ class ContentViewForm extends JViewLegacy
 		if ($params->get('enable_category') == 1)
 		{
 			$this->form->setFieldAttribute('catid', 'default', $params->get('catid', 1));
+=======
+		if ($params->get('enable_category') == 1) {
+			$this->form->setFieldAttribute('catid', 'default',  $params->get('catid', 1));
+>>>>>>> FETCH_HEAD
 			$this->form->setFieldAttribute('catid', 'readonly', 'true');
 		}
 

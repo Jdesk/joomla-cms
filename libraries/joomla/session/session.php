@@ -3,7 +3,11 @@
  * @package     Joomla.Platform
  * @subpackage  Session
  *
+<<<<<<< HEAD
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+=======
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+>>>>>>> FETCH_HEAD
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -637,10 +641,14 @@ class JSession implements IteratorAggregate
 		{
 			$session_name = session_name();
 
+<<<<<<< HEAD
 			// Get the JInputCookie object
 			$cookie = $this->_input->cookie;
 
 			if (is_null($cookie->get($session_name)))
+=======
+			if (!JRequest::getVar($session_name, false, 'COOKIE'))
+>>>>>>> FETCH_HEAD
 			{
 				$session_clean = $this->_input->get($session_name, false, 'string');
 
@@ -649,6 +657,10 @@ class JSession implements IteratorAggregate
 					session_id($session_clean);
 					$cookie->set($session_name, '', time() - 3600);
 				}
+				else
+				{
+        				session_id($this->_createId());
+        			}
 			}
 		}
 

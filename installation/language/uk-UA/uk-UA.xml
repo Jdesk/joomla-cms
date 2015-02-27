@@ -3,9 +3,15 @@
 	version="3.2"
 	client="installation">
 	<name>Ukrainian-Українська (Україна)</name>
+<<<<<<< HEAD
 	<version>3.2.0</version>
 	<creationDate>16.09.2012</creationDate>
 	<author>Joomla! Ukraine</author>
+=======
+	<version>2.5</version>
+	<creationDate>06.01.2011</creationDate>
+	<author>Joomla! Ukraine Denys Nosov</author>
+>>>>>>> FETCH_HEAD
 	<copyright>2005 - 2014 (C) Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
  	<description>Ukrainian Localization for Joomla! 3.0 Installation</description>

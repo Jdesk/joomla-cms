@@ -22,6 +22,7 @@
 # phpDocumentor Logs #
 phpdoc-*
 
+<<<<<<< HEAD
 # Patch Tester #
 administrator/components/com_patchtester/
 administrator/templates/hathor/html/com_patchtester
@@ -95,3 +96,9 @@ Desktop.ini
 /libraries/vendor/symfony/yaml/Symfony/Component/Yaml/composer.json
 /libraries/vendor/symfony/yaml/Symfony/Component/Yaml/phpunit.xml.dist
 /libraries/vendor/symfony/yaml/Symfony/Component/Yaml/README.md
+=======
+# Patch Tester
+administrator/components/com_patchtester/
+administrator/templates/hathor/html/com_patchtester
+components/com_patchtester/
+>>>>>>> FETCH_HEAD

@@ -1,10 +1,18 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_installer
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @package		Joomla.Administrator
+ * @subpackage	com_installer
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @since		2.5
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -44,6 +52,7 @@ defined('_JEXEC') or die;
 							<li><?php echo JText::sprintf('COM_INSTALLER_MSG_DATABASE_SCHEMA_ERROR', $this->schemaVersion, $this->changeSet->getSchema()); ?></li>
 						<?php endif; ?>
 
+<<<<<<< HEAD
 						<?php if (version_compare($this->updateVersion, JVERSION) != 0) : ?>
 							<li><?php echo JText::sprintf('COM_INSTALLER_MSG_DATABASE_UPDATEVERSION_ERROR', $this->updateVersion, JVERSION); ?></li>
 						<?php endif; ?>
@@ -60,6 +69,15 @@ defined('_JEXEC') or die;
 						<?php endforeach; ?>
 						</ul>
 					</fieldset>
+=======
+			<?php if ($this->schemaVersion != $this->changeSet->getSchema()) : ?>
+				<li><?php echo JText::sprintf('COM_INSTALLER_MSG_DATABASE_SCHEMA_ERROR', $this->schemaVersion, $this->changeSet->getSchema()); ?></li>
+			<?php endif; ?>
+
+			<?php if (version_compare($this->updateVersion, JVERSION) != 0) : ?>
+				<li><?php echo JText::sprintf('COM_INSTALLER_MSG_DATABASE_UPDATEVERSION_ERROR', $this->updateVersion, JVERSION); ?></li>
+			<?php endif; ?>
+>>>>>>> FETCH_HEAD
 
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>

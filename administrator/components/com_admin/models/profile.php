@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * @package     Joomla.Administrator
  * @subpackage  com_admin
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+=======
+ * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+>>>>>>> FETCH_HEAD
  */
 
 defined('_JEXEC') or die;
@@ -39,12 +44,20 @@ class AdminModelProfile extends UsersModelUser
 		}
 
 		// Check for username compliance and parameter set
+<<<<<<< HEAD
 		$isUsernameCompliant = true;
+=======
+		$usernameCompliant = true;
+>>>>>>> FETCH_HEAD
 
 		if ($this->loadFormData()->username)
 		{
 			$username = $this->loadFormData()->username;
+<<<<<<< HEAD
 			$isUsernameCompliant = !(preg_match('#[<>"\'%;()&\\\\]|\\.\\./#', $username) || strlen(utf8_decode($username)) < 2
+=======
+			$isUsernameCompliant  = !(preg_match('#[<>"\'%;()&\\\\]|\\.\\./#', $username) || strlen(utf8_decode($username)) < 2
+>>>>>>> FETCH_HEAD
 				|| trim($username) != $username);
 		}
 
@@ -126,6 +139,11 @@ class AdminModelProfile extends UsersModelUser
 		unset($data['sendEmail']);
 		unset($data['block']);
 
+<<<<<<< HEAD
+=======
+		// Unset the username if it should not be overwritten
+		$username = $data['username'];
+>>>>>>> FETCH_HEAD
 		$isUsernameCompliant = $this->getState('user.username.compliant');
 
 		if (!JComponentHelper::getParams('com_users')->get('change_login_name') && $isUsernameCompliant)
